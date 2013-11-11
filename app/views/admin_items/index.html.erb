@@ -1,0 +1,35 @@
+
+    <table border="1" style="margin: 0 auto; width: 98%; table-layout: auto;">
+        <tr>
+            <th>Item Name</th>
+
+            <th>Description</th>
+
+            <th>Price</th>
+
+            <th>Image url</th>
+
+            <th>Category ID</th>
+
+        </tr>
+        <% @items.each do |item|  %>
+        <tr>
+            <td><%= item.name %></td>
+
+            <td><%= item.description %></td>
+
+            <td><%= item.price %></td>
+
+            <td><%= item.image_url %></td>
+
+            <td><%= item.category_id %></td>
+
+            <td>
+                <%= button_to "delete", admin_item_path(item),:method => :delete %>
+            </td>
+            <td>
+                <%= link_to "edit", edit_item_path(item) %>
+            </td>
+        </tr>
+        <% end %>
+    </table>

@@ -1,0 +1,14 @@
+
+<h3>Order#<%= @order.id %></h3>
+Date order placed: <%= @order.updated_at.strftime('%m/%d/%Y') %><br/>
+
+<% @order.order_items.each do |order_item| %>
+<%= order_item.item.name %><br/>
+Quantity: <%= order_item.quantity %><br/>
+Price :<%= number_to_currency(order_item.item.price) %><br/>
+<br/>
+
+
+<% end %>
+Order Total: <%= number_to_currency(@order.total_price) %><br/>
+

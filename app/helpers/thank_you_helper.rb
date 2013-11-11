@@ -1,0 +1,2 @@
+module ThankYouHelper
+end

@@ -1,0 +1,11 @@
+Thank you for your order! <br/>
+<ul>
+<% @order.order_items.each do |order_item|  %>
+<li>
+<%= order_item.item.name %><br/>
+</li>
+<% end %>
+</ul>
+Order Status: <%= @order.status %><br/>
+
+<%= link_to "Back to Menu", categories_path %>

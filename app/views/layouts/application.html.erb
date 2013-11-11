@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Billy's BBQ SHACK</title> <!-- begging wrap for bootstrap-->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+       <link rel="stylesheet" href="style.css"><!-- end wrap for bootstrap -->
+       
+      <!-- <link href="front-style.css" rel="stylesheet" type="text/css" /> -->
+  </head>
+  
+  <body>
+  <%= yield %>
+
+<p class="flash"><%= flash.notice %></p>
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src= "http://code.jquery.com/jquery.js"></script>  
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

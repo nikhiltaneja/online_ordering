@@ -1,0 +1,14 @@
+<h1>Order Summary</h1>
+<p><%= @order.user.name if @order.user %></p>
+
+<% if @order.incomplete? %>
+<% @order.order_items.each do |order_item| %>
+<%= order_item.item.name %><br/>
+Quantity: <%= order_item.quantity %><br/>
+Price :<%= number_to_currency(order_item.item.price) %><br/>
+<% end %>
+Subtotal: <%= number_to_currency(@order.total_price) %>
+<% end %><br/>
+
+
+<%= link_to "Complete Order", thank_you_path(@order) %>

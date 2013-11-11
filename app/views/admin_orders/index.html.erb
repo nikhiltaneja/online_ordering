@@ -1,0 +1,29 @@
+
+    <table border="1" style="margin: 0 auto; width: 75%; table-layout: auto;">
+        <tr>
+            <th>Order #</th>
+
+            <th>Customer</th>
+
+            <th>Status</th>
+
+            <th>Order placed at</th>
+
+            <th>Delete</th>
+        </tr>
+        <% @orders.each do |order|  %>
+        <tr>
+            <td><%= order.id %></td>
+
+            <td><%= order.user_id %></td>
+
+            <td><%= order.status %></td>
+
+            <td><%= order.updated_at %></td>
+
+            <td>
+                <%= button_to "delete", admin_order_path(order),:method => :delete %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
