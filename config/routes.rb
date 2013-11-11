@@ -13,7 +13,7 @@ BillysBbqShack::Application.routes.draw do
   match "/logout" => "sessions#destroy", as: :logout, via: :get
   
   match "/" => "front#index", via: :get
-  match "/admin" => "admin#show", via: :get
+  match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get
 
