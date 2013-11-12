@@ -1,5 +1,6 @@
 class AdminOrdersController < ApplicationController
-
+  before_action :can_access
+  
   def index
     @orders = Order.all
   end
@@ -11,7 +12,6 @@ class AdminOrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    # remove_item(@order)
 
     flash.notice = "Order number #{@order.id} removed!"
 

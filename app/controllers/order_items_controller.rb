@@ -12,6 +12,12 @@ class OrderItemsController < ApplicationController
     redirect_to categories_path
   end
 
+  def update
+    @order_item = OrderItem.find(params[:id])
+    @order_item.update(:quantity => params[:order_item][:quantity])
+    redirect_to cart_path
+  end
+
   def find_or_create_order
     if !session[:order_id].nil?
       Order.find(session[:order_id])

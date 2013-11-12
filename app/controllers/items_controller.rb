@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-   def create
+  before_action :can_access, only: [:create, :edit, :update]
+
+  def create
     @item = Item.new(item_params)
     @item.save
 

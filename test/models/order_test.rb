@@ -16,7 +16,7 @@ class OrderTest < ActiveSupport::TestCase
   def test_it_has_a_particular_item_that_is_passed_in
     item = Item.create(:name => "Pulled Pork Sandy")
     order = Order.create
-    order_item = OrderItem.create(:order_id => order.id, :item_id => item.id)
+    order_item = OrderItem.create(:order_id => order.id, :item_id => item.id, :quantity => 3)
     assert_equal true, order.has_item?(item.id)
   end
 

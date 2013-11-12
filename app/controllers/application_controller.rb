@@ -11,4 +11,15 @@ private
     @current_user ||= User.find_by_id(session[:user_id])
   end
 
+  def can_access
+    unless admin?
+      flash.notice = "You can't access this page because you're not cool enough."
+      redirect_to categories_path
+    end
+  end
+  
+  def admin?
+    current_user.admin?
+  end
+
 end
