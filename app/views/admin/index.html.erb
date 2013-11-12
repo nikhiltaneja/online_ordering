@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <%= stylesheet_link_tag "sb-admin" %>
+   
+
   </head>
 
   <body>
@@ -38,7 +41,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active"><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
             <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
             <li><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
             <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
@@ -92,27 +95,22 @@
                 <li><a href="#">View Inbox <span class="badge">7</span></a></li>
               </ul>
             </li>
-            <li class="dropdown alerts-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Default <span class="label label-default">Default</span></a></li>
-                <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
-                <li><a href="#">Success <span class="label label-success">Success</span></a></li>
-                <li><a href="#">Info <span class="label label-info">Info</span></a></li>
-                <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
-                <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
-                <li class="divider"></li>
-                <li><a href="#">View All</a></li>
-              </ul>
-            </li>
+            
             <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Billy Griffin <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
                 <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                <li>
+                  <% if current_user %>
+                      <%= link_to "logout", logout_path, id: "login" %>
+                  <% else %>
+                      <%= link_to "login", login_path, id: "logout" %>
+                  <% end %> 
+
+                </li>
               </ul>
             </li>
           </ul>
@@ -129,12 +127,8 @@
             </ol>
             <div class="alert alert-success alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <% if current_user %>
-                      <span>Welcome back, <%= current_user.name %></span>
-                      <%= link_to "logout", logout_path, id: "login" %>
-                  <% else %>
-                      <%= link_to "login", login_path, id: "logout" %>
-                  <% end %> check out what's been going on since you were last here.
+                  <span>Hey there, <b><%= current_user.name %></b> check out what's been going on since you were last here.</span>
+                     
             </div>
           </div>
         </div><!-- /.row -->
@@ -157,7 +151,7 @@
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      View Mentions
+                      Edit Orders
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -184,7 +178,7 @@
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Complete Tasks
+                      View Customers
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -203,7 +197,7 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@order_items.count}" %></p>
-                    <p class="announcement-text"><%= "Number of items ordered to date" %></p>
+                    <p class="announcement-text"><%= "Total items ordered" %></p>
                   </div>
                 </div>
               </div>
@@ -211,7 +205,7 @@
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Fix Issues
+                      View All Orders
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -230,7 +224,7 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@items.count}" %></p>
-                    <p class="announcement-text"><%= "Number of items currently on menu" %></p>
+                    <p class="announcement-text"><%= "Items on menu" %></p>
                   </div>
                 </div>
               </div>
@@ -238,7 +232,7 @@
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Complete Orders
+                      Edit Menu
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -254,150 +248,39 @@
           <div class="col-lg-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Statistics: October 1, 2013 - October 31, 2013</h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Recent Orders: Nov 14, 2013 </h3>
               </div>
-              <div class="panel-body">
-                <div id="morris-chart-area"></div>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                      <tr>
+                          <th>Order #</th>
+
+                          <th>Customer</th>
+
+                          <th>Status</th>
+
+                          <th>Order placed at</th>
+
+                      </tr>
+                      <% @orders.each do |order|  %>
+                      <tr>
+                          <td><%= order.id %></td>
+
+                          <td><%= order.user_id %></td>
+
+                          <td><%= order.status %></td>
+
+                          <td><%= order.updated_at %></td>
+
+                      </tr>
+                      <% end %>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div><!-- /.row -->
 
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Traffic Sources: October 1, 2013 - October 31, 2013</h3>
-              </div>
-              <div class="panel-body">
-                <div id="morris-chart-donut"></div>
-                <div class="text-right">
-                  <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-clock-o"></i> Recent Activity</h3>
-              </div>
-              <div class="panel-body">
-                <div class="list-group">
-                  <a href="#" class="list-group-item">
-                    <span class="badge">just now</span>
-                    <i class="fa fa-calendar"></i> Calendar updated
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">4 minutes ago</span>
-                    <i class="fa fa-comment"></i> Commented on a post
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">23 minutes ago</span>
-                    <i class="fa fa-truck"></i> Order 392 shipped
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">46 minutes ago</span>
-                    <i class="fa fa-money"></i> Invoice 653 has been paid
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">1 hour ago</span>
-                    <i class="fa fa-user"></i> A new user has been added
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">2 hours ago</span>
-                    <i class="fa fa-check"></i> Completed task: "pick up dry cleaning"
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">yesterday</span>
-                    <i class="fa fa-globe"></i> Saved the world
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <span class="badge">two days ago</span>
-                    <i class="fa fa-check"></i> Completed task: "fix error on sales page"
-                  </a>
-                </div>
-                <div class="text-right">
-                  <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-money"></i> Recent Transactions</h3>
-              </div>
-              <div class="panel-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered table-hover table-striped tablesorter">
-                    <thead>
-                      <tr>
-                        <th>Order # <i class="fa fa-sort"></i></th>
-                        <th>Order Date <i class="fa fa-sort"></i></th>
-                        <th>Order Time <i class="fa fa-sort"></i></th>
-                        <th>Amount (USD) <i class="fa fa-sort"></i></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>3326</td>
-                        <td>10/21/2013</td>
-                        <td>3:29 PM</td>
-                        <td>$321.33</td>
-                      </tr>
-                      <tr>
-                        <td>3325</td>
-                        <td>10/21/2013</td>
-                        <td>3:20 PM</td>
-                        <td>$234.34</td>
-                      </tr>
-                      <tr>
-                        <td>3324</td>
-                        <td>10/21/2013</td>
-                        <td>3:03 PM</td>
-                        <td>$724.17</td>
-                      </tr>
-                      <tr>
-                        <td>3323</td>
-                        <td>10/21/2013</td>
-                        <td>3:00 PM</td>
-                        <td>$23.71</td>
-                      </tr>
-                      <tr>
-                        <td>3322</td>
-                        <td>10/21/2013</td>
-                        <td>2:49 PM</td>
-                        <td>$8345.23</td>
-                      </tr>
-                      <tr>
-                        <td>3321</td>
-                        <td>10/21/2013</td>
-                        <td>2:23 PM</td>
-                        <td>$245.12</td>
-                      </tr>
-                      <tr>
-                        <td>3320</td>
-                        <td>10/21/2013</td>
-                        <td>2:15 PM</td>
-                        <td>$5663.54</td>
-                      </tr>
-                      <tr>
-                        <td>3319</td>
-                        <td>10/21/2013</td>
-                        <td>2:13 PM</td>
-                        <td>$943.45</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="text-right">
-                  <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- /.row -->
 
       </div><!-- /#page-wrapper -->
 
@@ -412,5 +295,8 @@
     <script src="js/morris/chart-data-morris.js"></script>
     <script src="js/tablesorter/jquery.tablesorter.js"></script>
     <script src="js/tablesorter/tables.js"></script>
+    <%= javascript_include_tag "chart-data-morris.js" %>
+    <%= javascript_include_tag "jquery.tablesorter.js" %>
+    <%= javascript_include_tag "tables.js" %>
   </body>
 </html>
