@@ -9,7 +9,7 @@
     <%= f.submit "Update Quantity" %>
   <% end %>
 Price :<%= number_to_currency(order_item.item.price) %><br/>
-<%= link_to "delete", order_item_path(order_item), method: :delete %><br/><br/>
+<%= button_to "delete", order_item_path(order_item), method: :delete %><br/><br/>
 <% end %>
 Subtotal: <%= number_to_currency(@order.total_price) %>
 <% end %>
