@@ -50,7 +50,7 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong><%= number_to_currency(order_item.item.price * order_item.quantity) %></strong></td>
                         <td class="col-sm-1 col-md-1">
                         
-                            <%= button_to "delete", order_item_path(order_item), method: :delete %>
+                            <%= button_to "delete", order_item_path(order_item), {class: "btn btn-danger", method: :delete} %>
                         </td>
                     </tr>
                     <% end %>
@@ -69,12 +69,11 @@
                         <td>   </td>
                         <td>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> <%= link_to "You know you want more food", categories_path %>
+                            <span class="glyphicon glyphicon-shopping-cart"></span> <%= link_to "You know you want more food", categories_path, {class: "btn"} %>
                         </button></td>
                         <td>
-                        <button type="button" class="btn btn-warning">
-                            <%= link_to "Checkout", checkout_path(@order) %> <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                            <%= link_to "Checkout", checkout_path(@order), {class: "btn btn-success btn-lg"} %> 
+                        </td>
                     </tr>
                 </tbody>
             </table>

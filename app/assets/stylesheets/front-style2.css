@@ -1,0 +1,242 @@
+@charset "UTF-8";
+* {
+    margin: 0px;
+  padding: 0px;
+}
+body {
+  background-image:url('wood.jpg');
+  background-repeat: repeat;
+  background-position:top-left; 
+}
+#main {
+  padding: 0px;
+  height: 900px;
+  width: 100%;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+#navbar ul { 
+  margin: 0; 
+  padding: 5px;
+  list-style-type: none; 
+  text-align: center; 
+  background-color: #000; 
+  } 
+ 
+#navbar ul li {  
+  display: inline; 
+  } 
+ 
+#navbar ul li a { 
+  text-decoration: none; 
+  padding: .2em 1em; 
+  color: #fff; 
+  background-color: #000; 
+  } 
+ 
+#navbar ul li a:hover { 
+  color: #000; 
+  background-color: #fff; 
+  } 
+
+
+#footer {
+  sfont-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  color: #fff;
+  width: 100%;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  position: absolute;
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: "Times New Roman", Times, serif;
+}
+#footer a {
+  color: #999;
+  text-decoration: none;
+}
+#footer a:hover {
+  color: #666;
+  text-decoration: none;
+}
+#news {
+  padding: 0px;
+  height: 64px;
+  width: 246px;
+  margin-top: 180px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 413px;
+  position: absolute;
+}
+#news2 {
+  padding: 0px;
+  height: 64px;
+  width: 246px;
+  margin-top: 180px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 413px;
+  position: absolute;
+  visibility: hidden;
+}
+#about {
+  padding: 0px;
+  height: 414px;
+  width: 347px;
+  margin-top: 434px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 185px;
+  position: absolute;
+  background-color: transparent;
+}
+#about2 {
+  padding: 0px;
+  height: 414px;
+  width: 347px;
+  margin-top: 434px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 185px;
+  position: absolute;
+  visibility: hidden;
+}
+#bookem {
+  padding: 0px;
+  height: 160px;
+  width: 146px;
+  margin-top: 196px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 639px;
+  position: absolute;
+}
+#bookem2 {
+  padding: 0px;
+  height: 160px;
+  width: 146px;
+  margin-top: 196px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 639px;
+  position: absolute;
+  visibility: hidden;
+}
+#fashion {
+  padding: 0px;
+  height: 203px;
+  width: 154px;
+  margin-top: 239px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 495px;
+  position: absolute;
+}
+#fashion2 {
+  padding: 0px;
+  height: 203px;
+  width: 154px;
+  margin-top: 239px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 495px;
+  position: absolute;
+  visibility: hidden;
+}
+#port {
+  padding: 0px;
+  height: 135px;
+  width: 364px;
+  margin-top: 345px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 618px;
+  position: absolute;
+}
+#port2 {
+  padding: 0px;
+  height: 135px;
+  width: 364px;
+  margin-top: 345px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 618px;
+  position: absolute;
+  visibility: hidden;
+}
+#contact {
+  padding: 0px;
+  height: 186px;
+  width: 464px;
+  margin-top: 447px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 496px;
+  position: absolute;
+}
+#contact2 {
+  padding: 0px;
+  height: 186px;
+  width: 464px;
+  margin-top: 447px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 496px;
+  position: absolute;
+  visibility: hidden;
+}
+#services {
+  padding: 0px;
+  height: 219px;
+  width: 277px;
+  margin-top: 613px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 442px;
+  position: absolute;
+}
+#services2 {
+  padding: 0px;
+  height: 219px;
+  width: 277px;
+  margin-top: 613px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 442px;
+  position: absolute;
+  visibility: hidden;
+}
+#capcity {
+  padding: 0px;
+  height: 287px;
+  width: 289px;
+  margin-top: 572px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 736px;
+  position: absolute;
+}
+#capcity2 {
+  padding: 0px;
+  height: 287px;
+  width: 289px;
+  margin-top: 572px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 736px;
+  position: absolute;
+  visibility: hidden;
+}

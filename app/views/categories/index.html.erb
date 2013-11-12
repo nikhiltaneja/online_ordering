@@ -1,23 +1,4 @@
 
-<div id="navbar"> 
-  <ul>  
-    <li>
-        <% if current_user %>
-            <span>Welcome, <%= current_user.name %></span>
-            <%= link_to "logout", logout_path, id: "login" %>
-        <% else %>
-            <%= link_to "login", login_path, id: "logout" %>
-        <% end %>
-    </li>
-    <li><%= link_to "About", about_path %></li> 
-    <li><%= link_to "Account", orders_path %></li> 
-    <li><%= link_to "Menu", categories_path %></li> 
-    <li><%= link_to "Cart", cart_path %></li> 
-    <li><%= link_to "Contact Us", contact_path %></li>  
-    <li>©2013 Billy's Southern Style BBQ. Design by BB&K</li> 
-    <li><%= link_to "ADMIN", admin_path %></li> 
-  </ul> 
-</div>    
 
 
     <div style="color:black;margin:60px;" ><!--begin container div -->
@@ -29,7 +10,9 @@
         <h2><%= category.name %></h2>
         <ul>
           <% category.items.each do |item| %>
-            <li>Name: <%= item.name %><br/>
+
+            <li><%= image_tag(item.image_url) %><br/>
+              Name: <%= item.name %><br/>
             Description: <%= item.description %><br/>
             Price: <%= number_to_currency(item.price) %><br/>
 

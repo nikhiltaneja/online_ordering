@@ -155,10 +155,10 @@
             <td><%= item.category_id %></td>
 
             <td>
-                <%= button_to "delete", admin_item_path(item),:method => :delete %>
+                <%= button_to "delete", admin_item_path(item), {class: "btn btn-danger", :method => :delete} %>
             </td>
             <td>
-                <%= link_to "edit", edit_item_path(item) %>
+                <%= link_to "edit", edit_item_path(item), {class: "btn btn-info"} %>
             </td>
         </tr>
         <% end %>

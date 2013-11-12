@@ -6,8 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-categories = Category.create([{ name: 'Entrees' }, { name: 'Side Dishes' }, { name: 'Delightful Drinks' }])
+user = User.create( provider: "twitter", uid: "525439758", name: "Billy Griffin", admin: true )
 
-main = Category.first.items.create([{ name: 'Pulled Pork Sandy', description: "wonderful and awesome", price: 5}, { name: 'Beef Brisket', description: "Dry rubbed and Aged to perfection", price: 9}])
-side = Category.find(2).items.create([{ name: 'Mac and Cheese,', description: "cheesie and Delicious", price: 5}, { name: 'Baked Beans', description: "Hearty and Awesome", price: 3}])
-drinks = Category.find(3).items.create([{ name: 'Iced Tea,', description: "Southern Style Sweet Tea", price: 2}, { name: 'Naragansett Beer', description: "Borderline Disgusting, but it works", price: 4}])
+categories = Category.create([
+  { name: 'Entrees' }, 
+  { name: 'Side Dishes' }, 
+  { name: 'Delightful Drinks' }])
+
+main = Category.first.items.create([
+  { name: 'Pulled Pork Sandy', description: "wonderful and awesome", price: 5}, 
+  { name: 'Beef Brisket', description: "Dry rubbed and Aged to perfection", price: 9, image_url: "pp.jpg"}])
+
+side = Category.find(2).items.create([
+  { name: 'Mac and Cheese,', description: "cheesie and Delicious", price: 5}, 
+  { name: 'Baked Beans', description: "Hearty and Awesome", price: 3}])
+
+drinks = Category.find(3).items.create([
+  { name: 'Iced Tea,', description: "Southern Style Sweet Tea", price: 2}, 
+  { name: 'Naragansett Beer', description: "Borderline Disgusting, but it works", price: 4}])
