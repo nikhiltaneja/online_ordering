@@ -1,19 +1,83 @@
-<h1>Cart</h1>
-<p><%= @order.user.name if @order.user %></p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<% if @order.incomplete? %>
-<% @order.order_items.each do |order_item| %>
-<%= order_item.item.name %><br/>
-  <%= form_for(order_item) do |f| %>
-    Quantity: <%= f.select 'quantity', options_for_select(1..20, order_item.quantity) %>
-    <%= f.submit "Update Quantity" %>
-  <% end %>
-Price :<%= number_to_currency(order_item.item.price) %><br/>
-<%= button_to "delete", order_item_path(order_item), method: :delete %><br/><br/>
-<% end %>
-Subtotal: <%= number_to_currency(@order.total_price) %>
-<% end %>
+    <title>Blank Page - SB Admin</title>
 
-<%= link_to "Checkout", checkout_path(@order) %><br/>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-<%= link_to "Back to Menu", categories_path %>
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <%= stylesheet_link_tag "bootstrap-combined.min.css" %>
+  </head>
+    <h1 style="margin-left:161px">Cart</h1>
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Item Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @order.incomplete? %>
+                        <% @order.order_items.each do |order_item| %>
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><%= order_item.item.name %><br/></h4>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <%= form_for(order_item) do |f| %>
+                            <%= f.select 'quantity', options_for_select(1..20, order_item.quantity) %>
+                            <%= f.submit "Update Quantity" %>
+                        <% end %>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><%= number_to_currency(order_item.item.price) %></strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><%= number_to_currency(order_item.item.price * order_item.quantity) %></strong></td>
+                        <td class="col-sm-1 col-md-1">
+                        
+                            <%= button_to "delete", order_item_path(order_item), method: :delete %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% end %>        
+                    
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong><%= number_to_currency(@order.total_price) %></strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> <%= link_to "You know you want more food", categories_path %>
+                        </button></td>
+                        <td>
+                        <button type="button" class="btn btn-warning">
+                            <%= link_to "Checkout", checkout_path(@order) %> <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</html>

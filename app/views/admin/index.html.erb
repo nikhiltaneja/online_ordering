@@ -143,15 +143,15 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@orders.count}" %></p>
-                    <p class="announcement-text"><%= "Number of orders" %></p>
+                    <p class="announcement-text"><%= "Total Orders Completed" %></p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Edit Orders
+                      <%= link_to "All Orders", admin_orders_path %>
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -170,15 +170,15 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@users.count}" %></p>
-                    <p class="announcement-text"><%= "Number of customers" %></p>
+                    <p class="announcement-text"><%= "Total Customers" %></p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      View Customers
+                      <%= link_to "All Customers", admin_orders_path %>
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -197,15 +197,15 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@order_items.count}" %></p>
-                    <p class="announcement-text"><%= "Total items ordered" %></p>
+                    <p class="announcement-text"><%= "Total Sales" %></p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      View All Orders
+                      <%= link_to "Total Sales", admin_orders_path %>
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -224,15 +224,15 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><%= "#{@items.count}" %></p>
-                    <p class="announcement-text"><%= "Items on menu" %></p>
+                    <p class="announcement-text"><%= "Items on Menu" %></p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Edit Menu
+                      <%= link_to "View Menu", admin_items_path %>
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
