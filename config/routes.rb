@@ -12,7 +12,7 @@ BillysBbqShack::Application.routes.draw do
   match "/login" => redirect("/auth/twitter"), as: :login, via: :get
   match "/logout" => "sessions#destroy", as: :logout, via: :get
   
-  match "/" => "front#index", via: :get
+  match "/" => "front#index", as: :front, via: :get
   match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get

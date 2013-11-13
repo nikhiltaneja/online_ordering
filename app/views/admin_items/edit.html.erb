@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="localhost:3000/admin">Billy's BBQ Admin</a>
+          <%= link_to "Billy's BBQ Shack", front_path, {class: "navbar-brand"} %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,14 +58,14 @@
 
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown messages-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">3</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">7 New Messages</li>
+                <li class="dropdown-header">3 New Messages</li>
                 <li class="message-preview">
                   <a href="#">
                     <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">Billy Griffin:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="name">Jonah Moses:</span>
+                    <span class="message">Hey, wanna ride motorcycles with me!?</span>
                     <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                   </a>
                 </li>
@@ -73,8 +73,8 @@
                 <li class="message-preview">
                   <a href="#">
                     <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">Billy Griffin:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="name">Bryana Knight:</span>
+                    <span class="message">We need to talk to you. It's important. :(</span>
                     <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                   </a>
                 </li>
@@ -82,29 +82,25 @@
                 <li class="message-preview">
                   <a href="#">
                     <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">Billy Griffin:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="name">Kevin Powell:</span>
+                    <span class="message">Hey Billy, we got your test results back... :*(</span>
                     <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                   </a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+                <li><a href="#">View Inbox <span class="badge">3</span></a></li>
               </ul>
             </li>
             
             <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                
                 <li class="divider"></li>
                 <li>
-                  <% if current_user %>
-                      <%= link_to "logout", logout_path, id: "login" %>
-                  <% else %>
-                      <%= link_to "login", login_path, id: "logout" %>
-                  <% end %> 
+                  
+                      <%= link_to "logout", logout_path, id: "logout" %>
+                  
 
                 </li>
               </ul>
