@@ -6,6 +6,9 @@ require 'capybara/rails'
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
+  include Capybara::DSL
+  include Rails.application.routes.url_helpers
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
@@ -14,3 +17,4 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
