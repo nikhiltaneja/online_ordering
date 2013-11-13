@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-
   end
 
   def update
@@ -22,8 +21,6 @@ class ItemsController < ApplicationController
 
     redirect_to admin_items_path
   end
-
-  
 
 
   private
