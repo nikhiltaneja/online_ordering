@@ -19,7 +19,11 @@ private
   end
   
   def admin?
-    current_user.admin?
+    if current_user
+      current_user.admin?
+    else
+      false
+    end
   end
 
 end
