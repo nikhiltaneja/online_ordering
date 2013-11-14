@@ -16,4 +16,5 @@ class OrderItemTest < ActiveSupport::TestCase
     order_item.quantity = "String"
     refute order_item.valid?
   end
+
 end

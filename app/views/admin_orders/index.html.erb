@@ -129,13 +129,13 @@
                 <tr>
                     <th>Order #</th>
 
-                    <th>Customer ID</th>
+                    <th>Customer</th>
 
                     <th>Status</th>
 
-                    <th>Order placed at</th>
-                    
                     <th>Order Total</th>
+                    
+                    <th>Order placed at</th>
 
                     <th>Delete</th>
                 </tr>
@@ -143,11 +143,17 @@
                 <tr>
                     <td><%= order.id %></td>
 
-                    <td><%= order.user_id %></td>
+                    <td>
+                      <% if order.user %>
+                        <%= order.user.name %>
+                      <% else %>
+                        No customer info for incomplete order
+                      <% end %>
+                    </td>
 
                     <td><%= order.status %></td>
 
-                    <td><%= order.updated_at %></td>
+                    <td><%= number_to_currency(order.total_price) %></td>
                     
                     <td><%= order.updated_at %></td>
 

@@ -193,7 +193,7 @@
                     <i class="fa fa-tasks fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading"><%= "#{@order_items.count}" %></p>
+                    <p class="announcement-heading"><%= "#{number_to_currency(@total_sales)}" %></p>
                     <p class="announcement-text"><%= "Total Sales" %></p>
                   </div>
                 </div>
