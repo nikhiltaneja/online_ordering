@@ -1,16 +1,59 @@
 
-<h3>Order#<%= @order.id %></h3>
-Date order placed: <%= @order.updated_at.strftime('%m/%d/%Y') %><br/>
+    <div class="container">
 
-<% @order.order_items.each do |order_item| %>
-<%= order_item.item.name %><br/>
-Quantity: <%= order_item.quantity %><br/>
-Price :<%= number_to_currency(order_item.item.price) %><br/>
-<br/>
+      <div class="masthead">
+        <h3 class="text-muted">Billy's BBQ Shack</h3>
+        <ul class="nav nav-justified">
+          <li><%= link_to "Home", front_path %></li>
+          <li><%= link_to "Menu", categories_path %></li>
+          <li class="active"><%= link_to "My Orders", orders_path %></li>
+          <li><%= link_to "Cart", cart_path %></li>
+          <li><%= link_to "Admin", admin_path %></li>
+          <% if current_user %>
+          <li><%= link_to "Logout", logout_path %></li>
+          <% else %>
+          <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      
+      <h3>Order#<%= @order.id %></h3>
+      Date order placed: <%= @order.updated_at.strftime('%m/%d/%Y') %><br/>
+      <div class="container-fluid" id="gridInContainer">
+        <% @order.order_items.each do |order_item| %>
+      
+          <div class="row">
+            
+              
+                <div class="col-lg-4">
+                 
+                  
+                  <% @order.order_items.each do |order_item| %>
+                    Item Ordered: <%= order_item.item.name %><br/>
+                    Quantity: <%= order_item.quantity %><br/>
+                    Price :<%= number_to_currency(order_item.item.price) %><br/>
+                  <% end %>
+                  Order Total: <%= number_to_currency(@order.total_price) %><br/>
 
+                  
+                  
+              
+                </div> <!-- closing div col -->
+              
+              
+          </div> <!-- closing row -->
+        <% end %>
+        
+      </div>
 
-<% end %>
-Order Total: <%= number_to_currency(@order.total_price) %><br/>
+      <%= link_to "Back to Menu", categories_path %>
 
-<%= link_to "Back to Menu", categories_path %>
+      <!-- Site footer -->
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
 
