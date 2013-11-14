@@ -5300,6 +5300,7 @@ a.thumbnail.active {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  text-align: center;
 }
 
 .alert h4 {
@@ -5971,6 +5972,7 @@ button.close {
   cursor: pointer;
   background: transparent;
   border: 0;
+  text-align: right;
   -webkit-appearance: none;
 }
 
