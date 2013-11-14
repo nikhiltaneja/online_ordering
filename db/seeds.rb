@@ -6,6 +6,7 @@ User.delete_all
 Order.delete_all
 
 user = User.create( provider: "twitter", uid: "525439758", name: "Billy Griffin", admin: true )
+user = User.create( provider: "twitter", uid: "321130543", name: "Bryana Knight", admin: true )
 
 categories = Category.create([
   { name: 'Entrees' }, 

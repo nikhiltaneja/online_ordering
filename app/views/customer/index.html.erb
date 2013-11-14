@@ -137,15 +137,20 @@
                 </tr>
                 <% @users.each do |user|  %>
                 <tr>
+                    
                     <td><%= user.name %></td>
 
                     <td><%= user.orders.count %></td>
 
                     <td><%= user.orders.where(:status => "complete").count %></td>
 
+                    <% unless user.orders.empty? %>
+
                     <td><%= user.orders.first.updated_at.strftime('%m/%d/%Y') %></td>
                     
                     <td><%= user.orders.last.updated_at.strftime('%m/%d/%Y') %></td>
+
+                    <% end %>
 
                 </tr>
             <% end %>
