@@ -264,7 +264,9 @@
                           <td><%= order.id %></td>
 
                           <td>
+                          <% fail %>
                             <% if order.user %>
+
                               <%= order.user.name %>
                             <% else %>
                               Customer has not logged in
