@@ -32,11 +32,11 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'capybara'
   gem 'launchy'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
+  gem 'minitest-rails-capybara'
 end
 
 group :production do

@@ -1,8 +1,9 @@
 require './test/test_helper'
 
-class ArticleCreationTest < MiniTest::Unit::TestCase
-
+class ArticleCreationTest < Capybara::Rails::TestCase
   def test_it_creates_an_article_with_a_title_and_body
+
+    puts "RUNNING THE TEST"
     visit '/categories'
 
     click_on 'Add to Cart'
@@ -10,6 +11,5 @@ class ArticleCreationTest < MiniTest::Unit::TestCase
     assert page.has_content?("Added")   
 
   end
-
 end
 
