@@ -175,7 +175,7 @@
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      <%= link_to "All Customers", admin_orders_path %>
+                      <%= link_to "All Customers", customers_path %>
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -273,7 +273,7 @@
 
                           <td><%= order.status %></td>
 
-                          <td><%= order.updated_at %></td>
+                          <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
 
                       </tr>
                       <% end %>

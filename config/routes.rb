@@ -19,6 +19,7 @@ BillysBbqShack::Application.routes.draw do
 
   match "/checkout" => "checkout#show", via: :get
   match "/thank_you" => "thank_you#show", via: :get
+  match "/customers" => "customer#index", via: :get
   # match "/admin_items" => "admin_items#destroy", via: :delete
 
 end

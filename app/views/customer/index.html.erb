@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,8 +37,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
-            <li class="active"><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
+            <li class="active"><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
+            <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
             <li><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
             <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
             <!-- <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
@@ -116,10 +113,10 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h1>All Orders <small>all orders in the system</small></h1>
+            <h1>All Customers <small>all customers</small></h1>
             <ol class="breadcrumb">
               <li><i class="fa fa-dashboard"></i> Dashboard</li>
-              <li class="active"><i class="fa fa-dashboard"></i> All Orders</li>
+              <li class="active"><i class="fa fa-dashboard"></i> All Customers</li>
             </ol>
             
           </div>
@@ -127,39 +124,29 @@
 
             <table class="table table-hover">
                 <tr>
-                    <th>Order #</th>
+                    <th>Customer Name</th>
 
-                    <th>Customer</th>
+                    <th>Total Orders</th>
 
-                    <th>Status</th>
+                    <th>Completed Orders</th>
 
-                    <th>Order Total</th>
+                    <th>First order date</th>
                     
-                    <th>Order placed at</th>
+                    <th>Most recent order date</th>
 
-                    <th>Delete</th>
                 </tr>
-                <% @orders.each do |order|  %>
+                <% @users.each do |user|  %>
                 <tr>
-                    <td><%= order.id %></td>
+                    <td><%= user.name %></td>
 
-                    <td>
-                      <% if order.user %>
-                        <%= order.user.name %>
-                      <% else %>
-                        Customer has not logged in
-                      <% end %>
-                    </td>
+                    <td><%= user.orders.count %></td>
 
-                    <td><%= order.status %></td>
+                    <td><%= user.orders.where(:status => "complete").count %></td>
 
-                    <td><%= number_to_currency(order.total_price) %></td>
+                    <td><%= user.orders.first.updated_at.strftime('%m/%d/%Y') %></td>
                     
-                    <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
+                    <td><%= user.orders.last.updated_at.strftime('%m/%d/%Y') %></td>
 
-                    <td>
-                        <%= button_to "delete", admin_order_path(order),:method => :delete %>
-                    </td>
                 </tr>
             <% end %>
         </table>
