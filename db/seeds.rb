@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Category.delete_all
 Item.delete_all
@@ -22,14 +15,14 @@ categories = Category.create([
 
 entrees = Category.where(:name => 'Entrees').to_a.first
 entrees.items.create([
-  { name: 'Pulled Pork Sandy', description: "Not a Sloppy Joe", price: 7}, 
-  { name: 'Beef Brisket', description: "Dry rubbed and aged to perfection", price: 8, image_url: "pp.jpg"},
+  { name: 'Pulled Pork Sandy', description: "Not a Sloppy Joe", price: 7, image_url: "pp.jpg"}, 
+  { name: 'Beef Brisket', description: "Dry rubbed and aged to perfection", price: 8},
   { name: 'Slab-o-Ribs', description: "Finger lick'n good", price: 9} 
   ])
 
 sides = Category.where(:name => 'Side Dishes').to_a.first
 sides.items.create([
-  { name: 'Mac and Cheese,', description: "Soooooo cheesy", price: 3}, 
+  { name: 'Mac and Cheese', description: "Soooooo cheesy", price: 3}, 
   { name: 'Baked Beans', description: "Better than Bush's", price: 3},
   { name: 'Cornbread', description: "Made with real corn", price: 3}
   ])

@@ -37,7 +37,7 @@
               <% category.items.each do |item| %>
                 <div class="col-lg-4">
                   <h3><%= item.name %></h3>
-                    
+                  <p><%= image_tag item.image_url%></p>
                   <p><%= item.description %></p>
                   <p>Price: <%= number_to_currency(item.price) %></p>
                   <%= form_for(OrderItem.new) do |f| %>
