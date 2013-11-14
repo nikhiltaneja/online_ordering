@@ -3,12 +3,6 @@ require './app/models/order'
 
 class OrderTest < ActiveSupport::TestCase
 
-  # def setup
-  #   item = Item.create(:name => "Pulled Pork Sandy")
-  #   order = Order.create
-  #   order_item = OrderItem.create(:order_id => order.id, :item_id => item.id)    
-  # end
-
   def teardown
     Item.destroy_all
   end
