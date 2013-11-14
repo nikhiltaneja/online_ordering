@@ -1,6 +1,7 @@
 require './app/models/order'
 
 class OrderItemsController < ApplicationController
+  include ActionView::Helpers::TextHelper
 
   def create
     order = find_or_create_order
@@ -8,7 +9,7 @@ class OrderItemsController < ApplicationController
     order.save
 
     item = Item.find(params[:order_item][:item_id])
-    flash.notice = "Added #{params[:order_item][:quantity]} #{item.name} to your order!"
+    flash.notice = "Added #{pluralize(params[:order_item][:quantity], item.name)} to your order!"
     redirect_to categories_path
   end
 
