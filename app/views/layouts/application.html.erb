@@ -6,15 +6,27 @@
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
       <!-- Optional theme -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-       <link rel="stylesheet" href="style.css"><!-- end wrap for bootstrap -->
+      <!-- Bootstrap core CSS -->
+      <%= stylesheet_link_tag "bootstrap2" %>
+
+      <!-- Custom styles for this template -->
+      <%= stylesheet_link_tag "bootstrap-nav" %>
        
       <!-- <link href="front-style.css" rel="stylesheet" type="text/css" /> -->
   </head>
   
   <body>
+
+  <% if flash.notice.present? %>
+    <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Notice: </strong> <%= flash.notice %>
+    </div>
+  <% end %>
+
   <%= yield %>
 
-  <p class="flash"><%= flash.notice %></p>
+  
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
