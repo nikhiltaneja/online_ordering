@@ -5,24 +5,12 @@
 </head>
     <body>
         <div id="main">
-            <center><%= image_tag("background4.jpg") %></center>
+            <center><%= image_tag("background5.png") %></center>
             <div id="footer">
                 <div id="navbar"> 
                     <ul>  
-                        <li>
-                            <% if current_user %>
-                                <span>Welcome, <%= current_user.name %></span>
-                                <%= link_to "logout", logout_path, id: "login" %>
-                            <% else %>
-                                <%= link_to "login", login_path, id: "logout" %>
-                            <% end %>
-                        </li>
-                        <li><%= link_to "About", about_path %></li> 
-                        <li><%= link_to "Account", orders_path %></li> 
-                        <li><%= link_to "Menu", categories_path %></li> 
-                        <li><%= link_to "Contact Us", contact_path %></li>  
-                        <li>©2013 Billy's Southern Style BBQ. Design by BB&K</li> 
-                        <li><%= link_to "ADMIN", admin_path %></li> 
+                        <li><h4><%= link_to "ENTER", categories_path %></h4></li> 
+                        <li><h4><a href="http://www.veggiedate.org/">GET THE FORK OUT</a></h4></li>
                     </ul> 
                 </div> 
             </div>

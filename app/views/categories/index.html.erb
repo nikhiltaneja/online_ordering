@@ -6,8 +6,8 @@
     <div class="container">
 
       <div class="masthead">
-        <h3 class="text-muted">Billy's BBQ Shack</h3>
-        <ul class="nav nav-justified">
+        <h3 class="text-muted"><%= image_tag("kflogo.png") %></h3>
+        <ul class="nav nav-justified navbar navbar-inverse">
           <li><%= link_to "Home", front_path %></li>
           <li class="active"><%= link_to "Menu", categories_path %></li>
           <li><%= link_to "My Orders", orders_path %></li>
@@ -20,20 +20,19 @@
           <% end %>
         </ul>
       </div>
-
+      <center><%= image_tag("front3.png") %></center>
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+        
+        <%= image_tag("niddle.png") %>
       </div>  
 
       <!-- Example row of columns -->
-      <div class="container-fluid" id="gridInContainer">
+      <center><div class="container-fluid" id="gridInContainer">
         <% @categories.each do |category| %>
         <h2><%= category.name %></h2>
           <div class="row">
-            
+          
               <% category.items.each do |item| %>
                 <div class="col-lg-4">
                   <h3><%= item.name %></h3>
@@ -50,7 +49,11 @@
               
           </div> <!-- closing row -->
         <% end %>
-      </div>
+        <br/>
+        <br/>
+      </div></center>
+      <br/>
+      <center><%= image_tag("bottom.jpg") %></center>
 
       
 
@@ -58,8 +61,88 @@
 
     </div> <!-- /container -->
 
-    <div class="footer">
-      <p>&copy; BB&K 2013</p>
+    <div class="footer" style="background-color:#dbdbdb;">
+      <div class="container" >
+
+        <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>About Us</h2>
+          <p>  Knife and Fork Smokehouse was opened in 2011 by husband and wife team, Bryana Knight & Billy Griffin.  While both pursuing careers in the arts, they decided to change paths and pursue their dream of opening a restaurant.  Billy, having grown up in his mother's restaurants and on his father's cattle farm, always knew he wanted to cook BBQ and good Southern sides.  Armed with his grandmother Mable's recipes and a small inheritance from his mom's passing, the two set out to open the Williamsburg BBQ joint.</p> 
+          <p></p>
+          <p>Kife and Fork is as authentic as the two could muster in Brooklyn.  Both Southerners, they wanted to recreate the honky-tonk feeling of roadside BBQs down South.  Their aim is no-frills, no attitude, good old-fashioned BBQ made with fresh, high-quality ingredients in a comfortable, laid-back atmosphere. A slice of Southern Hospitality right in heart of Brooklyn.</p>
+          
+        </div>
+        <div class="col-lg-4">
+          <h2>Contact US</h2>
+          <p>Feel free to drop us a line.  we love hearing from our customers.  we promise we don't bite.
+          <form class="form-horizontal">
+            <fieldset>
+
+            <!-- Form Name -->
+            <legend></legend>
+
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="textinput">Email</label>
+              <div class="controls">
+                <input id="textinput" name="textinput" type="text" placeholder="" class="input-xlarge" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="textinput">Subject</label>
+              <div class="controls">
+                <input id="textinput" name="textinput" type="text" placeholder="" class="input-xlarge" required="">
+                
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="control-group">
+              <label class="control-label" for="textarea">Messege</label>
+              <div class="controls">                     
+                <textarea id="textarea" name="textarea"></textarea>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for=""></label>
+              <div class="controls">
+                <button id="" name="" class="btn btn-primary">send</button>
+              </div>
+            </div>
+
+            </fieldset>
+            </form>
+       </div>
+        <div class="col-lg-4">
+          <h2>Come Find Us</h2>
+          <div class="row-fluid">
+              <div class="span8">
+                <iframe width="300" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+            </div>
+              <div class="span4">
+              <address>
+                <strong>KNIFE & FORK</strong><br>
+                15 Greenpointe Ave<br>
+                Brooklyn<br>
+                NY, NY 10001<br>
+                <abbr title="Phone">P:</abbr> 917-745-2834
+              </address>
+            </div>
+            &copy; BB&K 2013</p>
+        </div>
+
+        </div>
+      </div>
+
+        
+      </div>
+      
     </div>
 
 
