@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<div class="container">
 
-    <title>Blank Page - SB Admin</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Add custom CSS here -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <%= stylesheet_link_tag "bootstrap-combined.min.css" %>
-  </head>
-    <h1 style="margin-left:161px">Cart</h1>
+      <div class="masthead">
+        <h3 class="text-muted">Billy's BBQ Shack</h3>
+        <ul class="nav nav-justified">
+          <li><%= link_to "Home", front_path %></li>
+          <li><%= link_to "Menu", categories_path %></li>
+          <li class="active"><%= link_to "My Orders", orders_path %></li>
+          <li><%= link_to "Cart", cart_path %></li>
+          <li><%= link_to "Admin", admin_path %></li>
+          <% if current_user %>
+          <li><%= link_to "Logout", logout_path %></li>
+          <% else %>
+          <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    <h1 style="margin-left:108px">Sooooo close to some BAB(bomb-a$$-bbq):</h1><br/>
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -35,7 +34,7 @@
                     <tr>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left" href="http://www.amazon.com/Babe-James-Cromwell/dp/B0026IWNZ4/ref=sr_1_1?ie=UTF8&qid=1384397671&sr=8-1&keywords=babe+the+pig"> <img class="media-object" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSCRsIzDVeGNu7YSmYDoDJjsmbP81Xob-ywH0dsqRaUtNv7M9hP0Q" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><%= order_item.item.name %><br/></h4>
                             </div>
@@ -79,4 +78,4 @@
             </table>
         </div>
     </div>
-</html>
+
