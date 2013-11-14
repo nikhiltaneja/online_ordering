@@ -263,7 +263,13 @@
                       <tr>
                           <td><%= order.id %></td>
 
-                          <td><%= order.user_id %></td>
+                          <td>
+                            <% if order.user %>
+                              <%= order.user.name %>
+                            <% else %>
+                              No customer info for incomplete order
+                            <% end %>
+                          </td>
 
                           <td><%= order.status %></td>
 
