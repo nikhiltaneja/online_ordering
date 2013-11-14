@@ -13,7 +13,7 @@ private
 
   def can_access
     unless admin?
-      flash.notice = "You can't access this page because you're not cool enough."
+      flash.notice = "If you are an Admin, please login. Otherwise, Sorry bro."
       redirect_to categories_path
     end
   end
