@@ -1,12 +1,35 @@
 
-Thank you for your order! <br/>
-<ul>
+ <div class="container">
+
+      <div class="masthead">
+        <h3 class="text-muted">Billy's BBQ Shack</h3>
+        <ul class="nav nav-justified">
+          <li><%= link_to "Home", front_path %></li>
+          <li><%= link_to "Menu", categories_path %></li>
+          <li class="active"><%= link_to "My Orders", orders_path %></li>
+          <li><%= link_to "Cart", cart_path %></li>
+          <li><%= link_to "Admin", admin_path %></li>
+          <% if current_user %>
+          <li><%= link_to "Logout", logout_path %></li>
+          <% else %>
+          <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+<h3>Thank you for your order!</h3>
+<%= image_tag "hogs-n-kisses.jpg" %>
+<br/><br/>
+
 <% @order.order_items.each do |order_item|  %>
-<li>
+
 <%= order_item.item.name %><br/>
-</li>
+
+Quantity: <%= order_item.quantity %><br/><br/>
+
 <% end %>
-</ul>
+
+Total Price: <%= number_to_currency(@order.total_price) %><br/>
 Order Status: <%= @order.status %><br/>
 
 <%= link_to "Back to Menu", categories_path %>
