@@ -1,9 +1,14 @@
 class AdminOrdersController < ApplicationController
   before_action :can_access
-  
-  def index
-    @orders = Order.all
 
+  def index
+    if params[:order_by] == 'ascending'
+      @orders = Order.order(:status)
+      @order_by = 'descending'
+    else
+      @orders = Order.order('status DESC')
+      @order_by = 'ascending'
+    end
   end
 
   def show
