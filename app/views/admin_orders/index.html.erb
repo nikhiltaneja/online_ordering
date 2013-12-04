@@ -18,6 +18,7 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <%= stylesheet_link_tag "sb-admin" %>
+    <%= javascript_include_tag "application" %>
   </head>
 
   <body>
@@ -131,7 +132,9 @@
 
                     <th>Customer</th>
 
-                    <th>Status</th>
+                    <th>
+                      <button type="button" id="sort_status" class="btn btn-danger">Status</button>
+                    </th>
 
                     <th>Order Total</th>
                     
@@ -140,7 +143,7 @@
                     <th>Delete</th>
                 </tr>
                 <% @orders.each do |order|  %>
-                <tr>
+                <tr class="table_rows">
                     <td><%= order.id %></td>
 
                     <td>
@@ -151,7 +154,7 @@
                       <% end %>
                     </td>
 
-                    <td><%= order.status %></td>
+                    <td class="status_data"><%= order.status %></td>
 
                     <td><%= number_to_currency(order.total_price) %></td>
                     
