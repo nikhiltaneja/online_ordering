@@ -5,6 +5,8 @@ gem "omniauth-twitter"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+gem 'bootstrap-sass', '~> 3.0.0.0.rc'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
