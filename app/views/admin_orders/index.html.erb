@@ -110,7 +110,7 @@
                 <th>Customer</th>
 
                 <th>
-                  <button type="button" id="sort_status" class="btn btn-danger">Status</button>
+                  <%= link_to "Status", admin_orders_path(order_by: @order_by) %>
                 </th>
 
                 <th>Order Total</th>

@@ -38,7 +38,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
-  gem 'minitest-rails-capybara'
+  gem 'rspec-rails'
+  gem 'capybara', '~>2.2.0'
 end
 
 group :production do

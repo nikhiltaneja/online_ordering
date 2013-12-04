@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to "KNIFE & FORK", front_path, {class: "navbar-brand"} %>
-      
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,16 +71,16 @@
             <li><a href="#">View Inbox <span class="badge">3</span></a></li>
           </ul>
         </li>
-        
+
         <li class="dropdown user-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            
+
             <li class="divider"></li>
             <li>
-             
+
                   <%= link_to "logout", logout_path, id: "logout" %>
-            
+
 
             </li>
           </ul>
@@ -100,7 +100,7 @@
         <div class="alert alert-success alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <span>Hey there, <b><%= current_user.name %></b>!!!! Check out what's been going on since you were last here.</span>
-                 
+
         </div>
       </div>
     </div><!-- /.row -->
@@ -119,7 +119,7 @@
               </div>
             </div>
           </div>
-          
+
             <div class="panel-footer announcement-bottom">
               <div class="row">
                 <div class="col-xs-6">
@@ -146,7 +146,7 @@
               </div>
             </div>
           </div>
-          
+
             <div class="panel-footer announcement-bottom">
               <div class="row">
                 <div class="col-xs-6">
@@ -173,7 +173,7 @@
               </div>
             </div>
           </div>
-          
+
             <div class="panel-footer announcement-bottom">
               <div class="row">
                 <div class="col-xs-6">
@@ -200,7 +200,7 @@
               </div>
             </div>
           </div>
-          
+
             <div class="panel-footer announcement-bottom">
               <div class="row">
                 <div class="col-xs-6">
@@ -239,7 +239,7 @@
                       <td><%= order.id %></td>
 
                       <td>
-                      
+
                         <% if order.user %>
 
                           <%= order.user.name %>
