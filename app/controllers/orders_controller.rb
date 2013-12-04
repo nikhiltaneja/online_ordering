@@ -1,15 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    if current_user
-      if current_user.orders.any?
-        @completed_orders = completed_orders.to_a
-      else
-        no_orders_redirect
-      end
-    else
-      no_orders_redirect
-    end
+    @orders = Order.where(:user_id => session[:user_id])
   end
 
   def no_orders_redirect
