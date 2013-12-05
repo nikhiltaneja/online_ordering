@@ -2,33 +2,43 @@
 <html>
   <head>
     <title>Knife & Fork</title> <!-- begging wrap for bootstrap-->
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-      <!-- Bootstrap core CSS -->
-      <%= stylesheet_link_tag "bootstrap2" %>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag "bootstrap2" %>
 
-      <!-- Custom styles for this template -->
-      <%= stylesheet_link_tag "bootstrap-nav" %>
-       
-      <!-- <link href="front-style.css" rel="stylesheet" type="text/css" /> -->
+    <!-- Custom styles for this template -->
+    <%= stylesheet_link_tag "bootstrap-nav" %>
 
-      <%= javascript_include_tag "application" %>
+    <!-- <link href="front-style.css" rel="stylesheet" type="text/css" /> -->
+
+    <%= javascript_include_tag "application" %>
 
   </head>
-  
+
   <body>
+    <% puts "*************:#{user_signed_in?.inspect}" %>
+    <% if user_signed_in? %>
+      <p>Welcome <%= current_user.email %></p>
+    <% else %>
+      <p>Please log in.</p>
+    <% end %>
 
-  <% if flash.notice.present? %>
-    <div class="alert alert-warning">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong>Notice: </strong> <%= flash.notice %>
-    </div>
-  <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
 
-  <%= yield %>
+    <% if flash.notice.present? %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Notice: </strong> <%= flash.notice %>
+      </div>
+    <% end %>
 
-  
+    <%= yield %>
+
+
   </body>
 </html>
