@@ -1,9 +1,8 @@
 <div class="container">
 
       <div class="masthead">
-        <h3 class="text-muted"><%= image_tag("kflogo.png") %></h3>
+        <h3 class="text-muted"><%= link_to image_tag("kflogo.png"), root_path %></h3>
         <ul class="nav nav-justified">
-          <li><%= link_to "Home", front_path %></li>
           <li><%= link_to "Menu", categories_path %></li>
           <li><%= link_to "My Orders", orders_path %></li>
           <li class="active"><%= link_to "Cart", cart_path %></li>

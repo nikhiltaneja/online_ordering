@@ -7,12 +7,13 @@ BillysBbqShack::Application.routes.draw do
   resources :admin_orders
   resources :admin_items
   
+  root to: 'categories#index'
+
   match '/auth/:provider/callback', to: 'sessions#create', via: :get
 
   match "/login" => redirect("/auth/twitter"), as: :login, via: :get
   match "/logout" => "sessions#destroy", as: :logout, via: :get
   
-  match "/" => "front#index", as: :front, via: :get
   match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get
