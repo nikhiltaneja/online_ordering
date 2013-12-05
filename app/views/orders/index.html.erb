@@ -1,114 +1,32 @@
 
+<div class="container">
 
-    <div class="container">
-
-      <%= render partial: "layouts/navbar" %>  
-      
-      <h2>Your Past Orders:</h2>
-      <!-- Example row of columns -->
-      <div class="container-fluid" id="gridInContainer">
-        <% @completed_orders.each do |order| %>
-        <h2><%= link_to "Order ##{order.id}", order_path(order) %></h2>
-          <div class="row">
-              
-                <div class="col-lg-4">
-                  <p>Date: <%= order.updated_at.strftime('%m/%d/%Y') %></p>
-                  
-                  <% order.order_items.each do |order_item| %>
-                    Item: <%= order_item.item.name %><br/>
-                    Quantity: <%= order_item.quantity %><br/>
-                  <% end %>
-                  <p>Total Price: <%= number_to_currency(order.total_price) %></p>
-                  
-              
-                </div> <!-- closing div col -->
-              
-              
-          </div> <!-- closing row -->
-        <% end %>
-      </div>
-
-    </div> <!-- /container -->
-
-
-<div class="footer" style="background-color:#dbdbdb;">
+  <%= render partial: "layouts/navbar" %>  
   
-      <div class="container">
-
-        <!-- Example row of columns -->
+  <h2>Your Past Orders:</h2>
+  <!-- Example row of columns -->
+  <div class="container-fluid" id="gridInContainer">
+    <% @completed_orders.each do |order| %>
+    <h2><%= link_to "Order ##{order.id}", order_path(order) %></h2>
       <div class="row">
-        <div class="col-lg-4">
-          <h2>About Us</h2>
-          <p>  Knife and Fork Smokehouse was opened in 2011 by a young enthusiastic trio of culinary students, Kevin, Bryana, and Billy, having recently graduated from rSchool.  Billy, having grown up in his mother's restaurants and on his father's cattle farm, always knew he wanted to cook BBQ and good Southern sides.  Armed with his grandmother Mable's recipes and a small inheritance, the three set out to open the Williamsburg BBQ joint.</p> 
-          <p></p>
-          <p>Knife and Fork is as authentic as the three could muster in Brooklyn.  All Southerners, they wanted to recreate the honky-tonk feeling of roadside BBQs down South.  Their aim is no-frills, no attitude, good old-fashioned BBQ made with fresh, high-quality ingredients in a comfortable, laid-back atmosphere. A slice of Southern Hospitality right in heart of Brooklyn.</p>
           
-        </div>
-        <div class="col-lg-4">
-          <h2>Contact Us</h2>
-          <p>Feel free to drop us a line.  We love hearing from our customers.  We promise we don't bite.
-          <form class="form-horizontal">
-            <fieldset>
+            <div class="col-lg-4">
+              <p>Date: <%= order.updated_at.strftime('%m/%d/%Y') %></p>
+              
+              <% order.order_items.each do |order_item| %>
+                Item: <%= order_item.item.name %><br/>
+                Quantity: <%= order_item.quantity %><br/>
+              <% end %>
+              <p>Total Price: <%= number_to_currency(order.total_price) %></p>
+              
+          
+            </div> <!-- closing div col -->
+          
+          
+      </div> <!-- closing row -->
+    <% end %>
+  </div>
 
-            <!-- Form Name -->
-            <legend></legend>
+</div> <!-- /container -->
 
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="textinput">Email</label>
-              <div class="controls">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="input-xlarge" required="">
-                
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="textinput">Subject</label>
-              <div class="controls">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="input-xlarge" required="">
-                
-              </div>
-            </div>
-
-            <!-- Textarea -->
-            <div class="control-group">
-              <label class="control-label" for="textarea">Message</label>
-              <div class="controls">                     
-                <textarea id="textarea" name="textarea"></textarea>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for=""></label>
-              <div class="controls">
-                <button id="" name="" class="btn btn-primary">send</button>
-              </div>
-            </div>
-
-            </fieldset>
-            </form>
-       </div>
-        <div class="col-lg-4">
-          <h2>Come Find Us</h2>
-          <div class="row-fluid">
-              <div class="span8">
-                <iframe width="300" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-            </div>
-              <div class="span4">
-              <address>
-                <strong>KNIFE & FORK</strong><br>
-                15 Greenpointe Ave<br>
-                Brooklyn<br>
-                NY, NY 10001<br>
-                <abbr title="Phone">P:</abbr> 917-745-2834
-              </address>
-            </div>
-            &copy; BB&K 2013</p>
-        </div>
-
-        </div>
-      </div>
-
-</div>
+<%= render partial: "layouts/footer" %>
