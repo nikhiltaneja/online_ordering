@@ -1,4 +1,9 @@
 BillysBbqShack::Application.routes.draw do
+  devise_for :users
+  devise_scope :user do
+    get "/logout" => "devise/sessions#destroy", as: :logout
+    get "/login" => "devise/sessions#new", as: :login
+  end
   resources :categories
   resources :order_items
   resources :items
@@ -6,14 +11,9 @@ BillysBbqShack::Application.routes.draw do
   resources :orders
   resources :admin_orders
   resources :admin_items
-  
+
   root to: 'categories#index'
 
-  match '/auth/:provider/callback', to: 'sessions#create', via: :get
-
-  match "/login" => redirect("/auth/twitter"), as: :login, via: :get
-  match "/logout" => "sessions#destroy", as: :logout, via: :get
-  
   match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get
@@ -21,6 +21,5 @@ BillysBbqShack::Application.routes.draw do
   match "/checkout" => "checkout#show", via: :get
   match "/thank_you" => "thank_you#show", via: :get
   match "/customers" => "customer#index", via: :get
-  # match "/admin_items" => "admin_items#destroy", via: :delete
 
 end

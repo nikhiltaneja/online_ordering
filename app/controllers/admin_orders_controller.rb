@@ -1,5 +1,4 @@
 class AdminOrdersController < ApplicationController
-  before_action :can_access
 
   def index
     if params[:order_by] == 'ascending'

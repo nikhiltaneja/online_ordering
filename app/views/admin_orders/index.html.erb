@@ -25,16 +25,16 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right navbar-user">
-        
+
         <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %> <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            
+
             <li class="divider"></li>
             <li>
-              
+
                   <%= link_to "logout", logout_path, id: "logout" %>
-              
+
 
             </li>
           </ul>
@@ -52,7 +52,7 @@
           <li><i class="fa fa-dashboard"></i> Dashboard</li>
           <li class="active"><i class="fa fa-dashboard"></i> All Orders</li>
         </ol>
-        
+
       </div>
     </div><!-- /.row -->
 
@@ -67,7 +67,7 @@
                 </th>
 
                 <th>Order Total</th>
-                
+
                 <th>Order placed at</th>
 
                 <th>Delete</th>
@@ -78,7 +78,7 @@
 
                 <td>
                   <% if order.user %>
-                    <%= order.user.name %>
+                    <%= order.user.email %>
                   <% else %>
                     Customer has not logged in
                   <% end %>
@@ -87,7 +87,7 @@
                 <td class="status_data"><%= order.status %></td>
 
                 <td><%= number_to_currency(order.total_price) %></td>
-                
+
                 <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
 
                 <td>

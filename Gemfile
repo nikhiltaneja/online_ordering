@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem "omniauth-twitter"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -28,6 +27,8 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'devise'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -39,6 +40,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'minitest-rails-capybara'
   gem 'capybara', '~>2.2.0'
 end
 

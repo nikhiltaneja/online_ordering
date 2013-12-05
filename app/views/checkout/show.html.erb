@@ -1,7 +1,7 @@
 
 <div class="container">
   <h1>Order Summary</h1>
-  <p><%= @order.user.name if @order.user %></p>
+  <p><%= @order.user.email if @order.user %></p>
 
   <% if @order.incomplete? %>
   <% @order.order_items.each do |order_item| %>
