@@ -19,7 +19,6 @@
   </head>
 
   <body>
-    <% puts "*************:#{user_signed_in?.inspect}" %>
     <% if user_signed_in? %>
       <p>Welcome <%= current_user.email %></p>
     <% else %>

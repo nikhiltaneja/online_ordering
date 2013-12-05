@@ -7,7 +7,7 @@ BillysBbqShack::Application.routes.draw do
   resources :categories
   resources :order_items
   resources :items
-  resource :cart
+  resource  :cart
   resources :orders
   resources :admin_orders
   resources :admin_items
