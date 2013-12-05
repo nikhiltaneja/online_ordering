@@ -1,20 +1,8 @@
 
     <div class="container">
 
-      <div class="masthead">
-        <h3 class="text-muted"><%= link_to image_tag("kflogo.png"), root_path %></h3>
-        <ul class="nav nav-justified navbar navbar-inverse">
-          <li class="active"><%= link_to "Menu", categories_path %></li>
-          <li><%= link_to "My Orders", orders_path %></li>
-          <li><%= link_to "Cart", cart_path %></li>
-          <li><%= link_to "Admin", admin_path %></li>
-          <% if current_user %>
-          <li><%= link_to "Logout", logout_path %></li>
-          <% else %>
-          <li><%= link_to "Login", login_path %></li>
-          <% end %>
-        </ul>
-      </div>
+      <%= render partial: "layouts/navbar" %>
+
       <center><%= image_tag("front3.png") %></center>
       <!-- Jumbotron -->
       <div class="jumbotron">
@@ -29,17 +17,9 @@
           <div class="row">
           
               <% category.items.each do |item| %>
-                <div class="col-lg-4">
-                  <h3><%= item.name %></h3>
-                  <p><%= image_tag item.image_url%></p>
-                  <p><%= item.description %></p>
-                  <p>Price: <%= number_to_currency(item.price) %></p>
-                  <%= form_for(OrderItem.new) do |f| %>
-                    Quantity: <%= f.select 'quantity', options_for_select(1..20) %>
-                    <%= f.hidden_field :item_id, { :value => item.id } %>
-                    <%= f.submit "Add to Cart" %>
-                    <% end %>
-                </div> <!-- closing div col -->
+                
+                <%= render partial: 'category_listing', locals: {item: item}  %>
+
               <% end %>
               
           </div> <!-- closing row -->

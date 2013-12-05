@@ -1,0 +1,14 @@
+<div class="masthead">
+  <h3 class="text-muted"><%= link_to image_tag("kflogo.png"), root_path %></h3>
+  <ul class="nav nav-justified navbar navbar-inverse">
+    <li class="active"><%= link_to "Menu", categories_path %></li>
+    <li><%= link_to "My Orders", orders_path %></li>
+    <li><%= link_to "Cart", cart_path %></li>
+    <li><%= link_to "Admin", admin_path %></li>
+    <% if current_user %>
+    <li><%= link_to "Logout", logout_path %></li>
+    <% else %>
+    <li><%= link_to "Login", login_path %></li>
+    <% end %>
+  </ul>
+</div>
