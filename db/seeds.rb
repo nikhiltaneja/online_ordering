@@ -16,14 +16,15 @@ user = User.create( email: "asdf@asdf.com", password: "asdfasdf")
 user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
-[ "Billy's BBQ",
-  "Moe's Q Shack",
-  "Knife & fork",
-  "McDonalds",
-  "Burker King",
-  "Wendys",
-  "Five Guys"].each do |restaurant_name|
-  Restaurant.create(name:restaurant_name)
+{ "Billy's BBQ" => "Barbecue restaurant",
+  "Moe's Q Shack" => "BBQ shack",
+  "Knife & fork" => "Upscale Southern food",
+  "McDonalds" => "America's finest",
+  "Burker King" => "At BK you got it",
+  "Wendys" => "Dave Thomas is our hero",
+  "Five Guys" => "The best burger in town"
+}.each do |restaurant_name, restaurant_description|
+  Restaurant.create(name:restaurant_name, description:restaurant_description)
 end
 
 categories = Category.create([

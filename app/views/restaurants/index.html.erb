@@ -12,6 +12,7 @@ List of the restaurants [<%= @restaurants.count %>]
 
 <table>
   <% @restaurants.each do |restaurant| %>
+<<<<<<< HEAD
     <tr>
       <td><%= restaurant.name %></td>
       <td><%= restaurant.description %></td>
@@ -26,5 +27,11 @@ List of the restaurants [<%= @restaurants.count %>]
       <td><%= button_to 'Hide'%></td>
 
     </tr>
+=======
+    <li>
+      <%= restaurant.name %>:
+      <%= restaurant.description %>
+    </li>
+>>>>>>> master
   <% end %>
 </table>
