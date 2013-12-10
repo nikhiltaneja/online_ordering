@@ -10,10 +10,21 @@
 <h1>Restaurant Index</h1>
 List of the restaurants [<%= @restaurants.count %>]
 
-<ul>
+<table>
   <% @restaurants.each do |restaurant| %>
-    <li>
-      <%= restaurant.name %>
-    </li>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.description %></td>
+
+
+      <td><%= restaurant.status %></td>
+      <td><%= button_to 'approved'%></td>
+      <td><%= button_to 'rejected'%></td>
+
+      <td><%= restaurant.display %></td>
+      <td><%= button_to 'Show'%></td>
+      <td><%= button_to 'Hide'%></td>
+
+    </tr>
   <% end %>
-</ul>
+</table>

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :roles
   has_many :users, through: :restaurants
+  has_one :platform_admin
 
   def current_order
     orders.last if orders.present? && orders.last.status == "incomplete"
