@@ -1,0 +1,10 @@
+<h1>Restaurant Index</h1>
+List of the restaurants [<%= @restaurants.count %>]
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <%= restaurant.name %>
+    </li>
+  <% end %>
+</ul>
