@@ -13,7 +13,8 @@ List of the restaurants [<%= @restaurants.count %>]
 <ul>
   <% @restaurants.each do |restaurant| %>
     <li>
-      <%= restaurant.name %>
+      <%= restaurant.name %>:
+      <%= restaurant.description %>
     </li>
   <% end %>
 </ul>
