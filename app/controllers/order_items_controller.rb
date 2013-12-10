@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
   end
 
   def find_or_create_order
-    if !session[:order_id].nil?
+    if session[:order_id]
       Order.find(session[:order_id])
     else
       order = Order.create(:status => "incomplete", :user => current_user)
