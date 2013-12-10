@@ -13,7 +13,7 @@ BillysBbqShack::Application.routes.draw do
   resources :admin_items
   resources :restaurants
 
-  root to: 'categories#index'
+  root to: 'restaurants#index'
 
   match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
