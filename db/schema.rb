@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131210173831) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131210173831) do
     t.datetime "updated_at"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id"
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
   create_table "order_items", force: true do |t|
     t.integer  "item_id"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 20131210173831) do
     t.datetime "updated_at"
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 20131210173831) do
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["restaurant_id"], name: "index_roles_on_restaurant_id"
-  add_index "roles", ["user_id"], name: "index_roles_on_user_id"
+  add_index "roles", ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
+  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131210173831) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
