@@ -11,6 +11,7 @@ BillysBbqShack::Application.routes.draw do
   resources :orders
   resources :admin_orders
   resources :admin_items
+  resources :restaurants
 
   root to: 'categories#index'
 
