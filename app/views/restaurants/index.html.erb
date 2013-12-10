@@ -1,3 +1,12 @@
+<% if user_signed_in? %>
+  <li><%= link_to "Logout", logout_path %></li>
+
+  <li><%= link_to "Request to create a new restaurant", new_restaurant_path %></li>
+<% else %>
+  <li><%= link_to "Login", login_path %></li>
+<% end %>
+
+
 <h1>Restaurant Index</h1>
 List of the restaurants [<%= @restaurants.count %>]
 
