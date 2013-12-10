@@ -1,13 +1,23 @@
-
 Category.delete_all
 Item.delete_all
 OrderItem.delete_all
 User.delete_all
 Order.delete_all
+Restaurant.delete_all
 
 user = User.create( email: "asdf@asdf.com", password: "asdfasdf")
 user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
+
+[ "Billy's BBQ",
+  "Moe's Q Shack",
+  "Knife & fork",
+  "McDonalds",
+  "Burker King",
+  "Wendys",
+  "Five Guys"].each do |restaurant_name|
+  Restaurant.create(name:restaurant_name)
+end
 
 categories = Category.create([
   { name: 'Entrees' },
