@@ -16,9 +16,22 @@ class RestaurantsController < ApplicationController
     render :restaurant_confirmation
   end
 
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    
+    if params[:status]
+      @restaurant.status = params[:status]
+    elsif params[:display]
+      @restaurant.display = params[:display]
+    end
+
+    @restaurant.save
+    redirect_to root_path
+  end
+
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description)
+      params.require(:restaurant).permit(:name, :description, :status)
     end
 
 end
