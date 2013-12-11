@@ -1,11 +1,9 @@
 <% if user_signed_in? %>
   <li><%= link_to "Logout", logout_path %></li>
-
   <li><%= link_to "Request to create a new restaurant", new_restaurant_path %></li>
 <% else %>
   <li><%= link_to "Login", login_path %></li>
 <% end %>
-
 
 <h1>Restaurant Index</h1>
 List of the restaurants [<%= @restaurants.count %>]
@@ -15,34 +13,27 @@ List of the restaurants [<%= @restaurants.count %>]
   <th>Description</th>
 
   <% if platform_admin? %>
-
     <th>Status</th>
     <th></th>
     <th></th>
     <th>Display</th>
     <th></th>
     <th></th>
-
   <% end %>
-  
+
   <% @restaurants.each do |restaurant| %>
     <tr>
-      <td><%= restaurant.name %></td>
+      <td><%= link_to restaurant.name, "/#{restaurant.slug}", method: :get %></td>
       <td><%= restaurant.description %></td>
-
 
       <% if platform_admin? %>
         <td><%= restaurant.status %></td>
-
         <td><%= link_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put %></td>
         <td><%= link_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put %></td>
-
         <td><%= restaurant.display %></td>
         <td><%= link_to 'Show', restaurant_path(restaurant, display: true), method: :put %></td>
         <td><%= link_to 'Hide', restaurant_path(restaurant, display: false), method: :put%></td>
-
       <% end %>
-
     </tr>
   <% end %>
 </table>

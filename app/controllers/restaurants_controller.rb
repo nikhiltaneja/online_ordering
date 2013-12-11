@@ -4,7 +4,8 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(slug:params[:slug])
+    redirect_to categories_path(@restaurant)
   end
 
   def new
@@ -35,5 +36,4 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:name, :description, :status)
     end
-
 end

@@ -23,4 +23,5 @@ BillysBbqShack::Application.routes.draw do
   match "/thank_you" => "thank_you#show", via: :get
   match "/customers" => "customer#index", via: :get
 
+  match '/:slug' => "categories#index", via: :get
 end
