@@ -10,4 +10,15 @@ class Restaurant < ActiveRecord::Base
     name.parameterize
   end
 
+  def approve
+  end
+
+  def reject
+  end
+
+  def show
+  end
+
+  def hide
+  end
 end
