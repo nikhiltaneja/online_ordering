@@ -14,6 +14,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.create!(restaurant_params)
+    Role.create!(restaurant_id: @restaurant.id, user_id: current_user.id, level: "admin")
     render :restaurant_confirmation
   end
 
