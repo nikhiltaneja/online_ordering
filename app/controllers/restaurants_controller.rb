@@ -29,6 +29,8 @@ class RestaurantsController < ApplicationController
     end
 
     @restaurant.save
+    UserMailer.approved_confirmation("denvergschool@gmail.com").deliver
+    # UserMailer.approved_confirmation(@user).deliver
     redirect_to root_path
   end
 
