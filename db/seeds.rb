@@ -4,6 +4,7 @@ OrderItem.delete_all
 User.delete_all
 Order.delete_all
 Restaurant.delete_all
+Role.delete_all
 
 user = User.create( email: "nt@example.com", password: "password")
 PlatformAdmin.create(user_id: user.id)
@@ -24,8 +25,11 @@ user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
   "Wendys" => "Dave Thomas is our hero",
   "Five Guys" => "The best burger in town"
 }.each do |restaurant_name, restaurant_description|
-  Restaurant.create(name:restaurant_name, description:restaurant_description)
+  r = Restaurant.create(name:restaurant_name, description:restaurant_description)
+  Role.create!(restaurant: r, user: user, level: "admin")
 end
+
+
 
 Restaurant.all[0..4].each do |restaurant|
   restaurant.status = "approved"
