@@ -1,27 +1,28 @@
 
 <div class="container">
+  <h3>RESTAURANT NAME: <%= @restaurant.name %></h3>
 
   <%= render partial: "layouts/navbar" %>
 
   <center><%= image_tag("front3.png") %></center>
   <!-- Jumbotron -->
   <div class="jumbotron">
-    
+
     <%= image_tag("niddle.png") %>
-  </div>  
+  </div>
 
   <!-- Example row of columns -->
   <center><div class="container-fluid" id="gridInContainer">
     <% @categories.each do |category| %>
     <h2><%= category.name %></h2>
       <div class="row">
-      
+
           <% category.items.each do |item| %>
-            
+
             <%= render partial: 'category_listing', locals: {item: item}  %>
 
           <% end %>
-          
+
       </div> <!-- closing row -->
     <% end %>
     <br/>
@@ -29,7 +30,7 @@
   </div></center>
   <br/>
   <center><%= image_tag("bottom.jpg") %></center>
- 
+
 
 </div> <!-- /container -->
 
@@ -37,6 +38,6 @@
 <%= render partial: "layouts/footer" %>
 
 
-  
 
- 
+
+

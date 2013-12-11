@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
   after_create :create_slug
 
   def create_slug
-    name.parameterize
+    self.slug = self.name.parameterize
+    self.save
   end
-
 end
