@@ -25,12 +25,14 @@ List of the restaurants [<%= @restaurants.count %>]
       <td><%= restaurant.description %></td>
 
       <td><%= restaurant.status %></td>
-      <td><%= button_to 'approved'%></td>
-      <td><%= button_to 'rejected'%></td>
+      <td><%= link_to 'Approve', restaurant_path(restaurant, :status => "approved"), :method => :put %></td>
+      <td><%= link_to 'Reject', restaurant_path(restaurant, :status => "rejected"), :method => :put %></td>
 
       <td><%= restaurant.display %></td>
-      <td><%= button_to 'Show'%></td>
-      <td><%= button_to 'Hide'%></td>
+      <td><%= link_to 'Show', restaurant_path(restaurant, :display => true), :method => :put %></td>
+      <td><%= link_to 'Hide', restaurant_path(restaurant, :display => false), :method => :put%></td>
+
+      <!-- link_to("Unlink your facebook account", user_path(@user, :facebook_uid => nil), :method => :put, :confirm => "Are you sure?") -->
 
     </tr>
   <% end %>
