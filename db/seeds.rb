@@ -5,6 +5,13 @@ User.delete_all
 Order.delete_all
 Restaurant.delete_all
 
+user = User.create( email: "nt@example.com", password: "password")
+PlatformAdmin.create(user_id: user.id)
+user = User.create( email: "qt@example.com", password: "asdfasdf")
+PlatformAdmin.create(user_id: user.id)
+user = User.create( email: "kp@example.com", password: "password")
+PlatformAdmin.create(user_id: user.id)
+
 user = User.create( email: "asdf@asdf.com", password: "asdfasdf")
 user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
@@ -18,6 +25,11 @@ user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
   "Five Guys" => "The best burger in town"
 }.each do |restaurant_name, restaurant_description|
   Restaurant.create(name:restaurant_name, description:restaurant_description)
+end
+
+Restaurant.all[0..4].each do |restaurant|
+  restaurant.display = true
+  restaurant.save
 end
 
 categories = Category.create([
