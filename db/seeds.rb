@@ -27,6 +27,11 @@ user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
   Restaurant.create(name:restaurant_name, description:restaurant_description)
 end
 
+Restaurant.all[0..4].each do |restaurant|
+  restaurant.display = true
+  restaurant.save
+end
+
 categories = Category.create([
   { name: 'Entrees' },
   { name: 'Side Dishes' },
