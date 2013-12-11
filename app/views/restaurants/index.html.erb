@@ -34,12 +34,12 @@ List of the restaurants [<%= @restaurants.count %>]
       <% if platform_admin? %>
         <td><%= restaurant.status %></td>
 
-        <td><%= link_to 'Approve', restaurant_path(restaurant, :status => "approved"), :method => :put %></td>
-        <td><%= link_to 'Reject', restaurant_path(restaurant, :status => "rejected"), :method => :put %></td>
+        <td><%= link_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put %></td>
+        <td><%= link_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put %></td>
 
         <td><%= restaurant.display %></td>
-        <td><%= link_to 'Show', restaurant_path(restaurant, :display => true), :method => :put %></td>
-        <td><%= link_to 'Hide', restaurant_path(restaurant, :display => false), :method => :put%></td>
+        <td><%= link_to 'Show', restaurant_path(restaurant, display: true), method: :put %></td>
+        <td><%= link_to 'Hide', restaurant_path(restaurant, display: false), method: :put%></td>
 
       <% end %>
 

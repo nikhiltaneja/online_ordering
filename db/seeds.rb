@@ -28,6 +28,7 @@ user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 end
 
 Restaurant.all[0..4].each do |restaurant|
+  restaurant.status = "approved"
   restaurant.display = true
   restaurant.save
 end

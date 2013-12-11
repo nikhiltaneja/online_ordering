@@ -18,10 +18,12 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    
+
     if params[:status]
       @restaurant.status = params[:status]
-    elsif params[:display]
+    end
+
+    if params[:display]
       @restaurant.display = params[:display]
     end
 
