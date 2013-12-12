@@ -6,8 +6,6 @@ Order.delete_all
 Restaurant.delete_all
 Role.delete_all
 
-user = User.create( email: "denvergschool@gmail.com", password: "password")
-PlatformAdmin.create(user_id: user.id)
 user = User.create( email: "nt@example.com", password: "password")
 PlatformAdmin.create(user_id: user.id)
 user = User.create( email: "qt@example.com", password: "asdfasdf")
@@ -30,8 +28,6 @@ user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
   r = Restaurant.create(name:restaurant_name, description:restaurant_description)
   Role.create!(restaurant: r, user: user, level: "admin")
 end
-
-
 
 Restaurant.all[0..4].each do |restaurant|
   restaurant.status = "approved"

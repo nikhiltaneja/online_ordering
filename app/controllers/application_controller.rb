@@ -9,5 +9,5 @@ class ApplicationController < ActionController::Base
   def platform_admin?
     current_user && current_user.platform_admin
   end
-  #helper_method :platform_admin?
+  helper_method :platform_admin?
 end
