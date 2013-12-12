@@ -1,6 +1,8 @@
 class Restaurant < ActiveRecord::Base
   has_many :roles
   has_many :users, through: :roles
+  has_many :categories
+  has_many :orders
   validates :name, presence: true
   validates_uniqueness_of :name
   validates :description, presence: true
