@@ -1,10 +1,16 @@
 class UserMailer < ActionMailer::Base
   default from: "denvergschool@gmail.com"
   
-  def approved_confirmation(user)
+  def approved_confirmation(user, restaurant)
     @user = user
-    # mail(:to => "#{user.name} <#{user.email}>", :subject => "Approved")
-    mail(:to => "denvergschool@gmail.com", :subject => "Approved")
-
+    @restaurant = restaurant
+    mail(:to => "#{user.email}", :subject => "Approved")
   end
+
+  def rejected_confirmation(user, restaurant)
+    @user = user
+    @restaurant = restaurant
+    mail(:to => "#{user.email}", :subject => "Rejected")
+  end
+
 end

@@ -20,9 +20,16 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
+    @user = @restaurant.roles.first.user
 
     if params[:status]
       @restaurant.status = params[:status]
+      if params[:status] == 'approved' 
+        UserMailer.approved_confirmation(@user, @restaurant).deliver
+      end
+      if params[:status] == 'rejected' 
+        UserMailer.rejected_confirmation(@user, @restaurant).deliver
+      end
     end
 
     if params[:display]
@@ -30,8 +37,6 @@ class RestaurantsController < ApplicationController
     end
 
     @restaurant.save
-    UserMailer.approved_confirmation("denvergschool@gmail.com").deliver
-    # UserMailer.approved_confirmation(@user).deliver
     redirect_to root_path
   end
 
