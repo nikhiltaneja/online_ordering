@@ -6,6 +6,8 @@ Order.delete_all
 Restaurant.delete_all
 Role.delete_all
 
+user = User.create( email: "denvergschool@gmail.com", password: "password")
+PlatformAdmin.create(user_id: user.id)
 user = User.create( email: "nt@example.com", password: "password")
 PlatformAdmin.create(user_id: user.id)
 user = User.create( email: "qt@example.com", password: "asdfasdf")
