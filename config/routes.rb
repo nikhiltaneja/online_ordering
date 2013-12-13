@@ -4,7 +4,7 @@ BillysBbqShack::Application.routes.draw do
     get "/logout" => "devise/sessions#destroy", as: :logout
     get "/login" => "devise/sessions#new", as: :login
   end
-  resources :categories
+  # resources :categories
   resources :order_items
   resources :items
   resource  :cart
@@ -23,5 +23,9 @@ BillysBbqShack::Application.routes.draw do
   match "/thank_you" => "thank_you#show", via: :get
   match "/customers" => "customer#index", via: :get
 
-  match '/:slug' => "categories#index", via: :get
+  # match '/:slug' => "categories#index", via: :get
+
+  scope '/:slug' do
+    get '/' => 'categories#index', as: 'home'
+  end
 end

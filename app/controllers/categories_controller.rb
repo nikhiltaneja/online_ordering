@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
     @stockers = roles.where(level: "stocker").map do |role|
       role.user
     end
-    @categories = Category.all
+    @categories = @restaurant.categories
+
+    if params[:order]
+      @order = Order.find(params[:order])
+    end
   end
 end

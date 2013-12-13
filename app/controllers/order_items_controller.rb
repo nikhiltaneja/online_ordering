@@ -4,13 +4,13 @@ class OrderItemsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def create
-    order = find_or_create_order
-    order.add_item(params[:order_item])
-    order.save
+    @order = find_or_create_order
+    @order.add_item(params[:order_item])
+    @order.save
 
     item = Item.find(params[:order_item][:item_id])
     flash.notice = "Added #{pluralize(params[:order_item][:quantity], item.name)} to your order!"
-    redirect_to categories_path
+    redirect_to categories_path(slug: "billy-s-bbq", order: @order.id)
   end
 
   def update
