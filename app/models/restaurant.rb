@@ -1,6 +1,8 @@
 class Restaurant < ActiveRecord::Base
   has_many :roles
   has_many :users, through: :roles
+  has_many :categories
+  has_many :orders
   validates :name, presence: true
   validates_uniqueness_of :name
   validates :description, presence: true
@@ -10,5 +12,9 @@ class Restaurant < ActiveRecord::Base
   def create_slug
     self.slug = self.name.parameterize
     self.save
+  end
+
+  def to_param
+    slug
   end
 end

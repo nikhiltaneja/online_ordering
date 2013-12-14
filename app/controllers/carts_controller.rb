@@ -1,6 +1,13 @@
 class CartsController < ApplicationController
 
-  def show
+  def show    
+    unless order
+      flash.notice = "You must add an item before viewing your cart"
+      redirect_to categories_path
+    end
+  end
+
+  def index
     unless order
       flash.notice = "You must add an item before viewing your cart"
       redirect_to categories_path
@@ -10,8 +17,8 @@ class CartsController < ApplicationController
   private
 
   def order
-    @order ||= if current_user && current_user.current_order
-      current_user.current_order
+    @order ||= if current_user && current_user.current_restaurant.current_order
+      current_user.current_restaurant.current_order
     elsif session[:order_id]
       Order.find(session[:order_id])
     end
