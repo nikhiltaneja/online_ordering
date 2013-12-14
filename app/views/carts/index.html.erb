@@ -27,7 +27,7 @@
                             </div>
                         </div></td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <%= form_for(order_item) do |f| %>
+                        <%= form_for(order_item, url: order_item_path(current_restaurant, order_item)) do |f| %>
                             <%= f.select 'quantity', options_for_select(1..20, order_item.quantity) %>
                             <%= f.submit "Update Quantity" %>
                         <% end %>
@@ -36,7 +36,7 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong><%= number_to_currency(order_item.item.price * order_item.quantity) %></strong></td>
                         <td class="col-sm-1 col-md-1">
                         
-                            <%= button_to "delete", order_item_path(order_item), {class: "btn btn-danger", method: :delete} %>
+                            <%= button_to "delete", order_item_path(current_restaurant, order_item), {class: "btn btn-danger", method: :delete} %>
                         </td>
                     </tr>
                     <% end %>
@@ -58,7 +58,7 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span> <%= link_to "You know you want more food", categories_path, {class: "btn"} %>
                         </button></td>
                         <td>
-                            <%= link_to "Checkout", checkout_path(@order), {class: "btn btn-success btn-lg"} %> 
+                            <%= link_to "Checkout", checkout_path(current_restaurant, @order), {class: "btn btn-success btn-lg"} %> 
                         </td>
                     </tr>
                 </tbody>

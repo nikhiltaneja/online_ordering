@@ -13,4 +13,8 @@ class Restaurant < ActiveRecord::Base
     self.slug = self.name.parameterize
     self.save
   end
+
+  def to_param
+    slug
+  end
 end

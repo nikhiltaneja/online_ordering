@@ -12,8 +12,7 @@
   Order Total: <%= number_to_currency(@order.total_price) %>
   <% end %><br/>
 
-
-<form action="/thank_you" method="get">
+<form action="<%= thank_you_path(current_restaurant) %>" method="get">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"

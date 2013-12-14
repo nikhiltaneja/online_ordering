@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :platform_admin?
 
   def current_restaurant
-    @current_restaurant ||= Restaurant.find_by(slug: request.original_fullpath.slice(1..-1))
+    @current_restaurant ||= Restaurant.find_by(slug: request.original_fullpath.split("/")[1])
   end
 
   helper_method :current_restaurant

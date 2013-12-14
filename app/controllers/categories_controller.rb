@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    @restaurant = Restaurant.find_by(slug: params[:slug])
+    @restaurant = current_restaurant
+    # @restaurant = Restaurant.find_by(slug: params[:slug])
     roles = Role.where(restaurant: @restaurant)
     @admins = roles.where(level: "admin").map do |role|
       role.user
