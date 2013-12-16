@@ -8,6 +8,9 @@ BillysBbqShack::Application.routes.draw do
   # resources :order_items
   resources :restaurants
 
+  resources :users, :only => ["show"]
+
+
   root to: 'restaurants#index'
 
   match "/contact" => "contact#show", via: :get
