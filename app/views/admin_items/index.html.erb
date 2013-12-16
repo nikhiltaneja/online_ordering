@@ -18,15 +18,14 @@
       <ul class="nav navbar-nav side-nav">
         <li><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
         <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
-        <li class="active"><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
+        <li class="active"><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
         <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right navbar-user">
 
         <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email
-          %> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
 
             <li class="divider"></li>
@@ -84,10 +83,10 @@
         <td><%= item.category_id %></td>
 
         <td>
-            <%= button_to "delete", admin_item_path(item), {class: "btn btn-danger", :method => :delete} %>
+            <%= button_to "delete", admin_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-danger", :method => :delete} %>
         </td>
         <td>
-            <%= link_to "edit", edit_item_path(item), {class: "btn btn-info"} %>
+            <%= link_to "edit", edit_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-info"} %>
         </td>
     </tr>
     <% end %>
