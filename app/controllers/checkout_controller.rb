@@ -1,6 +1,6 @@
 class CheckoutController < ApplicationController
 
   def show
-    @order = Order.find(session[:order_id])
+    @order = current_order
   end
 end
