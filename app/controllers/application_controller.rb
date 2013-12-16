@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
         session[:order_id] = nil
       end
     else
-      if Order.where(restaurant: current_restaurant).last.incomplete?
+      if Order.where(restaurant: current_restaurant).last && Order.where(restaurant: current_restaurant).last.incomplete?
         Order.where(restaurant: current_restaurant).last
       end
     end
