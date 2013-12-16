@@ -17,4 +17,12 @@ class Restaurant < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def approve
+    self.update!(status: "approved", display: true)
+  end
+
+  def reject
+    self.update!(status: "rejected", display: false)
+  end
 end
