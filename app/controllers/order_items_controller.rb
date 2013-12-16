@@ -20,10 +20,10 @@ class OrderItemsController < ApplicationController
   end
 
   def find_or_create_order
-    if session[:order_id]
-      Order.find(session[:order_id])
+    if current_order
+      current_order
     else
-      order = Order.create(:status => "incomplete", :user => current_user)
+      order = Order.create(:status => "incomplete", :user => current_user, :restaurant => current_restaurant)
       session[:order_id] = order.id
       order
     end

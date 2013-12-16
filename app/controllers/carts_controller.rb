@@ -17,10 +17,10 @@ class CartsController < ApplicationController
   private
 
   def order
-    @order ||= if current_user && current_user.current_restaurant.current_order
-      current_user.current_restaurant.current_order
-    elsif session[:order_id]
-      Order.find(session[:order_id])
-    end
+    # @order ||= if current_user && current_order.user
+    #   if current_restaurant.orders.where(user: current_user).last.status == "incomplete"
+    #     current_restaurant.orders.where(user: current_user).last
+    #   end
+    @order = current_order
   end
 end

@@ -14,6 +14,27 @@ class ApplicationController < ActionController::Base
   def current_restaurant
     @current_restaurant ||= Restaurant.find_by(slug: request.original_fullpath.split("/")[1])
   end
-
   helper_method :current_restaurant
+
+  def current_order
+    if session[:order_id]
+      if current_restaurant.id == Order.find(session[:order_id]).restaurant.id
+        Order.find(session[:order_id])
+      else
+        session[:order_id] = nil
+      end
+    else
+      if Order.where(restaurant: current_restaurant).last.incomplete?
+        Order.where(restaurant: current_restaurant).last
+      end
+    end
+    
+    # if current_order && current_order.restaurant == current_restaurant
+    #   session[:order_id] = current_order.id
+    # else
+    #   session[:order_id] = nil
+    # end
+
+  end
+  helper_method :current_order
 end

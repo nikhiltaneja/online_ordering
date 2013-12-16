@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   def index
+
     @restaurant = current_restaurant
-    # @restaurant = Restaurant.find_by(slug: params[:slug])
+
     roles = Role.where(restaurant: @restaurant)
     @admins = roles.where(level: "admin").map do |role|
       role.user
@@ -11,8 +12,9 @@ class CategoriesController < ApplicationController
     end
     @categories = @restaurant.categories
 
-    if params[:order]
-      @order = Order.find(params[:order])
-    end
+    # if params[:order]
+    #   @order = Order.find(params[:order])
+    # end
   end
+
 end
