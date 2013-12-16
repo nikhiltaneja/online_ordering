@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <li><%= link_to "Logout", logout_path %></li>
   <li><%= link_to "Request to create a new restaurant", new_restaurant_path %></li>
+  <li><%= link_to "Profile", user_path(current_user) %></li>
 <% else %>
   <li><%= link_to "Login", login_path %></li>
 <% end %>
