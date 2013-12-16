@@ -18,10 +18,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
-        <li class="active"><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
-        <li><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
+        <li><%= link_to "Dashboard", admin_path(slug: current_restaurant.slug) %><i class="fa fa-dashboard"></i></li>
+        <li class="active"><%= link_to "All Orders", admin_orders_path(slug: current_restaurant.slug) %><i class="fa fa-bar-chart-o"></i></li>
+        <li><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
+        <li><%= link_to "Create New Item", new_admin_item_path(slug: current_restaurant.slug) %><i class="fa fa-edit"></i></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right navbar-user">
@@ -91,7 +91,7 @@
                 <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
 
                 <td>
-                    <%= button_to "delete", admin_order_path(order),:method => :delete %>
+                    <%= button_to "delete", admin_order_path(slug: current_restaurant.slug),:method => :delete %>
                 </td>
             </tr>
         <% end %>

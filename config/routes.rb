@@ -6,13 +6,10 @@ BillysBbqShack::Application.routes.draw do
   end
   
   # resources :order_items
-  resources :admin_orders
-  resources :admin_items
   resources :restaurants
 
   root to: 'restaurants#index'
 
-  match "/admin" => "admin#index", via: :get
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get
 
@@ -26,11 +23,15 @@ BillysBbqShack::Application.routes.draw do
     resources :order_items
     resources :items
     resources :orders
+    resources :admin_orders
+    resources :admin_items
 
     get "/thank_you" => "thank_you#show"
 
     get "/checkout" => "checkout#show"
 
     get "cart" => "carts#index"
+
+    get "/admin" => "admin#index"
   end
 end
