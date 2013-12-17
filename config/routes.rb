@@ -16,7 +16,6 @@ BillysBbqShack::Application.routes.draw do
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get
 
-  match "/customers" => "customer#index", via: :get
 
   # match '/:slug' => "categories#index", via: :get
 
@@ -33,8 +32,10 @@ BillysBbqShack::Application.routes.draw do
 
     get "/checkout" => "checkout#show"
 
-    get "cart" => "carts#index"
+    get "/cart" => "carts#index"
 
     get "/admin" => "admin#index"
+    
+    get  "/customers" => "customer#index"
   end
 end
