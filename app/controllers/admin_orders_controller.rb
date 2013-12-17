@@ -1,13 +1,14 @@
 class AdminOrdersController < ApplicationController
 
   def index
-    if params[:order_by] == 'ascending'
-      @orders = Order.where(restaurant: current_restaurant).order(:status)
-      @order_by = 'descending'
+    if params[:filter_by] == 'Complete'
+      @orders = Order.where(restaurant: current_restaurant).where(status: 'complete')
+      @filter_by = 'Incomplete'
+    elsif params[:filter_by] == 'Incomplete'
+      @orders = Order.where(restaurant: current_restaurant).where(status: 'incomplete')
+      @filter_by = 'Complete'
     else
-      @orders = Order.order('status DESC')
-      @orders = Order.where(restaurant: current_restaurant).order('status DESC')
-      @order_by = 'ascending'
+      @orders = Order.where(restaurant: current_restaurant)
     end
   end
 
