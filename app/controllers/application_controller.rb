@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def after_sign_out_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
   def viewable_restaurants
     return Restaurant.all.order(:id) if platform_admin?
     Restaurant.where(display:true).order(:id)
