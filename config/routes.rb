@@ -11,7 +11,7 @@ BillysBbqShack::Application.routes.draw do
   resources :users, :only => ["show"]
 
 
-  root to: 'restaurants#index'
+  root to: 'restaurants#home'
 
   match "/contact" => "contact#show", via: :get
   match "/about" => "about#show", via: :get

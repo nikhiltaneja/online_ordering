@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  def home
+  end
+
   def index
     @restaurants = viewable_restaurants
   end
