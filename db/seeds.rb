@@ -76,7 +76,7 @@ end
 USERS_COUNT.times do
   u = User.create!(email: "MikeUser_#{users_counter += 1}@example.com", password: "password")
   ORDERS_COUNT.times do
-    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..Restaurant.count-1)))
+    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..Restaurant.count-1)), status: 'complete')
     ORDER_ITEMS_COUNT.times do
       OrderItem.create(order: o, item: Item.find(Random.new.rand(1..Item.count-1)), quantity: Random.new.rand(15))
     end
