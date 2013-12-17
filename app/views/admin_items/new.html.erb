@@ -23,16 +23,16 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right navbar-user">
-        
+
         <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %> <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            
+
             <li class="divider"></li>
             <li>
-              
+
                   <%= link_to "logout", logout_path, id: "logout" %>
-              
+
 
             </li>
           </ul>
@@ -49,7 +49,7 @@
         <ol class="breadcrumb">
           <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
         </ol>
-        
+
       </div>
     </div><!-- /.row -->
     <%= form_for(@item) do |f| %>
