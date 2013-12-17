@@ -1,6 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
+  after_filter :store_location
+
+  def store_location
+    if (request.fullpath != "/users/sign_in" &&
+        request.fullpath != "/users/sign_up" &&
+        request.fullpath != "/users/password" &&
+        request.fullpath != "/login" &&
+        request.fullpath != "/logout" &&
+        !request.xhr?) # don't store ajax calls
+      session[:previous_url] = request.fullpath
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
   def viewable_restaurants
     return Restaurant.all.order(:id) if platform_admin?
     Restaurant.where(display:true).order(:id)
@@ -28,13 +45,6 @@ class ApplicationController < ActionController::Base
         Order.where(restaurant: current_restaurant).last
       end
     end
-    
-    # if current_order && current_order.restaurant == current_restaurant
-    #   session[:order_id] = current_order.id
-    # else
-    #   session[:order_id] = nil
-    # end
-
   end
   helper_method :current_order
 end
