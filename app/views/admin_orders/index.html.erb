@@ -91,7 +91,7 @@
                 <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
 
                 <td>
-                    <%= button_to "delete", admin_order_path(slug: current_restaurant.slug),:method => :delete %>
+                    <%= button_to "delete", admin_order_path(slug: current_restaurant.slug, id: order.id),:method => :delete %>
                 </td>
             </tr>
         <% end %>

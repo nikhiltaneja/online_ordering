@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders = Order.where(restaurant_id: current_restaurant.id)
     @users = User.all
     @items = Item.all
     @order_items = OrderItem.all

@@ -1,7 +1,10 @@
 class CustomerController < ApplicationController
-  before_action :can_access
 
   def index
-    @users = User.all
+    @users = Order.where(restaurant: current_restaurant).each_with_object([]) do |order, users|
+      unless order.user_id.nil?  
+        users << User.find(order.user_id)
+      end
+    end
   end
 end
