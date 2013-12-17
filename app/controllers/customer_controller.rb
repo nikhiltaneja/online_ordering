@@ -1,6 +1,5 @@
 class CustomerController < ApplicationController
-
   def index
-    @users = Order.where(restaurant: current_restaurant).includes(:users).map(&:user)
+    @users = current_restaurant.orders.includes(:user).map(&:user).uniq.reject{|user|user.nil?}
   end
 end

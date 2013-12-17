@@ -46,7 +46,7 @@
           <li><i class="fa fa-dashboard"></i> Dashboard</li>
           <li class="active"><i class="fa fa-dashboard"></i> All Customers</li>
         </ol>
-        
+
       </div>
     </div><!-- /.row -->
 
@@ -59,13 +59,13 @@
                 <th>Completed Orders</th>
 
                 <th>First order date</th>
-                
+
                 <th>Most recent order date</th>
 
             </tr>
             <% @users.each do |user|  %>
             <tr>
-                
+
                 <td><%= user.email %></td>
 
                 <td><%= user.orders.count %></td>
@@ -75,7 +75,7 @@
                 <% unless user.orders.empty? %>
 
                 <td><%= user.orders.first.updated_at.strftime('%m/%d/%Y') %></td>
-                
+
                 <td><%= user.orders.last.updated_at.strftime('%m/%d/%Y') %></td>
 
                 <% end %>
