@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = viewable_restaurants
+    @restaurants ||= viewable_restaurants
   end
 
   def show
@@ -51,7 +51,8 @@ class RestaurantsController < ApplicationController
     unless @restaurant.save
       flash.alert = "Can't display rejected or pending restaurant."
     end
-    redirect_to root_path
+
+    redirect_to session[:previous_url]
   end
 
   private
