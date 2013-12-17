@@ -20,7 +20,7 @@ user = User.create( email: "asdf@asdf.com", password: "asdfasdf")
 user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
-RESTAURANTS_COUNT = 1000
+RESTAURANTS_COUNT = 200
 REGIONS_COUNT = 5
 ITEMS_PER_RESTAURANT = 10
 CATEGORIES_PER_RESTAURANT = 5
@@ -29,7 +29,6 @@ RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
 ORDERS_COUNT = 50
 ORDER_ITEMS_COUNT = 3
-
 
 # RESTAURANTS_COUNT = 10000
 # REGIONS_COUNT = 30
@@ -54,11 +53,11 @@ RESTAURANTS_COUNT.times do
   generated_description = "KFC is good"
   num = Random.new.rand(20)
   case
-  when num%2==0 then status = 'pending'
-  when num%3==0 then status = 'rejected'
-  else status = 'approved'
+  when num%2==0 then status = 'pending'; display=false;
+  when num%3==0 then status = 'rejected'; display=false;
+  else status = 'approved'; display=true;
   end
-  r = Restaurant.create(name: generated_name, description: generated_description, status: status)
+  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display)
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")

@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
       flash.alert = "Restaurant isn't available."
       redirect_to root_path
     end
+    @restaurant = current_restaurant
     roles = current_restaurant.roles.includes(:user)
     @admins = roles.where(level: "admin").map(&:user)
     @admins = roles.where(level: "stocker").map(&:user)
