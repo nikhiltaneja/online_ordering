@@ -2,10 +2,11 @@ class AdminOrdersController < ApplicationController
 
   def index
     if params[:order_by] == 'ascending'
-      @orders = Order.order(:status)
+      @orders = Order.where(restaurant: current_restaurant).order(:status)
       @order_by = 'descending'
     else
       @orders = Order.order('status DESC')
+      @orders = Order.where(restaurant: current_restaurant).order('status DESC')
       @order_by = 'ascending'
     end
   end
