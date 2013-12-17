@@ -3,22 +3,30 @@
 
   <%= render partial: "layouts/navbar" %>
 
-  <h3>Thank you for your order!</h3>
+
+
+  <center>
+    <h3>Thank you for your order!</h3>
+    <%= image_tag "hogs-n-kisses.jpg" %>
   
-  <%= image_tag "hogs-n-kisses.jpg" %>
-  
-  <br/><br/>
+    <br/><br/>
 
-  <% @order.order_items.each do |order_item|  %>
+    <h3>Transaction Summary</h3>
 
-    <%= order_item.item.name %><br/>
-    Quantity: <%= order_item.quantity %><br/><br/>
+    <br/>
+    
+    <% @order.order_items.each do |order_item|  %>
 
-  <% end %>
+      <p>Item: <%= order_item.item.name %></p>
+      <p>Quantity: <%= order_item.quantity %></p>
+      <p>Item Total: <%= number_to_currency(order_item.item.price * order_item.quantity) %></p>
+      <hr>
 
-  Total Price: <%= number_to_currency(@order.total_price) %><br/>
-  Order Status: <%= @order.status %><br/>
+    <% end %>
 
+    Total Price: <%= number_to_currency(@order.total_price) %><br/>
+    Order Status: <%= @order.status %><br/>
+  </center>
   <%= link_to "Back to Menu", categories_path %>
 
 </div>
