@@ -1,10 +1,5 @@
 class CustomerController < ApplicationController
-
   def index
-    @users = Order.where(restaurant: current_restaurant).each_with_object([]) do |order, users|
-      unless order.user_id.nil?  
-        users << User.find(order.user_id)
-      end
-    end
+    @users = current_restaurant.orders.includes(:user).map(&:user).uniq.reject{|user|user.nil?}
   end
 end
