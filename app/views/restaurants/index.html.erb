@@ -1,42 +1,52 @@
+<%= render partial: "layouts/platform_navbar" %>
+
 <% if user_signed_in? %>
-  <li><%= link_to "Logout", logout_path %></li>
   <li><%= link_to "Request to create a new restaurant", new_restaurant_path %></li>
   <li><%= link_to "Profile", user_path(current_user) %></li>
-<% else %>
-  <li><%= link_to "Login", login_path %></li>
 <% end %>
 
 <% flash.alert %>
 
-<h1>Restaurants Using the OrderUp Platform</h1>
-List of the restaurants [<%= @restaurants.count %>]
+<div class="container">
 
-<table>
-  <th>Name</th>
-  <th>Description</th>
+  <center><h3>Total restaurants [<%= @restaurants.count %>]</h3></center>
 
-  <% if platform_admin? %>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th>Display</th>
-    <th></th>
-    <th></th>
-  <% end %>
+  <table class="table">
+    <thead>
+      <th>Restaurant name</th>
+      <th>Description</th>
+    <% if platform_admin? %>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th>Display</th>
+      <th></th>
+      <th></th>
+    <% end %>
 
-  <% @restaurants.each do |restaurant| %>
-    <tr>
-      <td><%= link_to restaurant.name, "/#{restaurant.slug}", method: :get %></td>
-      <td><%= restaurant.description %></td>
+    </thead>
 
-      <% if platform_admin? %>
-        <td><%= restaurant.status %></td>
-        <td><%= link_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put %></td>
-        <td><%= link_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put %></td>
-        <td><%= restaurant.display %></td>
-        <td><%= link_to 'Show', restaurant_path(restaurant, display: true), method: :put %></td>
-        <td><%= link_to 'Hide', restaurant_path(restaurant, display: false), method: :put%></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= link_to restaurant.name, "/#{restaurant.slug}", method: :get %></td>
+        <td><%= restaurant.description %></td>
+
+        <% if platform_admin? %>
+          <td><%= restaurant.status.capitalize %></td>
+
+          <% if restaurant.status == "pending" %>
+
+            <td><%= button_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put, class:"btn btn-success" %></td>
+            <td><%= button_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put, class:"btn btn-danger" %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+            <td><%= restaurant.display.to_s.capitalize %></td>
+            <td><%= button_to 'Show', restaurant_path(restaurant, display: true), method: :put, class:"btn btn-info" %></td>
+            <td><%= button_to 'Hide', restaurant_path(restaurant, display: false), method: :put, class:"btn btn-warning"%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
