@@ -32,12 +32,19 @@
         <td><%= restaurant.description %></td>
 
         <% if platform_admin? %>
-          <td><%= restaurant.status %></td>
-          <td><%= button_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put, class:"btn btn-success" %></td>
-          <td><%= button_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put, class:"btn btn-danger" %></td>
-          <td><%= restaurant.display %></td>
-          <td><%= button_to 'Show', restaurant_path(restaurant, display: true), method: :put, class:"btn btn-info" %></td>
-          <td><%= button_to 'Hide', restaurant_path(restaurant, display: false), method: :put, class:"btn btn-warning"%></td>
+          <td><%= restaurant.status.capitalize %></td>
+
+          <% if restaurant.status == "pending" %>
+
+            <td><%= button_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put, class:"btn btn-success" %></td>
+            <td><%= button_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put, class:"btn btn-danger" %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+            <td><%= restaurant.display.to_s.capitalize %></td>
+            <td><%= button_to 'Show', restaurant_path(restaurant, display: true), method: :put, class:"btn btn-info" %></td>
+            <td><%= button_to 'Hide', restaurant_path(restaurant, display: false), method: :put, class:"btn btn-warning"%></td>
         <% end %>
       </tr>
     <% end %>
