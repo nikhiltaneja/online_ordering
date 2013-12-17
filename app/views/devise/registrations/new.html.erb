@@ -1,18 +1,19 @@
-<h2>Sign up</h2>
+<div class="form-background">
+  <div class="container">
+    <center><h2 class="form-signin-heading">Sign up</h2></center>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signin"}) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+      <%= f.email_field :email, placeholder: "Email", class: "form-control", :autofocus => true %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+      <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+    <% end %>
 
-<%= render "devise/shared/links" %>
+    <center><%= render "devise/shared/links" %></center>
+  </div>
+</div>
