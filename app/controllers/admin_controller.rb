@@ -1,10 +1,9 @@
 class AdminController < ApplicationController
 
   def index
-    @orders = Order.where(restaurant_id: current_restaurant.id)
-    @users = User.all
-    @items = Item.all
-    @order_items = OrderItem.all
+    @orders ||= Order.where(restaurant_id: current_restaurant.id)
+    @users ||= @orders.map{ |order| order.user }
+    @items ||= Category.where(restaurant_id: current_restaurant.id).map{ |category| category.items}.flatten
     @total_sales = total_sales
   end
 
