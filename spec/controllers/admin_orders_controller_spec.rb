@@ -4,35 +4,38 @@ describe AdminOrdersController do
   before do
     subject.stub(:can_access)
   end
+  let(:restaurant){
+    Restaurant.create!(name:"BBQ", description:"asdf")
+  }
   describe 'get' do
     it 'assigns orders' do
-      complete_order = Order.create(status: 'complete')
-      incomplete_order = Order.create(status: 'incomplete')
-      complete_order2 = Order.create(status: 'complete')
+      complete_order = Order.create!(status: 'complete', restaurant: restaurant)
+      incomplete_order = Order.create!(status: 'incomplete', restaurant: restaurant)
+      complete_order2 = Order.create!(status: 'complete', restaurant: restaurant)
 
-      get :index
+      get :index, slug: restaurant.slug
 
-      assigns(:orders).should == [incomplete_order, complete_order, complete_order2]
+      expect(assigns(:orders)).to match_array([incomplete_order, complete_order, complete_order2])
     end
 
-    it 'takes a sort order param' do
-      complete_order = Order.create(status: 'complete')
-      incomplete_order = Order.create(status: 'incomplete')
-      complete_order2 = Order.create(status: 'complete')
+    it 'takes a filter order param' do
+      complete_order = Order.create!(status: 'complete', restaurant: restaurant)
+      incomplete_order = Order.create!(status: 'incomplete', restaurant: restaurant)
+      complete_order2 = Order.create!(status: 'complete', restaurant: restaurant)
 
-      get :index, order_by: 'ascending'
+      get :index, filter_by: 'Complete', slug: restaurant.slug
 
-      assigns(:orders).should == [complete_order, complete_order2,incomplete_order ]
+      assigns(:orders).should == [complete_order, complete_order2 ]
     end
 
-    it 'assigns order_by to descending from ascending' do
-      get :index, order_by: 'ascending'
-      assigns(:order_by).should == 'descending'
+    it 'assigns filter_by to incomplete from complete' do
+      get :index, filter_by: 'Incomplete', slug: restaurant.slug
+      assigns(:filter_by).should == 'Complete'
     end
 
-    it 'assigns order_by to ascending from descending' do
-      get :index, order_by: 'ascending'
-      assigns(:order_by).should == 'descending'
+    it 'assigns filter_by to complete from incomplete' do
+      get :index, filter_by: 'Complete', slug: restaurant.slug
+      assigns(:filter_by).should == 'Incomplete'
     end
   end
 

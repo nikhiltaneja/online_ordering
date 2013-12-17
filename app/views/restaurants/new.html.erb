@@ -1,11 +1,13 @@
 <h2>Request to create a new restaurant</h1>
 
 <%= form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors %>
   <ul>
     <% @restaurant.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
   </ul>
+<% end %>
   <p>
   <%= f.label :name %><br />
   <%= f.text_field :name %>

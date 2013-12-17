@@ -13,15 +13,20 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create!(restaurant_params)
-    Role.create!(restaurant: @restaurant, user: current_user, level: "admin")
-    UserMailer.notify_restaurant_admin(current_user, @restaurant).deliver
-    UserMailer.notify_platform_admin(PlatformAdmin.first.user, @restaurant).deliver
-    render :restaurant_confirmation
+    @restaurant = Restaurant.new(restaurant_params)
+
+    if @restaurant.save
+      Role.create(restaurant: @restaurant, user: current_user, level: "admin")
+      UserMailer.notify_restaurant_admin(current_user, @restaurant).deliver
+      UserMailer.notify_platform_admin(PlatformAdmin.first.user, @restaurant).deliver
+      render :restaurant_confirmation
+    else
+      render 'new'
+    end
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(slug: params[:id])
     @restaurant_admin = @restaurant.roles.first.user
 
     if params[:status]
@@ -40,7 +45,9 @@ class RestaurantsController < ApplicationController
       @restaurant.display = params[:display]
     end
 
-    @restaurant.save
+    unless @restaurant.save
+      flash.alert = "Can't display rejected or pending restaurant."
+    end
     redirect_to root_path
   end
 
