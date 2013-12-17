@@ -1,17 +1,10 @@
 class AdminController < ApplicationController
 
   def index
-    @orders ||= Order.where(restaurant_id: current_restaurant.id)
-    @users ||= @orders.map{ |order| order.user }
-    @items ||= Category.where(restaurant_id: current_restaurant.id).map{ |category| category.items}.flatten
-    @total_sales ||= total_sales
-  end
-
-  def total_sales
-    completed_orders ||= @orders.where(:status => 'complete')
-    completed_orders.collect do |order|
-        order.total_price
-      end.reduce(:+)
+    @orders = current_restaurant.orders.includes(:user)
+    @users = @orders.map(&:user)
+    @item_count = current_restaurant.categories.joins(:items).count
+    @total_sales = @orders.where(:status=>"complete").joins(:order_items).joins(:items).sum("order_items.quantity * items.price")
   end
 
 end

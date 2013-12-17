@@ -20,14 +20,14 @@ user = User.create( email: "asdf@asdf.com", password: "asdfasdf")
 user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
-RESTAURANTS_COUNT = 10
+RESTAURANTS_COUNT = 1000
 REGIONS_COUNT = 5
 ITEMS_PER_RESTAURANT = 10
-CATEGORIES_PER_RESTAURANT = 3
-USERS_COUNT = 10
+CATEGORIES_PER_RESTAURANT = 5
+USERS_COUNT = 100
 RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
-ORDERS_COUNT = 5
+ORDERS_COUNT = 50
 ORDER_ITEMS_COUNT = 3
 
 
@@ -52,7 +52,13 @@ order_items_counter = 0
 RESTAURANTS_COUNT.times do
   generated_name = "KFC_#{restaurant_counter += 1}"
   generated_description = "KFC is good"
-  r = Restaurant.create(name: generated_name, description: generated_description)
+  num = Random.new.rand(20)
+  case
+  when num%2==0 then status = 'pending'
+  when num%3==0 then status = 'rejected'
+  else status = 'approved'
+  end
+  r = Restaurant.create(name: generated_name, description: generated_description, status: status)
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")
@@ -82,14 +88,3 @@ USERS_COUNT.times do
     end
   end
 end
-
-total_restaurants = Restaurant.all
-
-total_restaurants[0..4].each do |r|
-  r.approve
-end
-
-total_restaurants[5..7].each do |r|
-  r.reject
-end
-
