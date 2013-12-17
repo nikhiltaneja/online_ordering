@@ -45,7 +45,9 @@ class RestaurantsController < ApplicationController
       @restaurant.display = params[:display]
     end
 
-    @restaurant.save
+    unless @restaurant.save
+      flash.alert = "Can't display rejected or pending restaurant."
+    end
     redirect_to root_path
   end
 

@@ -8,6 +8,7 @@ class Restaurant < ActiveRecord::Base
   validates :description, presence: true
   validates :status, inclusion: { in: ["approved", "pending", "rejected"] } 
   before_validation :create_slug
+  validate :publicly_viewable
 
   def create_slug
     self.slug = self.name.parameterize
@@ -23,5 +24,11 @@ class Restaurant < ActiveRecord::Base
 
   def reject
     self.update!(status: "rejected", display: false)
+  end
+
+  def publicly_viewable
+    if (status=="rejected" || status=="pending") && display==true
+      errors.add(:display, "can't be rejected or pending and shown")
+    end
   end
 end

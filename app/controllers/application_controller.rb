@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def viewable_restaurants
-    return Restaurant.all if platform_admin?
-    Restaurant.where(display:true)
+    return Restaurant.all.order(:id) if platform_admin?
+    Restaurant.where(display:true).order(:id)
   end
 
   def platform_admin?

@@ -33,5 +33,14 @@ describe Restaurant do
         expect(r2).to have(1).error_on(:slug)
       end
     end
+
+    context 'with display as show and rejected status' do
+      it 'is has an error' do
+        restaurant.status = 'rejected'
+        restaurant.display = true
+        restaurant.save
+        expect(restaurant).to have(1).error_on(:display)
+      end
+    end
   end
 end
