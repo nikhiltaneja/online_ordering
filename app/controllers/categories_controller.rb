@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
   def index
 
+    unless Restaurant.find_by(slug: params[:slug]).display
+      flash.alert = "Restaurant isn't available."
+      redirect_to root_path
+    end
+
     @restaurant = current_restaurant
 
     roles = Role.where(restaurant: @restaurant)

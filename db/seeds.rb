@@ -21,16 +21,18 @@ user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
 RESTAURANTS_COUNT = 10
-REGIONS_COUNT = 5 
+REGIONS_COUNT = 5
 ITEMS_PER_RESTAURANT = 10
 CATEGORIES_PER_RESTAURANT = 3
 USERS_COUNT = 10
 RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
+ORDERS_COUNT = 5
+ORDER_ITEMS_COUNT = 3
 
 
 # RESTAURANTS_COUNT = 10000
-# REGIONS_COUNT = 30 
+# REGIONS_COUNT = 30
 # ITEMS_PER_RESTAURANT = 20
 # CATEGORIES_PER_RESTAURANT = 3
 # USERS_COUNT = 100000
@@ -44,31 +46,39 @@ categories_counter = 0
 users_counter = 0
 restaurant_admins_counter = 0
 stockers_counter = 0
+orders_counter = 0
+order_items_counter = 0
 
-USERS_COUNT.times do
-  User.create!(email: "MikeUser_#{users_counter += 1}@example.com", password: "password")
-end
-
-RESTAURANTS_COUNT.times do 
+RESTAURANTS_COUNT.times do
   generated_name = "KFC_#{restaurant_counter += 1}"
   generated_description = "KFC is good"
   r = Restaurant.create(name: generated_name, description: generated_description)
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")
-    Role.create!(restaurant: r, user: user, level: "admin")
+    Role.create!(restaurant: r, user: u, level: "admin")
   end
 
   STOCKERS_PER_RESTAURANT.times do
     u = User.create(email: "JohnStocker_#{stockers_counter += 1}@example.com", password: "password")
-    Role.create!(restaurant: r, user: user, level: "stocker")
+    Role.create!(restaurant: r, user: u, level: "stocker")
   end
 
   CATEGORIES_PER_RESTAURANT.times do
     c = Category.create(name: "Dinner_#{categories_counter += 1}", restaurant: r)
-    
+
     ITEMS_PER_RESTAURANT.times do
       Item.create({name: "Wings_#{items_counter += 1}", description: "Hot chicken wings", price: Random.new.rand(20), image_url: "pp.png", category: c})
+    end
+  end
+end
+
+USERS_COUNT.times do
+  u = User.create!(email: "MikeUser_#{users_counter += 1}@example.com", password: "password")
+  ORDERS_COUNT.times do
+    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..Restaurant.count-1)))
+    ORDER_ITEMS_COUNT.times do
+      OrderItem.create(order: o, item: Item.find(Random.new.rand(1..Item.count-1)), quantity: Random.new.rand(15))
     end
   end
 end
