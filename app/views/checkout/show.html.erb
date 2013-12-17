@@ -1,24 +1,35 @@
 
 <div class="container">
+
+  <%= render partial: "layouts/navbar" %>
+
   <h1>Order Summary</h1>
   <p><%= @order.user.email if @order.user %></p>
 
   <% if @order.incomplete? %>
-  <% @order.order_items.each do |order_item| %>
-  <%= order_item.item.name %><br/>
-  Quantity: <%= order_item.quantity %><br/>
-  Item Total: <%= number_to_currency(order_item.item.price * order_item.quantity) %><br/>
-  <% end %>
-  Order Total: <%= number_to_currency(@order.total_price) %>
-  <% end %><br/>
 
-<form action="<%= thank_you_path(current_restaurant) %>" method="get">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-    data-amount=<%= @order.total_price * 100 %>
-    data-name="Billy's BBQ"
-    data-description=""
-    data-image=<%= asset_path("billy_img.jpg") %>>
-  </script>
-</form>
+    
+    <% @order.order_items.each do |order_item| %>
+          <p>Item: <%= order_item.item.name %></p>
+          <p>Quantity: <%= order_item.quantity %></p>
+          <p>Item Total: <%= number_to_currency(order_item.item.price * order_item.quantity) %></p>
+          <hr>
+    <% end %>    
+    
+    <p>Order Total: <%= number_to_currency(@order.total_price) %></p>
+  <% end %>
+
+  <form action="<%= thank_you_path(current_restaurant) %>" method="get">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-amount=<%= @order.total_price * 100 %>
+      data-name="Billy's BBQ"
+      data-description=""
+      data-image=<%= asset_path("billy_img_2.png") %>>
+    </script>
+  </form>
+
+</div>
+
+<%= render partial: "layouts/footer" %>
