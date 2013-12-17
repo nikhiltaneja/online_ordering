@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212212600) do
+ActiveRecord::Schema.define(version: 20131217043853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,8 +69,10 @@ ActiveRecord::Schema.define(version: 20131212212600) do
     t.string   "name"
     t.string   "slug"
     t.string   "description"
-    t.string   "status",      default: "pending"
-    t.boolean  "display",     default: false
+    t.string   "status",              default: "pending"
+    t.boolean  "display",             default: false
+    t.string   "logo_url",            default: "http://s21.postimg.org/8jzpdpr53/logoa.png"
+    t.string   "primary_picture_url", default: "http://s21.postimg.org/tjft57stj/front3.png"
   end
 
   create_table "roles", force: true do |t|
