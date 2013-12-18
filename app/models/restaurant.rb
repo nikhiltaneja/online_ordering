@@ -39,7 +39,14 @@ class Restaurant < ActiveRecord::Base
   end
 
   def find_item(item_id)
-    @item = items.find_by(id: item_id)
+    items.find_by(id: item_id)
   end
 
+  def complete_orders
+    orders.where(status: "complete")
+  end
+
+  def incomplete_orders
+    orders.where(status: "incomplete")
+  end
 end
