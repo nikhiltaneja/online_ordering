@@ -16,7 +16,7 @@
 
       <%= f.text_field :description, placeholder: "Description", class: "form-control" %>
 
-      <%= f.text_field :region, placeholder: "State", class: "form-control" %>
+      <%= f.collection_select :region_id, Region.all, :id, :name, class: "form-control" %>
 
       <%= f.text_field :logo_url, placeholder: "Logo url", class: "form-control" %>
 
