@@ -5,9 +5,9 @@ class RestaurantsController < ApplicationController
   def index
     @regions = regions_with_restaurants
     if params[:filter].nil?
-      @restaurants = Restaurant.where(region_id: params[:filter])
-    else
       @restaurants = viewable_restaurants
+    else
+      @restaurants = Restaurant.where(region_id: params[:filter])
     end
   end
 
