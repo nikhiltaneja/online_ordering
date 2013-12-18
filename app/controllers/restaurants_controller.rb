@@ -4,10 +4,10 @@ class RestaurantsController < ApplicationController
 
   def index
     @regions = regions_with_restaurants
-    unless params[:filter]
-      @restaurants = viewable_restaurants
-    else
+    if params[:filter].nil?
       @restaurants = Restaurant.where(region_id: params[:filter])
+    else
+      @restaurants = viewable_restaurants
     end
   end
 
