@@ -4,7 +4,7 @@ BillysBbqShack::Application.routes.draw do
     get "/logout" => "devise/sessions#destroy", as: :logout
     get "/login" => "devise/sessions#new", as: :login
   end
-  
+
   # resources :order_items
   resources :restaurants
 
@@ -35,7 +35,7 @@ BillysBbqShack::Application.routes.draw do
     get "/cart" => "carts#index"
 
     get "/admin" => "admin#index"
-    
+
     get  "/customers" => "customer#index"
   end
 end

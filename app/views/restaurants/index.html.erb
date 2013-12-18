@@ -12,7 +12,7 @@
 
   <table class="table">
     <tr>
-      <% @regions[0..@regions.count/2].each do |region| %>
+      <% @regions[0..@regions.count/2-1].each do |region| %>
         <td><%= link_to "#{region.name}", restaurants_path(filter:region.id) %></td>
       <% end %>
     </tr>

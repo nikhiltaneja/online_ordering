@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :restaurants, through: :roles
   has_one :platform_admin
 
+  def find_order(order_id)
+    orders.find_by(id: order_id)
+  end
+
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   after_filter :store_location
+  helper_method :platform_admin?, :current_order, :current_restaurant, :restaurant_admin?
 
   def store_location
     if (request.fullpath != "/users/sign_in" &&
@@ -34,12 +35,14 @@ class ApplicationController < ActionController::Base
   def platform_admin?
     current_user && current_user.platform_admin
   end
-  helper_method :platform_admin?
+
+  def restaurant_admin?
+    platform_admin? || current_restaurant.worker?(current_user)
+  end
 
   def current_restaurant
     @current_restaurant ||= Restaurant.find_by(slug: request.original_fullpath.split("/")[1])
   end
-  helper_method :current_restaurant
 
   def current_order
     if session[:order_id]
@@ -54,5 +57,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  helper_method :current_order
+
+  def check_admin
+    unless restaurant_admin?
+      flash.alert = "Log in to see the admin page."
+      redirect_to root_path
+    end
+  end
 end

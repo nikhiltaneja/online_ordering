@@ -41,7 +41,7 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
-    
+
     <div id="myCarousel" class="carousel slide">
       <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -97,9 +97,9 @@
           </ul>
         </div>
       </div>
-      
+
       <hr>
-      
+
       <footer>
         <div class="row">
           <div class="col-lg-12">
@@ -136,15 +136,27 @@
 
   <%= render partial: "layouts/navbar" %>
 
-  
+
   <!-- Jumbotron -->
   <div class="jumbotron">
     <%= image_tag(current_restaurant.primary_picture_url) %>
   </div>
 
+  <div>Filter By Category: </div>
+
+  <table>
+    <tr>
+      <% @categories.each do |category| %>
+        <td><%= link_to category.name, categories_path(current_restaurant, filter: category.name) %></td>
+      <% end %>
+        <td><%= link_to "All Categories", categories_path(current_restaurant) %></td>
+    </tr>
+  </table>
+
+
   <!-- Example row of columns -->
   <center><div class="container-fluid" id="gridInContainer">
-    <% @categories.each do |category| %>
+    <% @category_filter.each do |category| %>
     <h2><%= category.name %></h2>
       <div class="row">
 

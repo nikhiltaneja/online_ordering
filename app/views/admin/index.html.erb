@@ -13,7 +13,7 @@
           </ol>
           <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <span>Hey there, <b><%= current_user.email %></b>! Check out what's been going on since you were last here.</span>
+            <span>Hey there, <b><%= current_user.email %></b>! Check out what's been going on since you were last here.</span>
           </div>
         </div>
       </div><!-- /.row -->
@@ -27,53 +27,53 @@
                   <i class="fa fa-comments fa-5x"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <p class="announcement-heading"><%= "#{@orders.count}" %></p>
-                  <p class="announcement-text"><%= "Orders" %></p>
+                  <p class="announcement-heading"><%= "#{@order_count}" %></p>
+                  <p class="announcement-text"><%= "Total Orders" %></p>
                 </div>
               </div>
             </div>
 
-              <div class="panel-footer announcement-bottom">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <%= link_to "All Orders", admin_orders_path %>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <i class="fa fa-arrow-circle-right"></i>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="panel panel-warning">
-            <div class="panel-heading">
+            <div class="panel-footer announcement-bottom">
               <div class="row">
                 <div class="col-xs-6">
-                  <i class="fa fa-check fa-5x"></i>
+                  <%= link_to "All Orders", admin_orders_path %>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <p class="announcement-heading"><%= "#{@users.count}" %></p>
-                  <p class="announcement-text"><%= "Customers" %></p>
+                  <i class="fa fa-arrow-circle-right"></i>
                 </div>
               </div>
             </div>
-
-              <div class="panel-footer announcement-bottom">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <%= link_to "All Customers", customers_path(current_restaurant)%>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <i class="fa fa-arrow-circle-right"></i>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+          </a>
         </div>
-        <div class="col-lg-3">
+      </div>
+      <div class="col-lg-3">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-6">
+                <i class="fa fa-check fa-5x"></i>
+              </div>
+              <div class="col-xs-6 text-right">
+                <p class="announcement-heading"><%= "#{@user_count}" %></p>
+                <p class="announcement-text"><%= "Customers" %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-footer announcement-bottom">
+            <div class="row">
+              <div class="col-xs-6">
+                <%= link_to "All Customers", customers_path(current_restaurant)%>
+              </div>
+              <div class="col-xs-6 text-right">
+                <i class="fa fa-arrow-circle-right"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3">
           <div class="panel panel-danger">
             <div class="panel-heading">
               <div class="row">
