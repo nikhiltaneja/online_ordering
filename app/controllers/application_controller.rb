@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def restaurant_admin?
-    platform_admin? || current_restaurant.roles.includes(:user).map(&:user).include?(current_user)
+    platform_admin? || current_restaurant.worker?(current_user)
   end
 
   def current_restaurant

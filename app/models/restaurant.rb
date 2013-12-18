@@ -65,4 +65,8 @@ class Restaurant < ActiveRecord::Base
   def total_sales
     orders.where(:status=>"complete").joins(:order_items).joins(:items).sum("order_items.quantity * items.price")
   end
+
+  def worker?(a_user)
+    roles.includes(:user).map(&:user).include?(a_user)
+  end
 end
