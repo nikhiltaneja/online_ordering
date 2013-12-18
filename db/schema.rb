@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217043853) do
+ActiveRecord::Schema.define(version: 20131218031327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(version: 20131217043853) do
 
   add_index "platform_admins", ["user_id"], name: "index_platform_admins_on_user_id", using: :btree
 
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "restaurants", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,7 +79,10 @@ ActiveRecord::Schema.define(version: 20131217043853) do
     t.boolean  "display",             default: false
     t.string   "logo_url",            default: "http://s21.postimg.org/8jzpdpr53/logoa.png"
     t.string   "primary_picture_url", default: "http://s21.postimg.org/tjft57stj/front3.png"
+    t.integer  "region_id"
   end
+
+  add_index "restaurants", ["region_id"], name: "index_restaurants_on_region_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "level"
