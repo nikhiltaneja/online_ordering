@@ -14,7 +14,7 @@ before_action :check_admin
   private
 
   def check_admin
-    unless current_user && restaurant_admin?
+    unless restaurant_admin?
       # redirect_to "/#{current_restaurant.slug}", notice: "Sorry, you must be an admin to access that page"
       redirect_to home_path(slug: current_restaurant.slug), notice: "Sorry, you must be an admin to access that page"
     end
