@@ -3,7 +3,7 @@ class AdminItemsController < ApplicationController
 
   def index
     @items = current_restaurant.items
-    @items_count = current_restaurant.items_count
+    @items_count = current_restaurant.item_count
   end
 
   def new

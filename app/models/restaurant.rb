@@ -34,8 +34,12 @@ class Restaurant < ActiveRecord::Base
     end
   end
 
-  def items_count
+  def item_count
     items.count
+  end
+
+  def order_count
+    orders.count
   end
 
   def find_item(item_id)
@@ -48,5 +52,13 @@ class Restaurant < ActiveRecord::Base
 
   def incomplete_orders
     orders.where(status: "incomplete")
+  end
+
+  def customers
+    orders.map(&:user).uniq
+  end
+
+  def total_sales
+    orders.where(:status=>"complete").joins(:order_items).joins(:items).sum("order_items.quantity * items.price")
   end
 end

@@ -21,8 +21,6 @@ class AdminOrdersController < ApplicationController
     @order.destroy
 
     flash.notice = "Order number #{@order.id} removed!"
-
     redirect_to admin_orders_path
   end
-
 end
