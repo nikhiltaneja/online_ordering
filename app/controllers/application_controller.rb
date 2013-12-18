@@ -57,4 +57,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_admin
+    unless restaurant_admin?
+      flash.alert = "Log in to see the admin page."
+      redirect_to root_path
+    end
+  end
 end

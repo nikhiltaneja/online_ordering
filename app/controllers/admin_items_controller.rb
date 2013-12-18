@@ -1,5 +1,6 @@
 class AdminItemsController < ApplicationController
   include AdminItemsHelper
+  before_action :check_admin
 
   def index
     @items = current_restaurant.items

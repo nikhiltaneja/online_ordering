@@ -1,4 +1,5 @@
 class AdminOrdersController < ApplicationController
+  before_action :check_admin
 
   def index
     if params[:filter_by] == 'Complete'
