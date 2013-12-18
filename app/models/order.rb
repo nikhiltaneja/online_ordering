@@ -40,7 +40,4 @@ class Order < ActiveRecord::Base
     end.reduce(:+)
   end
 
-  def completed_orders
-    Order.where(:user_id => session[:user_id], :status => "complete")
-  end
 end
