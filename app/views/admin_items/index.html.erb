@@ -1,101 +1,64 @@
-<div id="wrapper">
+<div class="container">
+  <div id="wrapper">
 
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "KNIFE & FORK", root_path, {class: "navbar-brand"} %>
-    </div>
+    <%= render partial: "layouts/restaurant_admin_navbar" %>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
-        <li><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
-        <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
-        <li class="active"><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
-      </ul>
+    <div id="page-wrapper">
 
-      <ul class="nav navbar-nav navbar-right navbar-user">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Edit Menu <small>edit all menu items</small></h1>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i> Dashboard</li>
+            <li class="active"><i class="fa fa-dashboard"></i> Edit Menu</li>
+          </ol>
 
-        <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        </div>
+      </div><!-- /.row -->
+      <table class="table table-hover">
+      <tr>
+          <th>Item Name</th>
 
-            <li class="divider"></li>
-            <li>
+          <th>Description</th>
 
-                  <%= link_to "logout", logout_path, id: "logout" %>
+          <th>Price</th>
 
+          <th>Image url</th>
 
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </nav>
+          <th>Category ID</th>
 
-  <div id="page-wrapper">
+          <th>Delete</th>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h1>Edit Menu <small>edit all menu items</small></h1>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-dashboard"></i> Dashboard</li>
-          <li class="active"><i class="fa fa-dashboard"></i> Edit Menu</li>
-        </ol>
+          <th>Edit</th>
 
-      </div>
-    </div><!-- /.row -->
-    <table class="table table-hover">
-    <tr>
-        <th>Item Name</th>
+      </tr>
+      <% @items.each do |item|  %>
+      <tr>
+          <td><%= item.name %></td>
 
-        <th>Description</th>
+          <td><%= item.description %></td>
 
-        <th>Price</th>
+          <td><%= item.price %></td>
 
-        <th>Image url</th>
+          <td><%= item.image_url %></td>
 
-        <th>Category ID</th>
+          <td><%= item.category_id %></td>
 
-        <th>Delete</th>
+          <td>
+              <%= button_to "delete", admin_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-danger", :method => :delete} %>
+          </td>
+          <td>
+              <%= link_to "edit", edit_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-info"} %>
+          </td>
+      </tr>
+      <% end %>
+  </table>
 
-        <th>Edit</th>
+    </div><!-- /#page-wrapper -->
 
-    </tr>
-    <% @items.each do |item|  %>
-    <tr>
-        <td><%= item.name %></td>
+  </div><!-- /#wrapper -->
 
-        <td><%= item.description %></td>
-
-        <td><%= item.price %></td>
-
-        <td><%= item.image_url %></td>
-
-        <td><%= item.category_id %></td>
-
-        <td>
-            <%= button_to "delete", admin_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-danger", :method => :delete} %>
-        </td>
-        <td>
-            <%= link_to "edit", edit_item_path(slug: current_restaurant.slug, id: item.id), {class: "btn btn-info"} %>
-        </td>
-    </tr>
-    <% end %>
-</table>
-
-  </div><!-- /#page-wrapper -->
-
-</div><!-- /#wrapper -->
-
-<!-- Bootstrap core JavaScript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</div>
