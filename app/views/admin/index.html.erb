@@ -1,213 +1,216 @@
-<div id="wrapper">
 
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "KNIFE & FORK", root_path, {class: "navbar-brand"} %>
-    </div>
+<div class="container">
+  <div id="wrapper">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
-        <li class="active"><%= link_to "Dashboard", admin_path(slug: current_restaurant.slug) %><i class="fa fa-dashboard"></i></li>
-        <li><%= link_to "All Orders", admin_orders_path(slug: current_restaurant.slug) %><i class="fa fa-bar-chart-o"></i></li>
-        <li><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path(slug: current_restaurant.slug) %><i class="fa fa-edit"></i></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right navbar-user">
-        <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li class="divider"></li>
-            <li>
-                  <%= link_to "logout", logout_path, id: "logout" %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->  
-  </nav>
-
-  <div id="page-wrapper">
-
-    <div class="row">
-      <div class="col-lg-12">
-        <h1>Dashboard <small>Statistics Overview</small></h1>
-        <ol class="breadcrumb">
-          <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-        </ol>
-        <div class="alert alert-success alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <span>Hey there, <b><%= current_user.email %></b>!!!! Check out what's been going on since you were last here.</span>
-        </div>
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "OrderUp", root_path, {class: "navbar-brand"} %>
       </div>
-    </div><!-- /.row -->
 
-    <div class="row">
-      <div class="col-lg-3">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-6">
-                <i class="fa fa-comments fa-5x"></i>
-              </div>
-              <div class="col-xs-6 text-right">
-                <p class="announcement-heading"><%= "#{@orders.count}" %></p>
-                <p class="announcement-text"><%= "Total Orders Completed" %></p>
-              </div>
-            </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li class="active"><%= link_to "Dashboard", admin_path(slug: current_restaurant.slug) %><i class="fa fa-dashboard"></i></li>
+          <li><%= link_to "All Orders", admin_orders_path(slug: current_restaurant.slug) %><i class="fa fa-bar-chart-o"></i></li>
+          <li><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
+          <li><%= link_to "Create New Item", new_admin_item_path(slug: current_restaurant.slug) %><i class="fa fa-edit"></i></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right navbar-user">
+          <li class="dropdown user-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="divider"></li>
+              <li>
+                    <%= link_to "logout", logout_path, id: "logout" %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->  
+    </nav>
+
+    <div id="page-wrapper">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Dashboard <small>Statistics Overview</small></h1>
+          <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+          </ol>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <span>Hey there, <b><%= current_user.email %></b>! Check out what's been going on since you were last here.</span>
           </div>
+        </div>
+      </div><!-- /.row -->
 
-            <div class="panel-footer announcement-bottom">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="panel panel-info">
+            <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <%= link_to "All Orders", admin_orders_path %>
+                  <i class="fa fa-comments fa-5x"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <i class="fa fa-arrow-circle-right"></i>
+                  <p class="announcement-heading"><%= "#{@orders.count}" %></p>
+                  <p class="announcement-text"><%= "Total Orders" %></p>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-6">
-                <i class="fa fa-check fa-5x"></i>
-              </div>
-              <div class="col-xs-6 text-right">
-                <p class="announcement-heading"><%= "#{@users.count}" %></p>
-                <p class="announcement-text"><%= "Total Customers" %></p>
-              </div>
-            </div>
-          </div>
 
-            <div class="panel-footer announcement-bottom">
+              <div class="panel-footer announcement-bottom">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= link_to "All Orders", admin_orders_path %>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <i class="fa fa-arrow-circle-right"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <%= link_to "All Customers", customers_path(current_restaurant)%>
+                  <i class="fa fa-check fa-5x"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <i class="fa fa-arrow-circle-right"></i>
+                  <p class="announcement-heading"><%= "#{@users.count}" %></p>
+                  <p class="announcement-text"><%= "Total Customers" %></p>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-6">
-                <i class="fa fa-tasks fa-5x"></i>
-              </div>
-              <div class="col-xs-6 text-right">
-                <p class="announcement-heading "><%= "#{number_to_currency(@total_sales)}" %></p>
-                <p class="announcement-text"><%= "Total Sales" %></p>
-              </div>
-            </div>
-          </div>
 
-            <div class="panel-footer announcement-bottom">
+              <div class="panel-footer announcement-bottom">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= link_to "All Customers", customers_path(current_restaurant)%>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <i class="fa fa-arrow-circle-right"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <%= link_to "Total Sales", admin_orders_path %>
+                  <i class="fa fa-tasks fa-5x"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <i class="fa fa-arrow-circle-right"></i>
+                  <p class="announcement-heading "><%= "#{number_to_currency(@total_sales)}" %></p>
+                  <p class="announcement-text"><%= "Total Sales" %></p>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-6">
-                <i class="fa fa-comments fa-5x"></i>
-              </div>
-              <div class="col-xs-6 text-right">
-                <p class="announcement-heading"><%= "#{@item_count}" %></p>
-                <p class="announcement-text"><%= "Items on Menu" %></p>
-              </div>
-            </div>
-          </div>
 
-            <div class="panel-footer announcement-bottom">
+              <div class="panel-footer announcement-bottom">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= link_to "Total Sales", admin_orders_path %>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <i class="fa fa-arrow-circle-right"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="panel panel-success">
+            <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <%= link_to "View Menu", admin_items_path(slug: current_restaurant.slug) %>
+                  <i class="fa fa-comments fa-5x"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <i class="fa fa-arrow-circle-right"></i>
+                  <p class="announcement-heading"><%= "#{@item_count}" %></p>
+                  <p class="announcement-text"><%= "Items on Menu" %></p>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-      </div>
-    </div><!-- /.row -->
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Recent Orders: </h3>
+              <div class="panel-footer announcement-bottom">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= link_to "View Menu", admin_items_path(slug: current_restaurant.slug) %>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <i class="fa fa-arrow-circle-right"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover table-striped tablesorter">
-                  <tr>
-                      <th>Order #</th>
+        </div>
+      </div><!-- /.row -->
 
-                      <th>Customer</th>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Recent Orders: </h3>
+            </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped tablesorter">
+                    <tr>
+                        <th>Order #</th>
 
-                      <th>Status</th>
+                        <th>Customer</th>
 
-                      <th>Order placed at</th>
+                        <th>Status</th>
 
-                  </tr>
-                  <% @orders.each do |order|  %>
-                  <tr>
-                      <td><%= order.id %></td>
+                        <th>Order placed at</th>
 
-                      <td>
+                    </tr>
+                    <% @orders.each do |order|  %>
+                    <tr>
+                        <td><%= order.id %></td>
 
-                        <% if order.user %>
+                        <td>
 
-                          <%= order.user.email %>
-                        <% else %>
-                          Customer has not logged in
-                        <% end %>
-                      </td>
+                          <% if order.user %>
 
-                      <td><%= order.status %></td>
+                            <%= order.user.email %>
+                          <% else %>
+                            Customer has not logged in
+                          <% end %>
+                        </td>
 
-                      <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
+                        <td><%= order.status %></td>
 
-                  </tr>
-                  <% end %>
-              </table>
+                        <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
+
+                    </tr>
+                    <% end %>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div><!-- /.row -->
+      </div><!-- /.row -->
 
 
-  </div><!-- /#page-wrapper -->
+    </div><!-- /#page-wrapper -->
 
-</div><!-- /#wrapper -->
+  </div><!-- /#wrapper -->
+</div>

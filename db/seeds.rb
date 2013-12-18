@@ -55,8 +55,8 @@ REGIONS.each do |region|
 end
 
 RESTAURANTS_COUNT.times do
-  generated_name = "KFC_#{restaurant_counter += 1}"
-  generated_description = "KFC is good"
+  generated_name = "Smoque_#{restaurant_counter += 1}"
+  generated_description = "Smoque offers upscale Southern BBQ"
   num = Random.new.rand(20)
   case
   when num%2==0 then status = 'pending'; display=false;
@@ -79,7 +79,7 @@ RESTAURANTS_COUNT.times do
     c = Category.create(name: "Dinner_#{categories_counter += 1}", restaurant: r)
 
     ITEMS_PER_CATEGORY.times do
-      Item.create({name: "Wings_#{items_counter += 1}", description: "Hot chicken wings", price: Random.new.rand(20), image_url: "pp.png", category: c})
+      Item.create({name: "BBQ_#{items_counter += 1}", description: "Pulled Pork Sandwich", price: Random.new.rand(20), image_url: "pp.png", category: c})
     end
   end
 end
