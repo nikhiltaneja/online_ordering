@@ -1,13 +1,12 @@
 <%= render partial: "layouts/platform_navbar" %>
 
-<% if user_signed_in? %>
-  <li><%= link_to "Request to create a new restaurant", new_restaurant_path %></li>
-  <li><%= link_to "Profile", user_path(current_user) %></li>
-<% end %>
-
-<% flash.alert %>
-
 <div class="container">
+
+  <% if user_signed_in? %>
+    <%= button_to "Request to create a new restaurant", new_restaurant_path, method: 'get', class:"btn btn-primary btn-lg" %>
+  <% end %>
+
+  <% flash.alert %>
 
   <center><h3>Total restaurants [<%= @restaurants.count %>]</h3></center>
 
