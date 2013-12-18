@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    unless current_user
+    if current_user.nil?
       redirect_to root_path
     else
       @user = current_user
