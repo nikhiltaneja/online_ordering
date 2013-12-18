@@ -11,9 +11,27 @@
   <center><h3>Total restaurants [<%= @restaurants.count %>]</h3></center>
 
   <table class="table">
+    <tr>
+      <% @regions[0..@regions.count/2].each do |region| %>
+        <td><%= link_to "#{region.name}", restaurants_path(filter:region.id) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @regions[@regions.count/2..@regions.count].each do |region| %>
+        <td><%= link_to "#{region.name}", restaurants_path(filter:region.id) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <%= link_to "All Regions", restaurants_path %>
+    </tr>
+
+  </table>
+
+  <table class="table">
     <thead>
       <th>Restaurant name</th>
       <th>Description</th>
+      <th>Region</th>
     <% if platform_admin? %>
       <th>Status</th>
       <th></th>
@@ -29,12 +47,10 @@
       <tr>
         <td><%= link_to restaurant.name, "/#{restaurant.slug}", method: :get %></td>
         <td><%= restaurant.description %></td>
-
+        <td><%= Region.find(restaurant.region_id).name %></td>
         <% if platform_admin? %>
           <td><%= restaurant.status.capitalize %></td>
-
           <% if restaurant.status == "pending" %>
-
             <td><%= button_to 'Approve', restaurant_path(restaurant, status: "approved", display:true ), method: :put, class:"btn btn-success" %></td>
             <td><%= button_to 'Reject', restaurant_path(restaurant, status: "rejected", display:false), method: :put, class:"btn btn-danger" %></td>
           <% else %>
