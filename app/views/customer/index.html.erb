@@ -1,93 +1,59 @@
+<div class="container">
+  <div id="wrapper">
 
-<div id="wrapper">
+    <%= render partial: "layouts/restaurant_admin_navbar" %>
 
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Knife & Fork", home_path(slug: current_restaurant.slug), {class: "navbar-brand"} %>
-    </div>
+    <div id="page-wrapper">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
-        <li class="active"><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
-        <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
-        <li><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
-      </ul>
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>All Customers <small>all customers</small></h1>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i> Dashboard</li>
+            <li class="active"><i class="fa fa-dashboard"></i> All Customers</li>
+          </ol>
 
-      <ul class="nav navbar-nav navbar-right navbar-user">
-        <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li class="divider"></li>
-            <li>
-                  <%= link_to "logout", logout_path, id: "logout" %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </nav>
+        </div>
+      </div><!-- /.row -->
 
-  <div id="page-wrapper">
+          <table class="table table-hover">
+              <tr>
+                  <th>Customer Name</th>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h1>All Customers <small>all customers</small></h1>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-dashboard"></i> Dashboard</li>
-          <li class="active"><i class="fa fa-dashboard"></i> All Customers</li>
-        </ol>
+                  <th>Total Orders</th>
 
-      </div>
-    </div><!-- /.row -->
+                  <th>Completed Orders</th>
 
-        <table class="table table-hover">
-            <tr>
-                <th>Customer Name</th>
+                  <th>First order date</th>
 
-                <th>Total Orders</th>
+                  <th>Most recent order date</th>
 
-                <th>Completed Orders</th>
+              </tr>
+              <% @users.each do |user|  %>
+              <tr>
 
-                <th>First order date</th>
+                  <td><%= user.email %></td>
 
-                <th>Most recent order date</th>
+                  <td><%= user.orders.count %></td>
 
-            </tr>
-            <% @users.each do |user|  %>
-            <tr>
+                  <td><%= user.orders.where(:status => "complete").count %></td>
 
-                <td><%= user.email %></td>
+                  <% unless user.orders.empty? %>
 
-                <td><%= user.orders.count %></td>
+                  <td><%= user.orders.first.updated_at.strftime('%m/%d/%Y') %></td>
 
-                <td><%= user.orders.where(:status => "complete").count %></td>
+                  <td><%= user.orders.last.updated_at.strftime('%m/%d/%Y') %></td>
 
-                <% unless user.orders.empty? %>
+                  <% end %>
 
-                <td><%= user.orders.first.updated_at.strftime('%m/%d/%Y') %></td>
+              </tr>
+          <% end %>
+      </table>
 
-                <td><%= user.orders.last.updated_at.strftime('%m/%d/%Y') %></td>
+    </div><!-- /#page-wrapper -->
 
-                <% end %>
-
-            </tr>
-        <% end %>
-    </table>
-
-  </div><!-- /#page-wrapper -->
-
-</div><!-- /#wrapper -->
-
-<!-- Bootstrap core JavaScript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
+  </div><!-- /#wrapper -->
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
