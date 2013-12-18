@@ -69,4 +69,8 @@ class Restaurant < ActiveRecord::Base
   def worker?(a_user)
     roles.includes(:user).map(&:user).include?(a_user)
   end
+
+  def category(name)
+    categories.where(name: name)
+  end
 end
