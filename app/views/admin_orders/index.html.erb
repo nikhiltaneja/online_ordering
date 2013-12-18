@@ -1,106 +1,69 @@
-<div id="wrapper">
+<div class="container">
+  <div id="wrapper">
 
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "KNIFE & FORK", root_path, {class: "navbar-brand"} %>
-    </div>
+    <%= render partial: "layouts/restaurant_admin_navbar" %>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
-        <li><%= link_to "Dashboard", admin_path(slug: current_restaurant.slug) %><i class="fa fa-dashboard"></i></li>
-        <li class="active"><%= link_to "All Orders", admin_orders_path(slug: current_restaurant.slug) %><i class="fa fa-bar-chart-o"></i></li>
-        <li><%= link_to "Edit Menu", admin_items_path(slug: current_restaurant.slug) %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path(slug: current_restaurant.slug) %><i class="fa fa-edit"></i></li>
-      </ul>
+    <div id="page-wrapper">
 
-      <ul class="nav navbar-nav navbar-right navbar-user">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>All Orders <small>all orders in the system</small></h1>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i> Dashboard</li>
+            <li class="active"><i class="fa fa-dashboard"></i> All Orders</li>
+          </ol>
 
-        <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        </div>
+      </div><!-- /.row -->
 
-            <li class="divider"></li>
-            <li>
-
-                  <%= link_to "logout", logout_path, id: "logout" %>
-
-
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </nav>
-
-  <div id="page-wrapper">
-
-    <div class="row">
-      <div class="col-lg-12">
-        <h1>All Orders <small>all orders in the system</small></h1>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-dashboard"></i> Dashboard</li>
-          <li class="active"><i class="fa fa-dashboard"></i> All Orders</li>
-        </ol>
-
+      <div>
+        <ul>
+          <li><%= link_to "All Orders", admin_orders_path %></li>
+          <li><%= link_to "Complete Orders", admin_orders_path(filter_by: 'Complete') %></li>
+          <li><%= link_to "Incomplete Orders", admin_orders_path(filter_by: 'Incomplete') %></li>
+        </ul>
       </div>
-    </div><!-- /.row -->
 
-    <div>
-      <ul>
-        <li><%= link_to "All Orders", admin_orders_path %></li>
-        <li><%= link_to "Complete Orders", admin_orders_path(filter_by: 'Complete') %></li>
-        <li><%= link_to "Incomplete Orders", admin_orders_path(filter_by: 'Incomplete') %></li>
-      </ul>
-    </div>
+          <table class="table table-hover">
+              <tr>
+                  <th>Order #</th>
 
-        <table class="table table-hover">
-            <tr>
-                <th>Order #</th>
+                  <th>Customer</th>
 
-                <th>Customer</th>
+                  <th>Status</th>
 
-                <th>Status</th>
+                  <th>Order Total</th>
 
-                <th>Order Total</th>
+                  <th>Order placed at</th>
 
-                <th>Order placed at</th>
+                  <th>Delete</th>
+              </tr>
+              <% @orders.each do |order|  %>
+              <tr class="table_rows">
+                  <td><%= order.id %></td>
 
-                <th>Delete</th>
-            </tr>
-            <% @orders.each do |order|  %>
-            <tr class="table_rows">
-                <td><%= order.id %></td>
+                  <td>
+                    <% if order.user %>
+                      <%= order.user.email %>
+                    <% else %>
+                      Customer has not logged in
+                    <% end %>
+                  </td>
 
-                <td>
-                  <% if order.user %>
-                    <%= order.user.email %>
-                  <% else %>
-                    Customer has not logged in
-                  <% end %>
-                </td>
+                  <td class="status_data"><%= order.status %></td>
 
-                <td class="status_data"><%= order.status %></td>
+                  <td><%= number_to_currency(order.total_price) %></td>
 
-                <td><%= number_to_currency(order.total_price) %></td>
+                  <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
 
-                <td><%= order.updated_at.strftime('%m/%d/%Y') %></td>
+                  <td>
+                      <%= button_to "delete", admin_order_path(slug: current_restaurant.slug, id: order.id),:method => :delete %>
+                  </td>
+              </tr>
+          <% end %>
+      </table>
 
-                <td>
-                    <%= button_to "delete", admin_order_path(slug: current_restaurant.slug, id: order.id),:method => :delete %>
-                </td>
-            </tr>
-        <% end %>
-    </table>
+    </div><!-- /#page-wrapper -->
 
-  </div><!-- /#page-wrapper -->
-
-</div><!-- /#wrapper -->
+  </div><!-- /#wrapper -->
+</div>
