@@ -39,4 +39,8 @@ class Order < ActiveRecord::Base
       order_item.quantity * order_item.item.price
     end.reduce(:+)
   end
+
+  def completed_orders
+    Order.where(:user_id => session[:user_id], :status => "complete")
+  end
 end
