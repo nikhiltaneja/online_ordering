@@ -1,33 +1,29 @@
-<h2>Request to create a new restaurant</h1>
+<div class="form-background">
+  <div class="container">
 
-<%= form_for(@restaurant) do |f| %>
-  <% if @restaurant.errors %>
-  <ul>
-    <% @restaurant.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+
+    <center><h2 class="form-signin-heading">Request to create a new restaurant</h2></center>
+
+    <%= form_for(@restaurant, html: {class: "form-signin"}) do |f| %>
+      <% if @restaurant.errors %>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-  <p>
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
-  </p>
-  <p>
-  <%= f.label :description %><br />
-  <%= f.text_field :description %>
-  </p>
-  <p>
-  <%= f.label :region %><br />
-  <%= f.text_field :region %>
-  </p>p>
-  <%= f.label :logo_url %><br />
-  <%= f.text_field :logo_url %>
-  </p>
-  <p>
-  <%= f.label :primary_picture_url %><br />
-  <%= f.text_field :primary_picture_url %>
-  </p>
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %>
+      <%= f.text_field :name, placeholder: "Restaurant name", class: "form-control" %>
+
+      <%= f.text_field :description, placeholder: "Description", class: "form-control" %>
+
+      <%= f.text_field :region, placeholder: "State", class: "form-control" %>
+
+      <%= f.text_field :logo_url, placeholder: "Logo url", class: "form-control" %>
+
+      <%= f.text_field :primary_picture_url, placeholder: "Primary picture url", class: "form-control" %>
+
+      <%= f.submit "Request restaurant", class: "btn btn-lg btn-primary btn-block" %>
+
+    <% end %>
+  </div>
+</div>
