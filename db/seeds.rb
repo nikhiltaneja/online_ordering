@@ -22,8 +22,8 @@ user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
 RESTAURANTS_COUNT = 200
-ITEMS_PER_RESTAURANT = 10
-CATEGORIES_PER_RESTAURANT = 5
+ITEMS_PER_CATEGORY = 6
+CATEGORIES_PER_RESTAURANT = 4
 USERS_COUNT = 100
 RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
@@ -31,11 +31,13 @@ ORDERS_COUNT = 50
 ORDER_ITEMS_COUNT = 3
 
 # RESTAURANTS_COUNT = 10000
-# ITEMS_PER_RESTAURANT = 20
-# CATEGORIES_PER_RESTAURANT = 3
+# ITEMS_PER_CATEGORY = 6
+# CATEGORIES_PER_RESTAURANT = 4
 # USERS_COUNT = 100000
 # RESTAURANT_ADMINS_PER_RESTAURANT = 2
 # STOCKERS_PER_RESTAURANT = 2
+# ORDERS_COUNT = 50
+# ORDER_ITEMS_COUNT = 3
 
 restaurant_counter = 0
 items_counter = 0
@@ -76,7 +78,7 @@ RESTAURANTS_COUNT.times do
   CATEGORIES_PER_RESTAURANT.times do
     c = Category.create(name: "Dinner_#{categories_counter += 1}", restaurant: r)
 
-    ITEMS_PER_RESTAURANT.times do
+    ITEMS_PER_CATEGORY.times do
       Item.create({name: "Wings_#{items_counter += 1}", description: "Hot chicken wings", price: Random.new.rand(20), image_url: "pp.png", category: c})
     end
   end
