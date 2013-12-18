@@ -5,6 +5,7 @@ User.delete_all
 Order.delete_all
 Restaurant.delete_all
 Role.delete_all
+Region.delete_all
 PlatformAdmin.delete_all
 
 user = User.create( email: "denvergschool@gmail.com", password: "password")
@@ -21,9 +22,8 @@ user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
 RESTAURANTS_COUNT = 200
-REGIONS_COUNT = 5
-ITEMS_PER_RESTAURANT = 10
-CATEGORIES_PER_RESTAURANT = 5
+ITEMS_PER_CATEGORY = 6
+CATEGORIES_PER_RESTAURANT = 4
 USERS_COUNT = 100
 RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
@@ -31,15 +31,15 @@ ORDERS_COUNT = 50
 ORDER_ITEMS_COUNT = 3
 
 # RESTAURANTS_COUNT = 10000
-# REGIONS_COUNT = 30
-# ITEMS_PER_RESTAURANT = 20
-# CATEGORIES_PER_RESTAURANT = 3
+# ITEMS_PER_CATEGORY = 6
+# CATEGORIES_PER_RESTAURANT = 4
 # USERS_COUNT = 100000
 # RESTAURANT_ADMINS_PER_RESTAURANT = 2
 # STOCKERS_PER_RESTAURANT = 2
+# ORDERS_COUNT = 50
+# ORDER_ITEMS_COUNT = 3
 
 restaurant_counter = 0
-regions_counter = 0
 items_counter = 0
 categories_counter = 0
 users_counter = 0
@@ -47,6 +47,12 @@ restaurant_admins_counter = 0
 stockers_counter = 0
 orders_counter = 0
 order_items_counter = 0
+
+REGIONS = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KA", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT","VA", "WA", "WV", "WI", "WY"] 
+
+REGIONS.each do |region|
+  Region.create(name: region)
+end
 
 RESTAURANTS_COUNT.times do
   generated_name = "KFC_#{restaurant_counter += 1}"
@@ -57,7 +63,7 @@ RESTAURANTS_COUNT.times do
   when num%3==0 then status = 'rejected'; display=false;
   else status = 'approved'; display=true;
   end
-  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display)
+  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display, region: Region.find(Random.new.rand(1..Region.count)))
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")
@@ -72,7 +78,7 @@ RESTAURANTS_COUNT.times do
   CATEGORIES_PER_RESTAURANT.times do
     c = Category.create(name: "Dinner_#{categories_counter += 1}", restaurant: r)
 
-    ITEMS_PER_RESTAURANT.times do
+    ITEMS_PER_CATEGORY.times do
       Item.create({name: "Wings_#{items_counter += 1}", description: "Hot chicken wings", price: Random.new.rand(20), image_url: "pp.png", category: c})
     end
   end
