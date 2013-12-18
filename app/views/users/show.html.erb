@@ -3,3 +3,20 @@
 <% if user_signed_in? %>
   <%= button_to "Request to create a new restaurant", new_restaurant_path, method: 'get', class:"btn btn-primary btn-lg" %>
 <% end %>
+
+<table>
+  <thead>
+    <th>Restaurant</th>
+    <th>Status</th>
+    <th>Price</th>
+    <th>Date</th>
+  </thead>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.restaurant.name %></td>
+      <td><%= order.status %></td>
+      <td><%= order.total_price %></td>
+      <td><%= order.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
