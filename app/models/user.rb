@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :platform_admin
 
   def find_order(order_id)
-    order.find_by(id: order_id)
+    orders.find_by(id: order_id)
   end
 
 end
