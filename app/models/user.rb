@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :roles
   has_many :restaurants, through: :roles
   has_one :platform_admin
+
 end

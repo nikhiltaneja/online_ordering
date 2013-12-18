@@ -5,7 +5,9 @@ describe 'Cart', type: :feature do
   context "when the cart is empty" do
 
     it "shows an error message" do
-      visit categories_path
+      restaurant = FactoryGirl.create(:restaurant)
+      visit restaurants_path
+      click_on restaurant.name
       click_on 'Cart'
       page.should have_content("You must add an item before viewing your cart")
     end
@@ -13,8 +15,15 @@ describe 'Cart', type: :feature do
 
   context "logged out" do
     it "adds items to the cart" do
-      item = create(:item)
-      visit categories_path
+      restaurant = FactoryGirl.create(:restaurant)
+      category = FactoryGirl.build(:category)
+      category.restaurant_id = restaurant.id
+      category.save
+      item = FactoryGirl.build(:item_specific)
+      item.category_id = category.id
+      item.save
+      visit restaurants_path
+      click_on restaurant.name
       click_on 'Add to Cart'
       click_on 'Cart'
       page.within(".order-item") do
@@ -27,10 +36,17 @@ describe 'Cart', type: :feature do
 
   context "logged in" do
     it "shows cart items after signing back in" do
-      user = create(:user)
+      user = FactoryGirl.create(:user)
+      restaurant = FactoryGirl.create(:restaurant)
+      category = FactoryGirl.build(:category)
+      category.restaurant_id = restaurant.id
+      category.save
+      item = FactoryGirl.build(:item_specific)
+      item.category_id = category.id
+      item.save
       login(user)
-      item = create(:item)
-      visit categories_path
+      visit restaurants_path
+      click_on restaurant.name
       click_on 'Add to Cart'
       click_on "Cart"
       page.within(".order-item") do
