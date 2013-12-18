@@ -24,7 +24,7 @@
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
       data-amount=<%= @order.total_price * 100 %>
-      data-name="Billy's BBQ"
+      data-name=<%= "#{current_restaurant.name}" %>
       data-description=""
       data-image=<%= asset_path("billy_img_2.png") %>>
     </script>
