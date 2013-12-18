@@ -17,7 +17,7 @@
       <% end %>
     </tr>
     <tr>
-      <% @regions[@regions.count/2..@regions.count].each do |region| %>
+      <% @regions[@regions.count/2+1..@regions.count].each do |region| %>
         <td><%= link_to "#{region.name}", restaurants_path(filter:region.id) %></td>
       <% end %>
     </tr>
