@@ -1,14 +1,14 @@
 FactoryGirl.define do
   sequence :name do |n|
-    "kfc#{n}"
+    "KFC_#{n}"
   end
 
   sequence :slug do |n|
-    "kfc#{n}"
+    "kfc_#{n}"
   end
 
   factory :restaurant do
-    name 
+    name
     slug
     description "a food place"
     status "approved"

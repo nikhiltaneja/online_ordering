@@ -30,14 +30,14 @@ STOCKERS_PER_RESTAURANT = 2
 ORDERS_COUNT = 50
 ORDER_ITEMS_COUNT = 3
 
-# RESTAURANTS_COUNT = 10000
-# ITEMS_PER_CATEGORY = 6
-# CATEGORIES_PER_RESTAURANT = 4
-# USERS_COUNT = 100000
-# RESTAURANT_ADMINS_PER_RESTAURANT = 2
-# STOCKERS_PER_RESTAURANT = 2
-# ORDERS_COUNT = 50
-# ORDER_ITEMS_COUNT = 3
+#RESTAURANTS_COUNT = 10000
+#ITEMS_PER_CATEGORY = 6
+#CATEGORIES_PER_RESTAURANT = 4
+#USERS_COUNT = 100000
+#RESTAURANT_ADMINS_PER_RESTAURANT = 2
+#STOCKERS_PER_RESTAURANT = 2
+#ORDERS_COUNT = 50
+#ORDER_ITEMS_COUNT = 3
 
 restaurant_counter = 0
 items_counter = 0
@@ -63,7 +63,7 @@ RESTAURANTS_COUNT.times do
   when num%3==0 then status = 'rejected'; display=false;
   else status = 'approved'; display=true;
   end
-  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display, region: Region.find(Random.new.rand(1..Region.count)))
+  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display, region: Region.find(Random.new.rand(1..50)))
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")
@@ -87,9 +87,9 @@ end
 USERS_COUNT.times do
   u = User.create!(email: "MikeUser_#{users_counter += 1}@example.com", password: "password")
   ORDERS_COUNT.times do
-    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..Restaurant.count-1)), status: 'complete')
+    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..RESTAURANTS_COUNT)), status: 'complete')
     ORDER_ITEMS_COUNT.times do
-      OrderItem.create(order: o, item: Item.find(Random.new.rand(1..Item.count-1)), quantity: Random.new.rand(15))
+      OrderItem.create(order: o, item: Item.find(Random.new.rand(1..ITEMS_PER_CATEGORY)), quantity: Random.new.rand(10))
     end
   end
 end
