@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
+    # @restaurant.region = Region.find_by(name: restaurant_params[:region])
     if @restaurant.save
       Role.create(restaurant: @restaurant, user: current_user, level: "admin")
       UserMailer.notify_restaurant_admin(current_user, @restaurant).deliver
@@ -62,6 +62,6 @@ class RestaurantsController < ApplicationController
 
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :status, :logo_url, :primary_picture_url)
+      params.require(:restaurant).permit(:name, :description, :status, :logo_url, :primary_picture_url, :region_id)
     end
 end
