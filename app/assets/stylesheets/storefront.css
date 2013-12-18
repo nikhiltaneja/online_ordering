@@ -1,0 +1,20 @@
+body {
+  margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+/* change the URL to a picture of your choice - the higher quality the better! */
+.business-header {
+  height: 400px;
+  background: url(http://s30.postimg.org/47vkd0g3l/cherry.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+/* adjust the color and text shadow to optimize legibility once you have an image set - you can also change the vertical positioning if desired  */
+.tagline {
+  color: #fff;
+  text-shadow: 0 0 10px #000;
+}
+
+footer {
+  margin: 50px 0;
+}

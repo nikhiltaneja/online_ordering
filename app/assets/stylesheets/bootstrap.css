@@ -42,6 +42,7 @@ html {
 }
 body {
   margin: 0;
+  padding: 0;
 }
 a:focus {
   outline: thin dotted;
@@ -3178,8 +3179,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-color: #428bca;
 }
 .nav .nav-divider {
-  height: 1px;
-  margin: 9px 0;
+  height: 0px;
+  margin: 0px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }

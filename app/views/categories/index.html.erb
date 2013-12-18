@@ -7,19 +7,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Half-Page Full Width Slider Starter Template for Bootstrap</title>
+    <title>OrderUP Store Front Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- Add custom CSS here -->
-    <link href="css/half-slider.css" rel="stylesheet">
-
+    <!-- Custom CSS for the 'Business Frontpage' Template -->
+    <%= stylesheet_link_tag "storefront" %>
   </head>
 
   <body>
 
-    <nav class="navbar navbar-fixed-top navbar" role="navigation">
+    <nav class="navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -28,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Start Bootstrap</a>
+          <a class="navbar-brand" href="index.php">OrderUP </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,64 +41,68 @@
       </div><!-- /.container -->
     </nav>
     
-    <div id="myCarousel" class="carousel slide">
-      <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+    <div class="business-header">
+    
+      <div class="container">
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-            <div class="carousel-caption">
-              <h1>A Full-Width Image Slider Template</h1>
-            </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-            <div class="carousel-caption">
-              <h1>Caption 2</h1>
-            </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-            <div class="carousel-caption">
-              <h1>Caption 3</h1>
-            </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- The background image is set in the custom CSS -->
+            <h1 class="tagline">Start Your Restaurant Today</h1>
           </div>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
+      
+      </div>
+    
     </div>
-
+    
     <div class="container">
-
-      <div class="row section">
-        <div class="col-lg-12">
-          <h1>A Full Width Image Slider Template</h1>
-          <p>This is a great starting point for yet another modern and stylish website. Here are some things to consider when working with this template:</p>
-          <ul>
-            <li>Unique Fonts</li>
-            <li>Attractive Colors</li>
-            <li>Content Spacing for Legibility and Design</li>
-            <li>Decent Pictures that Still Load Quickly (less than 400KB for example)</li>
-            <li>Make the Pictures INFORMATIVE</li>
-            <li>Custom Styling for the Captions</li>
-          </ul>
+    
+      <hr>
+      
+      <div class="row">
+        <div class="col-lg-8 col-sm-8">
+          <h2>About <%= @restaurant.name %></h2>
+          <p>Here is where you will introduce visitors to the business. Make sure to use clear and informative sentences. Use appropriate keywords here to make sure search engines can find the business.</p>
+          <p>When using this template, two decisions will be open to visitors. Decision one will be to use above-the-fold information to interact with the page. Decision two will be to scroll down and see the additional marketing boxes. Either way, the user will get the information they need!</p>
+          <p><a class="btn btn-default btn-large" href="#">Call to action &raquo;</a></p>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <h2>Contact Us</h2>
+      <address>
+        <strong>Twitter, Inc.</strong><br>
+        795 Folsom Ave, Suite 600<br>
+      San Francisco, CA 94107<br>
+      </address>
+      <address>
+      <abbr title="Phone">P:</abbr> (123) 456-7890<br>
+            <abbr title="Email">E:</abbr> <a href="mailto:#">first.last@example.com</a>
+      </address>
         </div>
       </div>
       
       <hr>
-      
+
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+            <h2>Marketing Box #1</h2>
+            <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
+        </div>
+        <div class="col-sm-4">
+          <img class="img-circle img-responsive" src="http://placehold.it/300x300">
+            <h2>Marketing Box #2</h2>
+            <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+        <div class="col-sm-4">
+          <img class="img-circle img-responsive" src="http://placehold.it/300x300">
+            <h2>Marketing Box #3</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+      </div>
+
+      <hr>
+
       <footer>
         <div class="row">
           <div class="col-lg-12">
@@ -108,18 +111,13 @@
         </div>
       </footer>
 
-    </div><!-- /.container -->
+    </div> <!-- /container -->
+
 
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-      $('.carousel').carousel({
-        interval: 5000 //changes the speed
-      })
-    </script>
   </body>
 </html>
 
