@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-
   after_filter :store_location
 
   def store_location
@@ -26,6 +25,10 @@ class ApplicationController < ActionController::Base
   def viewable_restaurants
     return Restaurant.all.order(:id) if platform_admin?
     Restaurant.where(display:true).order(:id)
+  end
+
+  def regions_with_restaurants
+    Region.includes(:restaurants)
   end
 
   def platform_admin?
