@@ -2,6 +2,7 @@ class Restaurant < ActiveRecord::Base
   has_many :roles
   has_many :users, through: :roles
   has_many :categories
+  has_many :items, through: :categories
   has_many :orders
   belongs_to :region
   validates :name, presence: true
@@ -32,4 +33,13 @@ class Restaurant < ActiveRecord::Base
       errors.add(:display, "can't be rejected or pending and shown")
     end
   end
+
+  def items_count
+    items.count
+  end
+
+  def find_item(item_id)
+    @item = items.find_by(id: item_id)
+  end
+
 end

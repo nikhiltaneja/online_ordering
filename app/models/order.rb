@@ -39,5 +39,4 @@ class Order < ActiveRecord::Base
       order_item.quantity * order_item.item.price
     end.reduce(:+)
   end
-
 end

@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @orders = Order.where(:user_id => session[:user_id])
   end
@@ -16,5 +15,4 @@ class OrdersController < ApplicationController
   def completed_orders
     Order.where(:user_id => session[:user_id], :status => "complete")
   end
-
 end
