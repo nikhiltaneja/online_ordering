@@ -55,7 +55,11 @@ class Restaurant < ActiveRecord::Base
   end
 
   def customers
-    orders.map(&:user).uniq
+    orders.includes(:user).map(&:user).uniq
+  end
+
+  def customer_count
+    customers.count
   end
 
   def total_sales
