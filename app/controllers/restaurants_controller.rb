@@ -41,11 +41,11 @@ class RestaurantsController < ApplicationController
       @restaurant.status = params[:status]
       if params[:status] == 'approved'
         UserMailer.approved_confirmation(@restaurant_admin, @restaurant).deliver
-        UserMailer.admin_approved_confirmation(current_user, @restaurant).deliver
+        UserMailer.admin_approved_confirmation(PlatformAdmin.first.user, @restaurant).deliver
       end
       if params[:status] == 'rejected'
         UserMailer.rejected_confirmation(@restaurant_admin, @restaurant).deliver
-        UserMailer.admin_rejected_confirmation(current_user, @restaurant).deliver
+        UserMailer.admin_rejected_confirmation(PlatformAdmin.first.user, @restaurant).deliver
       end
     end
 

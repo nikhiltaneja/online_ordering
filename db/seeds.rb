@@ -8,7 +8,7 @@ Role.delete_all
 Region.delete_all
 PlatformAdmin.delete_all
 
-user = User.create( email: "denvergschool@gmail.com", password: "password")
+user = User.create( email: "mechaniqz@gmail.com", password: "password")
 PlatformAdmin.create(user_id: user.id)
 user = User.create( email: "nt@example.com", password: "password")
 PlatformAdmin.create(user_id: user.id)

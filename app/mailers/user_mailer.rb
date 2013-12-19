@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "admin@orderup.com"
+  default from: "gschooler1@gmail.com"
 
   def notify_restaurant_admin(restaurant_admin, restaurant)
     @restaurant_admin = restaurant_admin
