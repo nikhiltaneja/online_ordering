@@ -1,17 +1,7 @@
 == README
 
-Billy's BBQ Shack is aiming for Southern Chic ambiance, and the website should give off that same vibe.
+OrderUp is a platform that facilitates online ordering for restaurants.
 
-This was programmed using Ruby 2.0.0 and Rails 4.
+We used PostgreSQL for the database, Stripe for payments, and Devise for authentication.
 
-We use better_errors for debugging, and Capybara for testing.
-
-The database is a sqlite3 database for testing and dev, but dev and production will become PostgreSQL when we push it live.
-
-We use rake for testing, so just run rake test from the root directory and you'll be good to go.
-
-Things to possibly add to README:
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+The website can be viewed at orderup.herokuapp.com
