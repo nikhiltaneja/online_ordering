@@ -32,7 +32,7 @@
       <hr>
       <div class="featurette" id="about">
         <img class="featurette-image img-circle img-responsive pull-right" src="http://s16.postimg.org/dsqf0wwjp/grand.jpg">
-        <h2 class="featurette-heading">SMOQUE BBQ House <span class="text-muted">Was Born On the Oregon Trail</span></h2>
+        <h2 class="featurette-heading"> <%= current_restaurant.name %> <span class="text-muted">Was Born On the Oregon Trail</span></h2>
         <p class="lead">Jebadiah Griffin, Great, Great Grandfather of Billy Griffin started the first SMOQUE bbq house after working as a short order cook  a wagon train heading out west on the Oregon Trail.  When the group stopped in Indiana, Jebadiah Got off saying he had been called to open up a mid-priced family style bbq restaurant. </p>
       </div>
       <hr>
@@ -88,6 +88,9 @@
             <% end %>
 
         </div> <!-- closing row -->
+
+        <hr>
+
       <% end %>
       <br/>
       <br/>
