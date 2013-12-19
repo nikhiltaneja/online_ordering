@@ -4,6 +4,8 @@
   padding: 0px;
 }
 body {
+  padding: 0px;
+  margin: 0px;
   /*background-image:url('wood.jpg');*/
   background-repeat: repeat;
   background-position:top-left; 

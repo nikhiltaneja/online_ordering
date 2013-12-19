@@ -1,0 +1,190 @@
+body {
+  margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+/* change the URL to a picture of your choice - the higher quality the better! */
+.business-header {
+  height: 400px;
+  background: url(http://s10.postimg.org/h5f4mntp5/pork.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+/* adjust the color and text shadow to optimize legibility once you have an image set - you can also change the vertical positioning if desired  */
+.tagline {
+  color: #fff;
+  text-shadow: 0 0 10px #000;
+}
+
+
+.featurette-divider {
+  margin: 80px 0;
+}
+.featurette {
+  overflow: hidden; 
+}
+
+.featurette-image.pull-left {
+  margin-right: 40px;
+}
+.featurette-image.pull-right {
+  margin-left: 40px;
+}
+
+.featurette-heading {
+  font-size: 50px;
+}
+
+
+/* RESPONSIVE CSS */
+
+@media (max-width: 1200px) {
+
+.headline > .container > h1 {font-size: 140px;}
+.headline > .container > h2 {font-size: 63px;}
+.featurette-divider {margin: 50px 0;}
+.featurette-image.pull-left {margin-right: 20px;}
+.featurette-image.pull-right {margin-left: 20px;}
+.featurette-heading {font-size: 35px;}
+
+}
+
+@media (max-width: 991px) {
+
+.headline > .container > h1 {font-size: 105px;}
+.headline > .container > h2 {font-size: 50px;}
+.featurette-divider {margin: 40px 0;}
+.featurette-image {max-width: 50%;}
+.featurette-image.pull-left {margin-right: 10px;}
+.featurette-image.pull-right {margin-left: 10px;}
+.featurette-heading {font-size: 30px;}
+
+}
+
+@media (max-width: 768px) {
+  
+.container {margin: 0 15px;}
+.featurette-divider {margin: 40px 0;}
+.featurette-heading {font-size: 25px;}
+
+}
+
+
+@media (max-width: 668px) {
+
+.headline > .container > h1 {font-size: 70px;}
+.headline > .container > h2 {font-size: 32px;}
+.featurette-divider {margin: 30px 0;}
+
+}
+
+@media (max-width: 640px) {
+
+.headline {padding: 75px 0 25px 0;}
+.headline > .container > h1 {font-size: 60px;}
+.headline > .container > h2 {font-size: 30px;}
+
+}
+
+@media (max-width: 375px) {
+
+.featurette-divider {margin: 10px 0;}
+.featurette-image {max-width: 100%;}
+.featurette-image.pull-left {margin-right: 0; margin-bottom: 10px;}
+.featurette-image.pull-right {margin-left: 0; margin-bottom: 10px;}
+
+}
+
+#footerSection {
+    background: #e6e6e6;
+    border-top: 1px solid #fff;
+    margin-top: 100px;
+    padding: 18px 0 8px;
+}
+
+#footerMenu a {
+    padding: 4px;
+    color: #666;
+}
+
+#footerMenu a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+#footerSection,#headerSection {
+    box-shadow: 0 0 14px rgba(36,33,33,0.5);
+    -webkit-box-shadow: 0 0 14px rgba(36,33,33,0.5);
+    -moz-box-shadow: 0 0 14px rgba(36,33,33,0.5);
+}
+
+#footerSection .container {
+    position: relative;
+}
+
+.socialMedia {
+    height: 100px;
+    width: 160px;
+    margin-top: -50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.socialMedia a:hover {
+    z-index: 999;
+}
+
+.socialMedia a {
+    border-radius: 50%;
+}
+
+.twitter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background: url(http://www.bootstrappage.com/view/tulip/themes/images/t.png) no-repeat center center #00a0d1;
+    z-index: 1;
+}
+
+.facebook {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background: url(http://www.bootstrappage.com/view/tulip/themes/images/f.png) no-repeat center center #3b5998;
+    z-index: 2;
+}
+
+.go-top {
+    display: inline-block;
+    position: fixed;
+    bottom: 8px;
+    right: 30px;
+    padding: 0 10px 5px;
+    color: #999;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 34px;
+}
+
+.go-top:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.filter-down {
+
+  /*float: left;*/
+  vertical-align: bottom;
+  /*position: absolute;
+  bottom: 0;*/
+}
