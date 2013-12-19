@@ -2,10 +2,10 @@
 
 <div class="container">
 
-  <h3>Hi <%= @user.email %></h3>
+  <h4>Hi <%= @user.email %></h4>
 
   <% if user_signed_in? %>
-    <%= button_to "Request to create a new restaurant", new_restaurant_path, method: 'get', class:"btn btn-primary btn-lg" %>
+    <p><%= button_to "Request to create a new restaurant", new_restaurant_path, method: 'get', class:"btn btn-primary btn-lg"%></p>
   <% end %>
 
   <table>
@@ -25,3 +25,5 @@
     <% end %>
   </table>
 </div>
+
+<%= render partial: "layouts/platform_footer" %>
