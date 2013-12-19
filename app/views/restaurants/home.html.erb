@@ -52,7 +52,9 @@
             <div class="carousel-caption">
               <h1>Set up your restaurant website via OrderUp</h1>
               <p>Join thousands of other restaurants that are using our platform to create their website</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <p>
+                <%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+              </p>
             </div>
           </div>
         </div>
@@ -62,7 +64,7 @@
             <div class="carousel-caption">
               <h1>Make online ordering seamless</h1>
               <p>Our platform showcases your menu and facilitates online transactions</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <p><a class="btn btn-lg btn-primary" href="#learn-more" role="button">Learn more</a></p>
             </div>
           </div>
         </div>
@@ -72,7 +74,10 @@
             <div class="carousel-caption">
               <h1>Free and open source</h1>
               <p>Why pay for Shopify when you can use our service for free? Since this project is open source, our code is transparent and we can easily incorporate suggestions on how to improve our platform.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <p>
+              
+              <a class="btn btn-lg btn-primary" href="#gallery" role="button">Browse gallery</a>
+              </p>
             </div>
           </div>
         </div>
@@ -115,7 +120,7 @@
 
       <!-- START THE FEATURETTES -->
 
-      <hr class="featurette-divider">
+      <hr id="learn-more" class="featurette-divider">
 
       <div class="row featurette">
         <div class="col-md-7">
@@ -136,7 +141,7 @@
 
       <div class="row featurette">
 
-          <center><a href="http://shop.islandcreekoysters.com/"><img src="http://s9.postimg.org/pbyb108zz/Screen_Shot_2013_12_16_at_8_47_14_PM.png"></a></center>
+          <center><a href="http://shop.islandcreekoysters.com/"><img id="gallery" src="http://s9.postimg.org/pbyb108zz/Screen_Shot_2013_12_16_at_8_47_14_PM.png"></a></center>
           
       </div>
 
