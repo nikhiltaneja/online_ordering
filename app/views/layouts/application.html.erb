@@ -21,16 +21,19 @@ PRIVATE PROPERTY, YOU ARE NOW TRESPASSING. BEWARE OF DOG.
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag "bootstrap-nav" %>
     <%= stylesheet_link_tag "style" %>
-    
-    
+
+
 
     <!-- <link href="front-style.css" rel="stylesheet" type="text/css" /> -->
 
     <%= javascript_include_tag "application" %>
 
   </head>
-
-  <body>
+  <% if request.path == '/' %>
+    <body class=“home”>
+  <% else %>
+    <body>
+  <% end %>
 
     <% if alert %>
       <p class="alert alert-error"><%= alert %></p>
