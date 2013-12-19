@@ -22,12 +22,12 @@ user = User.create( email: "qwer@qwer.com", password: "qwerqwer")
 user = User.create( email: "zxcv@zxcv.com", password: "zxcvzxcv")
 
 RESTAURANTS_COUNT = 200
-ITEMS_PER_CATEGORY = 6
 CATEGORIES_PER_RESTAURANT = 4
-USERS_COUNT = 100
+ITEMS_PER_CATEGORY = 6
 RESTAURANT_ADMINS_PER_RESTAURANT = 2
 STOCKERS_PER_RESTAURANT = 2
-ORDERS_COUNT = 50
+USERS_COUNT = 50
+ORDERS_COUNT = 10
 ORDER_ITEMS_COUNT = 3
 
 #RESTAURANTS_COUNT = 10000

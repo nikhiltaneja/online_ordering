@@ -1,51 +1,11 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="localhost:3000/admin">KNIFE & FORK</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
-        <li class="active"><%= link_to "Dashboard", admin_path %><i class="fa fa-dashboard"></i></li>
-        <li><%= link_to "All Orders", admin_orders_path %><i class="fa fa-bar-chart-o"></i></li>
-        <li><%= link_to "Edit Menu", admin_items_path %><i class="fa fa-table"></i></li>
-        <li><%= link_to "Create New Item", new_admin_item_path %><i class="fa fa-edit"></i></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right navbar-user">
-        <li class="dropdown user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-            <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-            <li class="divider"></li>
-            <li>
-              <% if current_user %>
-                  <%= link_to "logout", logout_path, id: "login" %>
-              <% else %>
-                  <%= link_to "login", login_path, id: "logout" %>
-              <% end %> 
-
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </nav>
+  <%= render partial: "layouts/restaurant_admin_navbar" %>
 
   <div id="page-wrapper">
-
+  <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <h1>Edit Menu Item <small>make changes to existing menu items</small></h1>
@@ -53,11 +13,14 @@
           <li><i class="fa fa-dashboard"></i> Dashboard</li>
           <li class="active"><i class="fa fa-dashboard"></i> Edit Menu Item</li>
         </ol>
-        
+
       </div>
     </div><!-- /.row -->
-    
-      
+
+    <div class=row"
+      <div class="col-lg-12">
+
+
         <%= form_for(@item, url: item_path(current_restaurant, @item)) do |f| %>
         <ul>
         <% @item.errors.full_messages.each do |error| %>
@@ -66,8 +29,8 @@
         </ul>
       <div class="form-group">
           <%= f.label :name %><br />
-          <%= f.text_field :name %> 
-      
+          <%= f.text_field :name %>
+
       </div>
         <p>
           <%= f.label :description %><br />
@@ -88,9 +51,13 @@
         <p>
           <%= f.submit %>
         </p>
-        <% end %>
+      <% end %>
 
-    
+    </div>
+  </div>
+  </div>
+
+
   </div><!-- /#page-wrapper -->
 
 </div><!-- /#wrapper -->
