@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders
+    if current_user
+      @orders = current_user.orders
+    else
+      @orders = []
+    end
   end
 
   def no_orders_redirect
