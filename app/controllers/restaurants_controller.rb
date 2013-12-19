@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
     if params[:filter].nil?
       @restaurants = viewable_restaurants
     else
-      @restaurants = Restaurant.where(region_id: params[:filter])
+      @restaurants = Restaurant.where(region_id: params[:filter], display: true)
     end
   end
 

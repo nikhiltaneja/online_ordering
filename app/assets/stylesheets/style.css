@@ -44,4 +44,15 @@
 
 .alert {
   margin-top: 50px;
+  position: absolute;
+  top: 80px;
+  z-index: 999;
+  margin: 0 auto;
+  left: 50%;
+  margin-left: -39%;
+  width: 78%
+}
+
+.home .alert{
+  top: 64px;
 }
