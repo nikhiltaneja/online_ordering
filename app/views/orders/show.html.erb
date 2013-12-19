@@ -2,18 +2,18 @@
     <div class="container">
 
       <%= render partial: "layouts/navbar" %>
-      
+
       <h3>Order#<%= @order.id %></h3>
       Date order placed: <%= @order.updated_at.strftime('%m/%d/%Y') %><br/>
       <div class="container-fluid" id="gridInContainer">
         <% @order.order_items.each do |order_item| %>
-      
+
           <div class="row">
-            
-              
+
+
                 <div class="col-lg-4">
-                 
-                  
+
+
                   <% @order.order_items.each do |order_item| %>
                     Item Ordered: <%= order_item.item.name %><br/>
                     Quantity: <%= order_item.quantity %><br/>
@@ -21,21 +21,21 @@
                   <% end %>
                   Order Total: <%= number_to_currency(@order.total_price) %><br/>
 
-                  
-                  
-              
+
+
+
                 </div> <!-- closing div col -->
-              
-              
+
+
           </div> <!-- closing row -->
         <% end %>
-        
+
       </div>
 
-    
+
 
       <!-- Site footer -->
-     
+
 
     </div> <!-- /container -->
 

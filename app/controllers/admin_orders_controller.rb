@@ -1,14 +1,15 @@
 class AdminOrdersController < ApplicationController
+  before_action :check_admin
 
   def index
     if params[:filter_by] == 'Complete'
-      @orders = Order.where(restaurant: current_restaurant).where(status: 'complete')
+      @orders = current_restaurant.complete_orders
       @filter_by = 'Incomplete'
     elsif params[:filter_by] == 'Incomplete'
-      @orders = Order.where(restaurant: current_restaurant).where(status: 'incomplete')
+      @orders = current_restaurant.incomplete_orders
       @filter_by = 'Complete'
     else
-      @orders = Order.where(restaurant: current_restaurant)
+      @orders = current_restaurant.orders
     end
   end
 
@@ -21,8 +22,6 @@ class AdminOrdersController < ApplicationController
     @order.destroy
 
     flash.notice = "Order number #{@order.id} removed!"
-
     redirect_to admin_orders_path
   end
-
 end

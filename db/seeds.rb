@@ -48,11 +48,14 @@ stockers_counter = 0
 orders_counter = 0
 order_items_counter = 0
 
-REGIONS = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KA", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT","VA", "WA", "WV", "WI", "WY"] 
+REGIONS = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KA", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT","VA", "WA", "WV", "WI", "WY"] 
 
 REGIONS.each do |region|
   Region.create(name: region)
 end
+
+region_first = Region.first.id
+region_last = Region.last.id
 
 RESTAURANTS_COUNT.times do
   generated_name = "Smoque_#{restaurant_counter += 1}"
@@ -63,7 +66,7 @@ RESTAURANTS_COUNT.times do
   when num%3==0 then status = 'rejected'; display=false;
   else status = 'approved'; display=true;
   end
-  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display, region: Region.find(Random.new.rand(1..50)))
+  r = Restaurant.create(name: generated_name, description: generated_description, status: status, display: display, region: Region.find(Random.new.rand(region_first..region_last)))
 
   RESTAURANT_ADMINS_PER_RESTAURANT.times do
     u = User.create(email: "BobAdmin_#{restaurant_admins_counter += 1}@example.com", password: "password")
@@ -84,12 +87,18 @@ RESTAURANTS_COUNT.times do
   end
 end
 
+restaurant_first = Restaurant.first.id
+restaurant_last = Restaurant.last.id
+
+items_first = Item.first.id
+items_last = Item.last.id
+
 USERS_COUNT.times do
   u = User.create!(email: "MikeUser_#{users_counter += 1}@example.com", password: "password")
   ORDERS_COUNT.times do
-    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(1..RESTAURANTS_COUNT)), status: 'complete')
+    o = Order.create(user: u, restaurant: Restaurant.find(Random.new.rand(restaurant_first..restaurant_last)), status: 'complete')
     ORDER_ITEMS_COUNT.times do
-      OrderItem.create(order: o, item: Item.find(Random.new.rand(1..ITEMS_PER_CATEGORY)), quantity: Random.new.rand(10))
+      OrderItem.create(order: o, item: Item.find(Random.new.rand(items_first..items_last)), quantity: Random.new.rand(10))
     end
   end
 end

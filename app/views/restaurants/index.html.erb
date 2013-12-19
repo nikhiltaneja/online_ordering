@@ -12,7 +12,7 @@
 
   <table class="table">
     <tr>
-      <% @regions[0..@regions.count/2].each do |region| %>
+      <% @regions[0..@regions.count/2-1].each do |region| %>
         <td><%= link_to "#{region.name}", restaurants_path(filter:region.id) %></td>
       <% end %>
     </tr>
@@ -65,3 +65,115 @@
     <% end %>
   </table>
 </div>
+
+</div><!-- /.container -->
+    <div class="footer" style="background-color:#dbdbdb;">
+  
+          <div class="container">
+
+              <!-- Example row of columns -->
+            <div class="row">
+            <div class="col-lg-3">
+                <h4>Contact Us</h4>
+                <p>Feel free to drop us a line.  We love hearing from our customers.  We promise we don't bite.
+                  <fieldset>
+
+                  <!-- Form Name -->
+                  <legend></legend>
+
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="textinput">Email</label>
+                    <div class="controls">
+                      <input id="textinput" name="textinput" type="text" placeholder="" class="input-large" required="">
+                      
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="textinput">Subject</label>
+                    <div class="controls">
+                      <input id="textinput" name="textinput" type="text" placeholder="" class="input-large" required="">
+                      
+                    </div>
+                  </div>
+
+                  <!-- Textarea -->
+                  <div class="control-group">
+                    <label class="control-label" for="textarea">Message</label>
+                    <div class="controls">                     
+                      <textarea id="textarea" name="textarea" class="input-large"></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Button -->
+                  <div class="control-group">
+                    <label class="control-label" for=""></label>
+                    <div class="controls">
+                      <button id="" name="" class="btn btn-primary">send</button>
+                    </div>
+                  </div>
+
+                  </fieldset>
+                </form>
+              </div>
+
+
+              <div class="row">
+              <div class="col-lg-3">
+                <h4>Overview</h4>
+                <ul>
+                  <li><a href="/website/templates" title="Feature Tour">Feature Tour</a></li>
+                  <li><a href="/tour/sell-online" title="Sell Online">Sell Online</a></li>
+                  <li><a href="/tour/ecommerce-website" title="Online Store Hosting">Online Store</a></li>
+                  <li><a href="/tour/website-design" title="Online Store Design">Store Design</a></li>
+                  <li><a href="/tour/shopping-cart" title="Shopping Cart Software">Shopping Cart</a></li>
+                  <li><a href="/tour/ecommerce-hosting" title="Ecommerce Hosting">Ecommerce Hosting</a></li>
+                  <li><a href="/tour/ecommerce-marketing" title="Ecommerce Marketing Tools">Marketing &amp; SEO</a></li>
+                  <li><a href="/tour/mobile-commerce" title="Mobile Commerce">Mobile Commerce</a></li>
+                  <li><a href="/tour/ecommerce-plugins" title="Shopify App Store">App Store</a></li>
+                  <li><a href="/tour/ecommerce-cms">Feature List</a></li>
+                  <li><a href="/faq">FAQ</a></li>
+                </ul>
+              </div>
+              
+              <div class="row">
+              <div class="col-lg-3">
+                <h4>Resources</h4>
+                <ul>
+                  <li><a href="/about" rel="nofollow">About Us</a></li>
+                  <li><a href="/careers" title="Order Up Jobs" rel="nofollow">Careers</a></li>
+                  <li><a href="/press">Press</a></li>
+                  <li><a href="/press/buzz" title="Order Up Reviews">Testimonials</a></li>
+                  <li><a href="http://store.shopify.com" target="_blank" rel="nofollow">Store</a></li>
+                  <li><a href="http://www.shopify.ca" title="Canadian Ecommerce Software">Canada</a></li>
+                  <li><a href="http://www.shopify.co.uk" title="UK Ecommerce Software">United Kingdom</a></li>
+                  <li><a href="http://www.shopify.com.au" title="Australia Ecommerce Software">Australia</a></li>
+                  <li><a href="http://www.shopify.co.nz" title="New Zealand Ecommerce Software">New Zealand</a></li>
+                </ul>
+              </div>
+
+              <div class="row">
+              <div class="col-lg-3">
+                <h4>Come Find Us</h4>
+                <div class="row-fluid">
+                    <div class="span8">
+                      <iframe width="300" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=15+Greenpoint+Ave,+Brooklyn,+NY&amp;aq=0&amp;oq=15+greenpointe+ave+brook&amp;sll=39.764339,-104.855112&amp;sspn=0.325133,0.727844&amp;ie=UTF8&amp;hq=&amp;hnear=15+Greenpoint+Ave,+Brooklyn,+Kings,+New+York+11222&amp;t=m&amp;ll=40.729698,-73.960047&amp;spn=0.016261,0.025749&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                  </div>
+
+              </div>
+
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+              <br/>
+              <br/>
+              <div class="row">
+              <!-- <div class="col-lg-12"> -->
+                <center><p target="_blank" class="fl bbb" title="Cl" href="http://www.bbb.org/ottawa/business-reviews/internet-shopping/shopify-in-ottawa-on-39813#sealclick" rel="nofollow"><img src="//cdn.shopify.com/assets/images/logos/logo-bbb.png?1387389567" /></p><p class="p0">&copy; 2013 Order Up Inc. &nbsp; <a href="/legal/terms" target="_blank" rel="nofollow">Terms of Service</a> &nbsp;   <a href="/legal/privacy" target="_blank" rel="nofollow">Privacy</a>
+            
+                <a href="/sitemap">Sitemap</a><p><a href="http://www.jumpstartlabs.com/">Ecommerce Software Solutions</a> by Order Up &mdash; A restaurant in minutes, a business for life&trade;</p></center>
+              </div>

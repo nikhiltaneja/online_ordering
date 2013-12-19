@@ -1,4 +1,4 @@
-
+<%= render partial: "layouts/navbar" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,100 +18,47 @@
 
   <body>
 
-    <nav class="navbar navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">OrderUP </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
     
-    <div class="business-header">
-    
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12">
-            <!-- The background image is set in the custom CSS -->
-            <h1 class="tagline">Start Your Restaurant Today</h1>
+      <div class="business-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- The background image is set in the custom CSS -->
+            </div>
           </div>
         </div>
-      
       </div>
-    
-    </div>
-    
     <div class="container">
-    
+      <hr>
+      <div class="featurette" id="about">
+        <img class="featurette-image img-circle img-responsive pull-right" src="http://s16.postimg.org/dsqf0wwjp/grand.jpg">
+        <h2 class="featurette-heading">SMOQUE BBQ House <span class="text-muted">Was Born On the Oregon Trail</span></h2>
+        <p class="lead">Jebadiah Griffin, Great, Great Grandfather of Billy Griffin started the first SMOQUE bbq house after working as a short order cook  a wagon train heading out west on the Oregon Trail.  When the group stopped in Indiana, Jebadiah Got off saying he had been called to open up a mid-priced family style bbq restaurant. </p>
+      </div>
       <hr>
       
       <div class="row">
-        <div class="col-lg-8 col-sm-8">
-          <h2>About <%= @restaurant.name %></h2>
-          <p>Here is where you will introduce visitors to the business. Make sure to use clear and informative sentences. Use appropriate keywords here to make sure search engines can find the business.</p>
-          <p>When using this template, two decisions will be open to visitors. Decision one will be to use above-the-fold information to interact with the page. Decision two will be to scroll down and see the additional marketing boxes. Either way, the user will get the information they need!</p>
-          <p><a class="btn btn-default btn-large" href="#">Call to action &raquo;</a></p>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <h2>Contact Us</h2>
-      <address>
-        <strong>Twitter, Inc.</strong><br>
-        795 Folsom Ave, Suite 600<br>
-      San Francisco, CA 94107<br>
-      </address>
-      <address>
-      <abbr title="Phone">P:</abbr> (123) 456-7890<br>
-            <abbr title="Email">E:</abbr> <a href="mailto:#">first.last@example.com</a>
-      </address>
-        </div>
+      <div class="col-lg-6">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      <!-- <div class="featurette filter-down" id="about"> -->
+        <h2 class="featurette-heading">Filter By Category</h2>
+        <table>
+          <tr>
+            <% @categories.each do |category| %>
+              <td><%= link_to category.name, categories_path(current_restaurant, filter: category.name), class: "btn btn-primary" %></td>
+            <% end %>
+              <td><%= link_to "All Categories", categories_path(current_restaurant), class: "btn btn-primary" %></td>
+          </tr>
+        </table>
       </div>
+      <div class="col-lg-6">
+        <center><img class = "pull-right" src="http://s23.postimg.org/fjwlfbtu3/chalk.jpg"></center>
+      </div>
+    </div><!-- /container -->
       
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
-            <h2>Marketing Box #1</h2>
-            <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
-        </div>
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive" src="http://placehold.it/300x300">
-            <h2>Marketing Box #2</h2>
-            <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-        </div>
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive" src="http://placehold.it/300x300">
-            <h2>Marketing Box #3</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; Company 2013</p>
-          </div>
-        </div>
-      </footer>
-
-    </div> <!-- /container -->
 
 
     <!-- JavaScript -->
@@ -123,45 +70,36 @@
 
 
 
-
-
-
-
-
-
-<div class="container">
-  <h3><%= @restaurant.name %></h3>
-
-  <%= render partial: "layouts/navbar" %>
-
-  
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <%= image_tag(current_restaurant.primary_picture_url) %>
-  </div>
-
-  <!-- Example row of columns -->
-  <center><div class="container-fluid" id="gridInContainer">
-    <% @categories.each do |category| %>
-    <h2><%= category.name %></h2>
-      <div class="row">
-
-          <% category.items.each do |item| %>
-
-            <%= render partial: 'category_listing', locals: {item: item, restaurant: @restaurant}  %>
-
-          <% end %>
-
-      </div> <!-- closing row -->
-    <% end %>
-    <br/>
-    <br/>
-  </div></center>
+  <div class="container">
   <br/>
-  <center><%= image_tag("bottom.jpg") %></center>
+  <br/>
 
 
-</div> <!-- /container -->
+    <!-- Example row of columns -->
+    <center><div class="container-fluid" id="gridInContainer">
+      <% @category_filter.each do |category| %>
+      <h2><%= category.name %></h2>
+        <div class="row">
+
+            <% category.items.each do |item| %>
+
+              <%= render partial: 'category_listing', locals: {item: item, restaurant: @restaurant}  %>
+
+            <% end %>
+
+        </div> <!-- closing row -->
+      <% end %>
+      <br/>
+      <br/>
+    </div></center>
+    <br/>
+    <div class="row">
+          
+          
+        </div>
+
+  </div> <!-- /container -->
+</div>
 
 
 <%= render partial: "layouts/footer" %>

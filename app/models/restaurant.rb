@@ -2,6 +2,7 @@ class Restaurant < ActiveRecord::Base
   has_many :roles
   has_many :users, through: :roles
   has_many :categories
+  has_many :items, through: :categories
   has_many :orders
   belongs_to :region
   validates :name, presence: true
@@ -31,5 +32,45 @@ class Restaurant < ActiveRecord::Base
     if (status=="rejected" || status=="pending") && display==true
       errors.add(:display, "can't be rejected or pending and shown")
     end
+  end
+
+  def item_count
+    items.count
+  end
+
+  def order_count
+    orders.count
+  end
+
+  def find_item(item_id)
+    items.find_by(id: item_id)
+  end
+
+  def complete_orders
+    orders.where(status: "complete")
+  end
+
+  def incomplete_orders
+    orders.where(status: "incomplete")
+  end
+
+  def customers
+    orders.includes(:user).map(&:user).uniq
+  end
+
+  def customer_count
+    customers.count
+  end
+
+  def total_sales
+    orders.where(:status=>"complete").joins(:order_items).joins(:items).sum("order_items.quantity * items.price")
+  end
+
+  def worker?(a_user)
+    roles.includes(:user).map(&:user).include?(a_user)
+  end
+
+  def category(name)
+    categories.where(name: name)
   end
 end
