@@ -4,12 +4,17 @@ describe 'Cart', type: :feature do
 
   context "when the cart is empty" do
 
-    xit "shows an error message" do
-      restaurant = FactoryGirl.create(:restaurant)
-      visit restaurants_path
-      save_and_open_page
-      click_on restaurant.name
-      click_on 'Cart'
+    it "shows an error message" do
+      restaurant = Restaurant.create(name: "Nik's", slug: "niks", description: "good stuff", status: "approved", display: true)
+      region = Region.create(name: "CA")
+      restaurant.region = region
+      restaurant.save
+      visit root_path
+      within("#navigation-bar") do
+        click_on 'Restaurants'
+      end
+      click_on "Nik's"
+      click_on "Cart"
       page.should have_content("You must add an item before viewing your cart")
     end
   end

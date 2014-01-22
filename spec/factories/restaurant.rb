@@ -13,5 +13,6 @@ FactoryGirl.define do
     description "a food place"
     status "approved"
     display true
+    association :region, factory: :region, name: "CA"
   end
 end
