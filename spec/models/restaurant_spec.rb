@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Restaurant do
-  let!(:restaurant){ Restaurant.create(name:"billy's bbq", description: "asdf") }
+  let!(:restaurant){ Restaurant.create(name:"billy's bbq", description: "southern barbecue") }
 
   describe 'before validations' do
     it 'creates a slug' do
@@ -14,22 +14,22 @@ describe Restaurant do
   describe 'validations' do
     context 'duplicate names' do
       it 'is invalid' do
-        r2 = Restaurant.create(name:"billy's bbq", description: "asdf")
+        r2 = Restaurant.create(name:"billy's bbq", description: "southern barbecue")
         expect(r2).to be_invalid
       end
       it 'has errors' do
-        r2 = Restaurant.create(name:"billy's bbq", description: "asdf")
+        r2 = Restaurant.create(name:"billy's bbq", description: "southern barbecue")
         expect(r2).to have(1).error_on(:name)
       end
     end
 
     context 'similar names' do
       it 'is invalid' do
-        r2 = Restaurant.create(name:"billy s bbq", description: "asdf")
+        r2 = Restaurant.create(name:"billy s bbq", description: "southern barbecue")
         expect(r2).to be_invalid
       end
       it 'has errors' do
-        r2 = Restaurant.create(name:"billy s bbq", description: "asdf")
+        r2 = Restaurant.create(name:"billy s bbq", description: "southern barbecue")
         expect(r2).to have(1).error_on(:slug)
       end
     end

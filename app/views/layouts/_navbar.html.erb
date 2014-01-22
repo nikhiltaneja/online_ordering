@@ -22,9 +22,7 @@
                 <li><%= link_to "Login", login_path %></li>
               <% end %>
 
-              <li><%= link_to cart_path(current_restaurant) do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-              <% end %>
+              <li><%= link_to "Cart", cart_path(current_restaurant)%>
               </li>
           </ul>
         </div><!-- /.navbar-collapse -->

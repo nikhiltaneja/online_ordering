@@ -47,7 +47,7 @@
       <tr>
         <td><%= link_to restaurant.name, "/#{restaurant.slug}", method: :get %></td>
         <td><%= restaurant.description %></td>
-        <td><%= Region.find(restaurant.region_id).name %></td>
+        <td><%= restaurant.region.name %></td>
         <% if platform_admin? %>
           <td><%= restaurant.status.capitalize %></td>
           <% if restaurant.status == "pending" %>
